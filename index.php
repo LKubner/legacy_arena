@@ -6,6 +6,8 @@
     <title>Legacy Arena</title>
 </head>
 <body>
-    Bem vindo!!
+  <h1> <center> Bem vindo!! </center> </h1>
+   <a href="cadastro.php"> Cadastre-se </a> <br>
+   <a href="login.php"> Login </a>  
 </body>
 </html>
