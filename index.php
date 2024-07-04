@@ -2,34 +2,26 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-    p {
-      position:absolute;
-      top: -30px;
-      font-size: 25px;
-    }
-
-    </style>
-   
+  <link rel="stylesheet" href="css/style.css">
+  <title>Login</title>
 </head>
 
 <body>
-<nav>
+  <nav>
     <div class="nav-wrapper">
-    <p> Legacy Arena </p>
+      <a class="linkedital" href="edital.php"> Editais </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="form-cadastro.php">Cadastrar-se</a></li>
-        <li><a href="form-login.php">Login</a></li>
-        <a href="form-recuperar-senha.php"> Recuperar senha </a> <br>
+        <li> <a class="pink darken-3 waves-effect waves-light btn" href="form-cadastro.php">Cadastrar-se</a></li>
+        <li><a class=" pink darken-3 waves-effect waves-light btn" href="form-login.php">Login</a></li>
       </ul>
     </div>
   </nav>
 
-  
+  <h1> Bem vindo </h1>
+  <img src="imagens/roblox.jfif">
 </body>
+
 </html>
