@@ -20,8 +20,8 @@
     </div>
   </nav>
 
-  <h1> Bem vindo, Receba!! </h1>
-  <img src="imagens/luva.jpg">
+  <h1> Bem vindo, ADM!! </h1>
+  <img src="imagens/adm.png">
 </body>
 
 </html>
