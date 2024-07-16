@@ -4409,9 +4409,7 @@ nav ul a.btn-floating>.material-icons {
     line-height: inherit
 }
 
-nav ul a:hover {
-
-}
+nav ul a:hover {}
 
 nav ul.left {
     float: left
@@ -9138,9 +9136,71 @@ input[type=range]::-ms-thumb {
 
 .linkedital {
     margin-left: 15px;
-    color:white;
+    color: white;
     font-style: italic;
 }
-.nav-wrapper{
+
+.nav-wrapper {
     background-color: #263238;
+}
+
+.cs{
+    border-radius: 10px;
+    width: 40px;
+}
+
+#sidenav {
+    height: 100%;
+    width: 100px;
+    position: absolute;
+    z-index: 1;
+    top: -2;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+#sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+#sidenav a:hover {
+    color: #f1f1f1;
+}
+
+#main {
+    margin-left: 200px;
+    /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+    #sidenav {
+        padding-top: 15px;
+    }
+
+    #sidenav a {
+        font-size: 18px;
+    }
+}
+
+#wall {
+    width: 100%;
+    position: absolute;
+    left: 5%;
+    opacity: 0.3;
+}
+body {
+    background-color: #000;
+}
+
+#teste h1 {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    color: white;
 }

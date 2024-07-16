@@ -19,9 +19,15 @@
       </ul>
     </div>
   </nav>
-
-  <h1> Bem vindo, Receba!! </h1>
-  <img src="imagens/luva.jpg">
+<img id="wall" src="imagens/csw.gif" alt="dsa">
+  <div id="sidenav">
+  <a href="cs.php"> <img class="cs" src="imagens/cs2.png"> </a>
+  <a href="lol.php"> <img class="cs" src="imagens/lol.png"> </a>
+  <a href="xadrez.php"> <img class="cs" src="imagens/lichess.png"> </a>
+  <a href="freefire.php"> <img class="cs" src="imagens/freefire.png"> </a>
+  <a href="valorant.php"> <img class="cs" src="imagens/valorant.png"> </a>
+</div>
+<div id="teste"><h1> Bem vindo ao Legacy Arena </h1> </div>
 </body>
 
 </html>
