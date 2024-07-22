@@ -9188,14 +9188,9 @@ input[type=range]::-ms-thumb {
     }
 }
 
-#wall {
-    width: 100%;
-    position: absolute;
-    left: 5%;
-    opacity: 0.3;
-}
 body {
     background-color: #000;
+   
 }
 
 #teste h1 {

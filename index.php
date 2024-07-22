@@ -19,7 +19,7 @@
       </ul>
     </div>
   </nav>
-<img id="wall" src="imagens/csw.gif" alt="dsa">
+
   <div id="sidenav">
   <a href="cs.php"> <img class="cs" src="imagens/cs2.png"> </a>
   <a href="lol.php"> <img class="cs" src="imagens/lol.png"> </a>
