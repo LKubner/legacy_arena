@@ -9188,9 +9188,8 @@ input[type=range]::-ms-thumb {
     }
 }
 
-body {
+.bodyindex {
     background-color: #000;
-   
 }
 
 #teste h1 {

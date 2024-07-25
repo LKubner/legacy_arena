@@ -9,7 +9,7 @@
   <title>Login</title>
 </head>
 
-<body>
+<body class="bodyindex">
   <nav>
     <div class="nav-wrapper">
       <a class="linkedital" href="edital.php"> Editais </a>
