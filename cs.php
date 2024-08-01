@@ -7,6 +7,7 @@
     <title>Counter-Strike 2</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
+
 <body>
     <h1> cs </h1>
     <div class="navopcoes">
@@ -25,10 +26,10 @@
     </div>
 
     <div class="row">
-      <div class="col s1" value="1">Visão Geral</div>
-      <div class="col s1" value="2">Chaveamento</div>
-      <div class="col s1" value="3">Ranking</div>
-      <div class="col s1" value="4"> <a href="rankingteste.php"> Outro</div>
+        <div class="col s1" value="1">Visão Geral</div>
+        <div class="col s1" value="2"> <a href="chaveamentocs.php"> Chaveamento </a> </div>
+        <div class="col s1" value="3">Ranking</div>
+        <div class="col s1" value="4"> <a href="rankingteste.php"> Outro</div>
 </body>
 
 </html>
