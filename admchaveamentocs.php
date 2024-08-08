@@ -27,7 +27,6 @@
             <th>Derrotas</th>
             <th>Dif. Round</th>
             <th>Pontos</th>
-            <th>Ações</th>
         </tr>
         <?php foreach ($grupos as $grupo): ?>
             <tr>
