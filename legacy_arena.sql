@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 08-Ago-2024 às 18:25
+-- Tempo de geração: 08-Ago-2024 às 20:14
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -30,9 +30,16 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE IF NOT EXISTS `equipe` (
   `id_equipe` int NOT NULL,
-  `nome` int NOT NULL,
+  `nome` varchar(255) NOT NULL,
   PRIMARY KEY (`id_equipe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `equipe`
+--
+
+INSERT INTO `equipe` (`id_equipe`, `nome`) VALUES
+(0, 'imperial');
 
 -- --------------------------------------------------------
 
@@ -56,6 +63,13 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   PRIMARY KEY (`grupo`),
   KEY `fk_id_equipe` (`id_equipe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `rankingcs`
+--
+
+INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `empate`, `rounds_vencidos`, `rounds_perdidos`, `confronto_direito`, `wo`) VALUES
+('A', 0, 3, 9, 3, 0, 0, 26, 14, 0, 'não');
 
 --
 -- Restrições para despejos de tabelas
