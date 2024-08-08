@@ -2788,7 +2788,7 @@ td {
 }
 
 table {
-    width: 25%;
+    width: 35%;
     display: table;
     border-collapse: collapse;
     border-spacing: 0
@@ -9141,7 +9141,7 @@ input[type=range]::-ms-thumb {
 }
 
 .nav-wrapper {
-    background-color: #263238;
+    background-color: #111;
 }
 
 .cs{
@@ -9186,10 +9186,6 @@ input[type=range]::-ms-thumb {
     #sidenav a {
         font-size: 18px;
     }
-}
-
-.bodyindex {
-    background-color: #000;
 }
 
 #teste h1 {

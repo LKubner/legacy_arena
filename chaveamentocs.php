@@ -15,9 +15,14 @@ require_once "conexao.php";
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<?php
+    //navbar e sidebar 
+    include_once "header.php"
+     ?>
+<main class="container">
     <h1> Grupos </h1>
 
-    <table>
+    <table >
   <tr>
     <th>Grupo A</th>
     <th>Partidas</th>
@@ -42,7 +47,35 @@ require_once "conexao.php";
     <td> 15 </td>
     <td> 6 </td>
   </tr>
+  <tr>
+    <td>9z</td>
+    <td>3</td>
+    <td>1</td>
+    <td> 2 </td>
+    <td> -5 </td>
+    <td> 3 </td>
+  </tr>
+  <tr>
+    <td>OG</td>
+    <td>3</td>
+    <td>0</td>
+    <td> 3 </td>
+    <td> -12 </td>
+    <td> 0 </td>
+  </tr>
 </table> 
+<<<<<<< Updated upstream
 </body>
 </html>
 
+=======
+
+</body>
+</html>
+
+<!--<div class="row">
+        <div class="col s1" value="1">Visão Geral</div>
+        <div class="col s1" value="2"> <a href="chaveamento.php"> Chaveamento </a> </div>
+        <div class="col s1" value="3">Ranking</div>
+        <div class="col s1" value="4"> <a href="rankingteste.php"> Outro</div>
+>>>>>>> Stashed changes
