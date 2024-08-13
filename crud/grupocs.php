@@ -1,39 +1,42 @@
 <?php
-require_once "../conexao.php"
+require_once "../conexao.php";
+$conexao = conectar();
 
+$grupo = $_POST['grupo'];
+$fotoequipe = $_POST['arquivo'];
+$partidas = $_POST['partidas'];
+$equipe= $_POST['equipe'];
+$vitorias = $_POST['vitorias'];
+$derrotas = $_POST['derrotas'];
+$difround = $_POST['difround'];
+$pontos = $_POST['pontos'];
+
+$sql = "INSERT INTO rankingcs (partidas,pontos,vitoria,derrota,dif_Round,pontos) VALUES  ('$partidas','$pontos','$vitorias','$derrotas','$difround','$pontos')";
+$sql2 = "INSERT INTO equipe (nome,foto_time) VALUES ('$equipe','$fotoequipe')";
+
+header("Location: ../admchaveamentocs.php");
 ?>
 
 
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
-    <label for="grupo">Grupo:</label>
-    <select name="grupo" id="grupo">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">A</option>
-        <option value="F">B</option>
-        <option value="G">C</option>
-    </select>
-    <br><br>
 
-    Partidas: <input type="text"> <br>
-    Equipe: <input type="text"> <br>
-    Vitórias: <input type="text"> <br>
-    Derrotas: <input type="text"> <br>
-    Dif.Rounds: <input type="text"> <br>
-    Pontos: <input type="text"> <br>
-    <input type="submit" value="Submit">
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
