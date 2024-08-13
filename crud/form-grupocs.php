@@ -29,7 +29,7 @@ require_once "../conexao.php"
         </select>
         <br><br>
 
-        Foto da equipe, Selecione o arquivo: <input type="file" name="arquivo"> <br>
+        Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time"> <br>
         Partidas: <input type="text" name="partidas"> <br>
         Equipe: <input type="text" name="equipe"> <br>
         Vitórias: <input type="text" name="vitorias"><br>
