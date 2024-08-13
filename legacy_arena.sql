@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 13-Ago-2024 às 01:54
+-- Tempo de geração: 13-Ago-2024 às 12:35
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -31,9 +31,9 @@ DROP TABLE IF EXISTS `equipe`;
 CREATE TABLE IF NOT EXISTS `equipe` (
   `id_equipe` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
-  `foto_time` varchar(255) DEFAULT 'imagens/default.jpg',
+  `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -51,7 +51,7 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 DROP TABLE IF EXISTS `rankingcs`;
 CREATE TABLE IF NOT EXISTS `rankingcs` (
   `grupo` char(7) NOT NULL,
-  `id_equipe` int NOT NULL,
+  `id_equipe` int NOT NULL AUTO_INCREMENT,
   `partidas` int NOT NULL,
   `pontos` int NOT NULL,
   `vitoria` int NOT NULL,
@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `dif_round` int NOT NULL,
   `confronto_direito` int NOT NULL,
   `wo` varchar(255) NOT NULL,
-  PRIMARY KEY (`grupo`),
+  PRIMARY KEY (`id_equipe`),
   KEY `fk_id_equip` (`id_equipe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
@@ -80,7 +80,7 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 -- Limitadores para a tabela `rankingcs`
 --
 ALTER TABLE `rankingcs`
-  ADD CONSTRAINT `fk_id_equip` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`);
+  ADD CONSTRAINT `fk_id_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
