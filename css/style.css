@@ -4458,10 +4458,15 @@ nav .input-field label.active i {
 }
 
 .navbar-fixed {
-    position: relative;
-    height: 56px;
-    z-index: 997
-}
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #ffffff;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
 
 .navbar-fixed nav {
     position: fixed
@@ -9150,15 +9155,15 @@ input[type=range]::-ms-thumb {
 }
 
 #sidenav {
-    height: 100%;
-    width: 100px;
-    position: absolute;
-    z-index: 1;
-    top: -2;
+    position: fixed;
+    top: 60px; /* Ajuste conforme a altura da navbar */
     left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
+    width: 100px; /* Largura da sidebar */
+    height: calc(100% - 60px); /* Altura total menos a altura da navbar */
+    background-color: black;
+    padding-top: 20px; /* Ajuste o espaçamento interno conforme necessário */
+    z-index: 999; /* Fica abaixo da navbar, mas acima do conteúdo */
+    overflow-y: auto; /* Adiciona rolagem se necessário */
 }
 
 #sidenav a {
@@ -9181,16 +9186,14 @@ input[type=range]::-ms-thumb {
 @media screen and (max-height: 450px) {
     #sidenav {
         padding-top: 15px;
+
     }
 
     #sidenav a {
         font-size: 18px;
     }
 }
-
-#teste h1 {
-    position: absolute;
-    top: 10%;
-    left: 30%;
-    color: white;
+.content {
+    margin-left: 210px; /* Ajuste para dar espaço à sidebar */
+    padding: 20px;
 }
