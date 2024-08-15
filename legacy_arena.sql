@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 13-Ago-2024 às 12:35
+-- Tempo de geração: 15-Ago-2024 às 18:29
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,14 +33,21 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
 --
 
 INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
-(1, 'Imperial', 'imperial.png');
+(22, 'dragoes', NULL),
+(23, 'limbo', NULL),
+(24, 'capivara', NULL),
+(25, 'ratoes', NULL),
+(26, 'phoenix', NULL),
+(27, 'tubaroes', NULL),
+(28, 'galinha pintadinha', NULL),
+(29, 'galo da madrugada', NULL);
 
 -- --------------------------------------------------------
 
@@ -63,14 +70,16 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `wo` varchar(255) NOT NULL,
   PRIMARY KEY (`id_equipe`),
   KEY `fk_id_equip` (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
 --
 
 INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`) VALUES
-('A', 1, 3, 9, 3, 0, 25, 15, 16, 0, 'Não');
+('A', 22, 1, 3, 1, 0, 10, 5, 0, 0, ''),
+('B', 23, 1, 3, 1, 0, 10, 5, 0, 0, ''),
+('A', 25, 1, 3, 1, 0, 10, 5, 0, 0, '');
 
 --
 -- Restrições para despejos de tabelas
