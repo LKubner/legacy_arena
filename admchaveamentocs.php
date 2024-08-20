@@ -37,7 +37,8 @@ if ($teste != null) {
 </head>
 
 <body>
-    <a href="crud/form-grupocs.php">Novo Grupo</a>
+    <a href="crud/form-grupocs.php">Novo Grupo</a> <br>
+    <a href="crud/form-equipecs.php">Nova Equipe </a>
 
     <?php
     $grp = '';
@@ -74,8 +75,7 @@ if ($teste != null) {
             $foto_time = 'imagens/default.png'; // Caminho para uma imagem padrão se a imagem não for encontrada
         }
         echo "<tr>";
-        //echo "<td> <img src='" . $foto_time . "' alt='foto do time' style='width:32px;height:28px;'></td>";
-        echo "<td></td>";
+        echo "<td> <img src='" . $foto_time . "' alt='foto do time' style='width:32px;height:28px;'></td>";
         echo "<td>" . $dados['nome'] . "</td>";
         echo "<td>" . $dados['partidas'] . "</td>";
         echo "<td>" . $dados['vitoria'] . "</td>";
