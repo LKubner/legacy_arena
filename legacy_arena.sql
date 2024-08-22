@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Ago-2024 às 16:45
+-- Tempo de geração: 22-Ago-2024 às 20:26
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -48,7 +48,15 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (27, 'tubaroes', NULL),
 (28, 'galinha pintadinha', NULL),
 (32, 'Legacy', '66c48d0e5f97c.jfif'),
-(34, 'Furia', '66c76411f3379.png');
+(34, 'Furia', '66c76411f3379.png'),
+(35, 'plplplpl', '66c7861126ac3.png'),
+(36, 'vfdffgwefggfrghrefr', '66c7918b4e9af.png'),
+(37, 'Os Martins', '66c791f780cad.jfif'),
+(38, 'Os Lazaros', '66c79277b1e03.png'),
+(39, 'NIP', '66c7932fbde2e.jfif'),
+(40, 'Navi', '66c79344c8648.jfif'),
+(41, '9z', '66c7935b1beeb.png'),
+(42, 'G2', '66c793810f676.jfif');
 
 -- --------------------------------------------------------
 
@@ -71,16 +79,21 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `wo` varchar(255) NOT NULL,
   PRIMARY KEY (`id_equipe`),
   KEY `fk_id_equip` (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
 --
 
 INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`) VALUES
-('A', 22, 1, 3, 1, 0, 10, 5, 0, 0, ''),
-('B', 23, 1, 3, 1, 0, 10, 5, 0, 0, ''),
-('A', 25, 1, 3, 1, 0, 10, 5, 0, 0, '');
+('A', 32, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('A', 34, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('A', 37, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('A', 38, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, ''),
+('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '');
 
 --
 -- Restrições para despejos de tabelas
