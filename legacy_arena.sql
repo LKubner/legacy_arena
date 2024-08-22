@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 20-Ago-2024 às 13:36
+-- Tempo de geração: 22-Ago-2024 às 16:45
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -47,7 +47,8 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (26, 'phoenix', NULL),
 (27, 'tubaroes', NULL),
 (28, 'galinha pintadinha', NULL),
-(32, 'Legacy', '66c48d0e5f97c.jfif');
+(32, 'Legacy', '66c48d0e5f97c.jfif'),
+(34, 'Furia', '66c76411f3379.png');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `wo` varchar(255) NOT NULL,
   PRIMARY KEY (`id_equipe`),
   KEY `fk_id_equip` (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`

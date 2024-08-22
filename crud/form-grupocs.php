@@ -1,7 +1,8 @@
 <?php
-require_once "../conexao.php"
-
-
+require_once "../conexao.php";
+$conexao = conectar();
+$sql = "SELECT id_equipe, nome FROM equipe";
+$resultado = executarSQL($conexao, $sql);
 ?>
 
 
@@ -32,6 +33,11 @@ require_once "../conexao.php"
   
         <label for="equipe">Equipe:</label> 
         <select name="equipe" id="equipe">
+            <?php
+            while($retorno = mysqli_fetch_assoc($resultado)){
+                echo '<option value="' . $retorno["id_equipe"] . '">' . $retorno["nome"] . '</option>';
+            };
+            ?>
 
         </select> 
 

@@ -17,7 +17,17 @@ require_once "../conexao.php"
 <form action="equipecs.php" method="post" enctype="multipart/form-data">
 
         Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time"> <br>
-       Nome Equipe: <input type="text" name="equipe"> <br>
+        Nome Equipe: <input type="text" name="equipe"> <br>
+        Grupo:  <label for="grupo">Grupo: </label> 
+        <select name="grupo" id="grupo">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">C</option>
+        <option value="F">D</option>
+</select>
+
         <input type="submit" value="Enviar">
 
 </body>

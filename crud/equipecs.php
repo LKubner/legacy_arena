@@ -3,6 +3,9 @@ require_once "../conexao.php";
 $conexao = conectar();
 
 $equipe = $_POST['equipe'];
+$grupo = $_POST['grupo'];
+$sql = "INSERT INTO rankingcs (grupo) VALUES ('$grupo')";
+$resultado1 = executarSQL($conexao, $sql);
 
 
 //UPLOAD DA IMAGEM AGORA!!
