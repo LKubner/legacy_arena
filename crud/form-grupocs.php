@@ -41,6 +41,16 @@ $resultado = executarSQL($conexao, $sql);
 
         </select> 
 
+        Grupo:  <label for="grupo">Grupo: </label> 
+        <select name="grupo" id="grupo">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">C</option>
+        <option value="F">D</option>
+</select>
+
 
 
        

@@ -3,12 +3,8 @@ require_once "../conexao.php";
 $conexao = conectar();
 
 $equipe = $_POST['equipe'];
-$grupo = $_POST['grupo'];
-$sql = "INSERT INTO rankingcs (grupo) VALUES ('$grupo')";
-$resultado1 = executarSQL($conexao, $sql);
 
-
-//UPLOAD DA IMAGEM AGORA!!
+//UPLOAD DA IMAGEM
 $pastaDestino = "../imagens/";
 
 // verificar se o tamanho do arquivo é maior que 2 MB
@@ -44,8 +40,12 @@ $fezUpload = move_uploaded_file(
 
 if ($fezUpload == true) {
     // Insere os dados na tabela equipe 
-    $sql2 = "INSERT INTO equipe(nome,foto_time) VALUES ('$equipe','$nomeArquivo.$extensao')";
+    $sql2 = "INSERT INTO equipe(nome, foto_time) VALUES ('$equipe', '$nomeArquivo.$extensao')";
     $resultado2 = executarSQL($conexao, $sql2);
+
+    if ($resultado2 != false) {
+        // Obtém o id_equipe da última inserção
+      
 
         if ($resultado2 != false) {
             // se for uma alteração de arquivo
@@ -65,9 +65,12 @@ if ($fezUpload == true) {
             }
             header("Location: ../admchaveamentocs.php");
         } else {
-            echo "Erro ao registrar o arquivo no banco de dados.";
+            echo "Erro ao registrar o grupo na tabela rankingcs.";
         }
     } else {
-        echo "Erro ao registrar os dados na tabela equipe.";
+        echo "Erro ao registrar o arquivo na tabela equipe.";
     }
+} else {
+    echo "Erro ao registrar os dados na tabela equipe.";
+}
 ?>

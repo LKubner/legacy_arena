@@ -2,6 +2,7 @@
 require_once "../conexao.php";
 $conexao = conectar();
 
+$grupo = $_POST['grupo'];
 $partidas = $_POST['partidas'];
 $equipe = $_POST['equipe'];
 $vitorias = $_POST['vitorias'];
@@ -14,12 +15,11 @@ $nomeArquivo = uniqid();
 
 $resultado2 = true;
 if ($resultado2 = true){
-
+    
     if ($resultado2 != false) {
-        // obtem o id da equipe recém criada
-        $id_equipe = mysqli_insert_id($conexao);
+
         // Insere os dados na tabela rankingcs
-        $sql = "INSERT INTO rankingcs (id_equipe, partidas, pontos, vitoria, derrota, dif_round) VALUES ('$id_equipe','$partidas','$pontos','$vitorias','$derrotas','$difround')";
+        $sql = "INSERT INTO rankingcs (id_equipe, grupo, partidas, pontos, vitoria, derrota, dif_round) VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$difround')";
         $resultado = executarSQL($conexao, $sql);
 
         if ($resultado2 != false) {
