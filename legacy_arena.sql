@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Ago-2024 às 20:26
+-- Tempo de geração: 23-Ago-2024 às 02:56
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -51,8 +51,8 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (34, 'Furia', '66c76411f3379.png'),
 (35, 'plplplpl', '66c7861126ac3.png'),
 (36, 'vfdffgwefggfrghrefr', '66c7918b4e9af.png'),
-(37, 'Os Martins', '66c791f780cad.jfif'),
-(38, 'Os Lazaros', '66c79277b1e03.png'),
+(37, 'YNG Sharks', '66c791f780cad.jfif'),
+(38, 'Imperial', '66c79277b1e03.png'),
 (39, 'NIP', '66c7932fbde2e.jfif'),
 (40, 'Navi', '66c79344c8648.jfif'),
 (41, '9z', '66c7935b1beeb.png'),
