@@ -9204,7 +9204,7 @@ input[type=range]::-ms-thumb {
 body {
     margin-right: 0;
     padding-top: 50px; /* Adiciona espaço abaixo da navbar, ajuste conforme necessário */
-    background-color: #424242; /* Se essa já for a cor desejada, pode manter */
+    background-color: white; /* Se essa já for a cor desejada, pode manter */
 }
 
 #centro {
