@@ -9146,32 +9146,35 @@ input[type=range]::-ms-thumb {
 }
 
 .nav-wrapper {
-    background-color: #111;
+    background-color: #231D24;
 }
 
-.cs{
+.cs {
     border-radius: 10px;
-    width: 40px;
+    width: 80%; /* Largura total da sidebar */
+    height: auto; /* Manter a proporção da imagem */
+    display: block; /* Garante que a imagem se comporte como um bloco */
+    margin: 0 auto 10px auto; /* Centraliza os ícones verticalmente */
 }
-
 #sidenav {
     position: fixed;
     top: 60px; /* Ajuste conforme a altura da navbar */
     left: 0;
-    width: 100px; /* Largura da sidebar */
+    width: 60px; /* Largura da sidebar */
     height: calc(100% - 60px); /* Altura total menos a altura da navbar */
-    background-color: black;
+    background-color: #231D24;
     padding-top: 20px; /* Ajuste o espaçamento interno conforme necessário */
     z-index: 999; /* Fica abaixo da navbar, mas acima do conteúdo */
     overflow-y: auto; /* Adiciona rolagem se necessário */
 }
 
 #sidenav a {
-    padding: 6px 6px 6px 32px;
+    padding: 6px 6px 6px 0; /* Remover padding à esquerda para alinhar ícones */
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
+    text-align: center; /* Centraliza o conteúdo dentro do link */
 }
 
 #sidenav a:hover {
@@ -9194,6 +9197,17 @@ input[type=range]::-ms-thumb {
     }
 }
 .content {
-    margin-left: 210px; /* Ajuste para dar espaço à sidebar */
+    margin-left: 50px; /* Ajuste para dar espaço à sidebar */
     padding: 20px;
+}
+
+body {
+    margin-right: 0;
+    padding-top: 50px; /* Adiciona espaço abaixo da navbar, ajuste conforme necessário */
+    background-color: #424242; /* Se essa já for a cor desejada, pode manter */
+}
+
+#centro {
+    text-align: center; /* Centralizar o texto */
+    color: white; /* Cor do texto */
 }

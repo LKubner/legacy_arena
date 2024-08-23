@@ -3,8 +3,6 @@
         <div class="nav-wrapper">
           <a class="linkedital" href="edital.php"> Editais </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li> <a class="pink darken-3 waves-effect waves-light btn" href="form-cadastro.php">Cadastrar-se</a></li>
-            <li><a class=" pink darken-3 waves-effect waves-light btn" href="form-login.php">Login</a></li>
           </ul>
         </div>
       </nav>
