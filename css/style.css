@@ -9158,10 +9158,15 @@ input[type=range]::-ms-thumb {
 
 
 .titulo {
-    text-align: center;
-    color: black;
+    display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Centraliza o texto dentro do <h1> */
+    color: white; /* Contrasta o texto com o fundo */
+    font-size: 3em; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Deixa o texto mais marcante */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra para melhorar a legibilidade */
+    border-radius: 10px; /* Bordas arredondadas para um toque mais suave */
 }
 .linkedital {
     margin-left: 15px;
