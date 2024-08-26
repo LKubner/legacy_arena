@@ -9139,6 +9139,30 @@ input[type=range]::-ms-thumb {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.titulo {
+    text-align: center;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
 .linkedital {
     margin-left: 15px;
     color: white;
@@ -9158,13 +9182,13 @@ input[type=range]::-ms-thumb {
 }
 #sidenav {
     position: fixed;
-    top: 60px; /* Ajuste conforme a altura da navbar */
+    top: 0; /* Ajuste conforme a altura da navbar */
     left: 0;
-    width: 60px; /* Largura da sidebar */
-    height: calc(100% - 60px); /* Altura total menos a altura da navbar */
+    width: 50px; /* Largura da sidebar */
+    height: 100%; /* Altura total da tela */
     background-color: #231D24;
-    padding-top: 20px; /* Ajuste o espaçamento interno conforme necessário */
-    z-index: 999; /* Fica abaixo da navbar, mas acima do conteúdo */
+    padding-top: 60px; /* Ajuste o espaçamento interno conforme necessário */
+    z-index: 999; /* Fica acima do conteúdo principal */
     overflow-y: auto; /* Adiciona rolagem se necessário */
 }
 
@@ -9181,33 +9205,53 @@ input[type=range]::-ms-thumb {
     color: #f1f1f1;
 }
 
-#main {
-    margin-left: 200px;
-
-}
-
-@media screen and (max-height: 450px) {
-    #sidenav {
-        padding-top: 15px;
-
-    }
-
-    #sidenav a {
-        font-size: 18px;
-    }
-}
-.content {
-    margin-left: 50px; /* Ajuste para dar espaço à sidebar */
+#main-content {
+    margin-left: 60px; /* Espaço suficiente para a sidebar */
     padding: 20px;
 }
 
 body {
-    margin-right: 0;
-    padding-top: 50px; /* Adiciona espaço abaixo da navbar, ajuste conforme necessário */
-    background-color: white; /* Se essa já for a cor desejada, pode manter */
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    
+}
+#playoffs{
+    display: none;
+}
+.testebodycs {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/counter-strike2.jpg'); /* Caminho para a sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área disponível */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+}
+.testebodyindex {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/fps.jfif'); /* Caminho para a sua imagem */
+    background-color: #818181;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+    ;
+}
+.centralizar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ajuste conforme necessário */
+    text-align: center; /* Garante que o texto dentro do link esteja centralizado */
 }
 
-#centro {
-    text-align: center; /* Centralizar o texto */
-    color: white; /* Cor do texto */
+.centralizar-link a {
+    text-decoration: none; /* Remove o sublinhado, opcional */
+    color: white; /* Ajuste a cor do texto conforme necessário */
+    font-size: 12px; /* Ajuste o tamanho da fonte conforme necessário */
+    padding: 10px 10px; /* Espaçamento interno */
+    background-color: #007bff; /* Cor de fundo do link */
+    border-radius: 5px; /* Borda arredondada */
 }
