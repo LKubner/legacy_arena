@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 23-Ago-2024 às 02:56
+-- Tempo de geração: 29-Ago-2024 às 18:40
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -57,6 +57,20 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (40, 'Navi', '66c79344c8648.jfif'),
 (41, '9z', '66c7935b1beeb.png'),
 (42, 'G2', '66c793810f676.jfif');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `partidas`
+--
+
+DROP TABLE IF EXISTS `partidas`;
+CREATE TABLE IF NOT EXISTS `partidas` (
+  `id_partida` int NOT NULL AUTO_INCREMENT,
+  `equipe` varchar(255) NOT NULL,
+  `resultado` int NOT NULL,
+  PRIMARY KEY (`id_partida`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
