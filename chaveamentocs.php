@@ -81,52 +81,7 @@ if ($teste != null) {
         ?>
         </tbody>
         </table>
-
-        <!-- Botão para alternar a visibilidade dos play-offs -->
-        <button onclick="mostrarplayoffs()">Mostrar Play-offs</button> 
-
-        <!-- Seção de play-offs -->
-        <div id="playoffs">
-            <h2>Play-offs</h2>
-            <!-- Conteúdo dos play-offs aqui -->
-            <p>Play-offs eJif 2024.</p>
-            <!-- Exemplo de tabela de play-offs -->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Equipe</th>
-                        <th>Partidas</th>
-                        <th>Vitórias</th>
-                        <th>Derrotas</th>
-                        <th>Pontos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Adicione as informações dos play-offs aqui -->
-                    <tr>
-                        <td>Equipe </td>
-                        <td>10</td>
-                        <td>7</td>
-                        <td>3</td>
-                        <td>21</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <script>
-            function mostrarplayoffs() {
-                var playoffs = document.getElementById('playoffs');
-                var button = document.querySelector('button');
-                if (playoffs.style.display === 'none') {
-                    playoffs.style.display = 'block';
-                    button.textContent = 'Esconder Play-offs';
-                } else {
-                    playoffs.style.display = 'none';
-                    button.textContent = 'Mostrar Play-offs';
-                }
-            }
-        </script>
-    </div>
+        <a href="playoffscs.php">Acessar Play-Offs</a>
+</div>
 </body>
 </html>
