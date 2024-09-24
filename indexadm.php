@@ -4,24 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/js.js"> </script>
-  <title>Login</title>
+  <script src="../js.js"></script>
+  <title>Legacy</title>
 </head>
-
-<body>
+<body class= "testebodyindex">
+  <?php
+  // Navbar e Sidebar 
+  include_once "header.php";
+  ?>
+ <div id="main-content">
+    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
+    <h2> Admininstrador </h2>
  
 
-  <?php
-  //navbar e sidebar 
-  include_once "header.php"
-  ?>
-  <div id="teste">
-    <h1> Bem vindo ao Legacy Arena</h1>
-  </div>
-
-
+  
+</div>
 </body>
 
 </html>

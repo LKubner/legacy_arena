@@ -1,7 +1,34 @@
 <?php
 include_once "conexao.php";
+$conexao = conectar();
+require_once "header.php";
 
-require_once "header.php"
+// Consultas ao banco de dados
+$sql = "SELECT * FROM rankingcs";
+$resultado = mysqli_query($conexao, $sql);
+if ($resultado) {
+    $grupos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+} else {
+    echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+}
+
+$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe ORDER BY cs.grupo";
+$resultado1 = mysqli_query($conexao, $sql2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
