@@ -28,6 +28,9 @@
 <div class="centralizar-link">
     <a href="chaveamentocs.php">Chaveamento</a>
 </div>
+<div class="centralizar-link"> <br>
+    <a href="partidacs.php">Partidas</a>
+</div>
    
 
 </div>
