@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 29-Ago-2024 às 18:40
+-- Tempo de geração: 01-Out-2024 às 19:36
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -67,10 +67,21 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 DROP TABLE IF EXISTS `partidas`;
 CREATE TABLE IF NOT EXISTS `partidas` (
   `id_partida` int NOT NULL AUTO_INCREMENT,
-  `equipe` varchar(255) NOT NULL,
+  `id_equipe` int NOT NULL,
+  `id_equipe2` int NOT NULL,
   `resultado` int NOT NULL,
+  `resultado2` int NOT NULL,
+  `data_hora` datetime NOT NULL,
+  `fase` varchar(255) NOT NULL,
   PRIMARY KEY (`id_partida`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `partidas`
+--
+
+INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `fase`) VALUES
+(1, 24, 26, 2, 1, '2024-10-01 17:38:52', 'Fase de Grupos');
 
 -- --------------------------------------------------------
 
@@ -91,8 +102,7 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `dif_round` int NOT NULL,
   `confronto_direito` int NOT NULL,
   `wo` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_equipe`),
-  KEY `fk_id_equip` (`id_equipe`)
+  PRIMARY KEY (`id_equipe`)
 ) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -108,16 +118,6 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, ''),
 ('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, ''),
 ('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '');
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `rankingcs`
---
-ALTER TABLE `rankingcs`
-  ADD CONSTRAINT `fk_id_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

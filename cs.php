@@ -32,6 +32,7 @@
     <a href="partidacs.php">Partidas</a>
 </div>
    
+    
 
 </div>
 </body>

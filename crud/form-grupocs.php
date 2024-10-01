@@ -25,7 +25,6 @@ $resultado = executarSQL($conexao, $sql);
         <br><br>
        
         Partidas: <input type="text" name="partidas"> <br>
-        Equipe: <input type="text" name="equipe"> <br>
         Vitórias: <input type="text" name="vitorias"><br>
         Derrotas: <input type="text" name="derrotas"> <br>
         Dif.Rounds: <input type="text" name="difround"> <br>
