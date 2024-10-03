@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 01-Out-2024 às 19:36
+-- Tempo de geração: 03-Out-2024 às 20:04
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -56,7 +56,19 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (39, 'NIP', '66c7932fbde2e.jfif'),
 (40, 'Navi', '66c79344c8648.jfif'),
 (41, '9z', '66c7935b1beeb.png'),
-(42, 'G2', '66c793810f676.jfif');
+(42, 'G2', '66c793810f676.jfif'),
+(43, 'Atlético Mineiro', 'atleticomineiro.jpg'),
+(44, 'Internacional', 'internacional.jpg'),
+(45, 'Grêmio', 'gremio.jpg'),
+(46, 'Botafogo', 'botafogo.jpg'),
+(47, 'Fluminense', 'fluminense.jpg'),
+(48, 'Cruzeiro', 'cruzeiro.jpg'),
+(49, 'Atlético Mineiro', 'atleticomineiro.jpg'),
+(50, 'Internacional', 'internacional.jpg'),
+(51, 'Grêmio', 'gremio.jpg'),
+(52, 'Botafogo', 'botafogo.jpg'),
+(53, 'Fluminense', 'fluminense.jpg'),
+(54, 'Cruzeiro', 'cruzeiro.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,15 +85,37 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   `resultado2` int NOT NULL,
   `data_hora` datetime NOT NULL,
   `fase` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_partida`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_partida`),
+  KEY `fk_id_equipe3` (`id_equipe2`),
+  KEY `fk_id_equipe1` (`id_equipe`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
 --
 
 INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `fase`) VALUES
-(1, 24, 26, 2, 1, '2024-10-01 17:38:52', 'Fase de Grupos');
+(1, 24, 26, 2, 1, '2024-10-01 17:38:52', 'Fase de Grupos'),
+(21, 43, 44, 3, 1, '2024-10-01 16:00:00', 'Semifinal'),
+(22, 45, 46, 0, 0, '2024-10-02 18:00:00', 'Quartas'),
+(23, 47, 48, 2, 1, '2024-10-03 20:00:00', 'Fase de Grupos'),
+(24, 43, 45, 1, 1, '2024-10-04 15:00:00', 'Fase de Grupos'),
+(25, 44, 47, 4, 2, '2024-10-05 19:00:00', 'Fase de Grupos'),
+(26, 49, 50, 1, 2, '2024-10-06 17:00:00', 'Fase de Grupos'),
+(27, 51, 52, 1, 0, '2024-10-07 19:00:00', 'Fase de Grupos'),
+(28, 49, 53, 3, 2, '2024-10-08 15:00:00', 'Semifinal'),
+(29, 54, 43, 1, 3, '2024-10-09 18:00:00', 'Quartas'),
+(30, 46, 51, 2, 2, '2024-10-10 20:00:00', 'Fase de Grupos'),
+(31, 43, 44, 3, 1, '2024-10-01 16:00:00', 'Semifinal'),
+(32, 45, 46, 0, 0, '2024-10-02 18:00:00', 'Quartas'),
+(33, 47, 48, 2, 1, '2024-10-03 20:00:00', 'Fase de Grupos'),
+(34, 43, 45, 1, 1, '2024-10-04 15:00:00', 'Fase de Grupos'),
+(35, 44, 47, 4, 2, '2024-10-05 19:00:00', 'Fase de Grupos'),
+(36, 49, 50, 1, 2, '2024-10-06 17:00:00', 'Fase de Grupos'),
+(37, 51, 52, 1, 0, '2024-10-07 19:00:00', 'Fase de Grupos'),
+(38, 49, 53, 3, 2, '2024-10-08 15:00:00', 'Semifinal'),
+(39, 54, 43, 1, 3, '2024-10-09 18:00:00', 'Quartas'),
+(40, 46, 51, 2, 2, '2024-10-10 20:00:00', 'Fase de Grupos');
 
 -- --------------------------------------------------------
 
@@ -92,7 +126,7 @@ INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `r
 DROP TABLE IF EXISTS `rankingcs`;
 CREATE TABLE IF NOT EXISTS `rankingcs` (
   `grupo` char(7) NOT NULL,
-  `id_equipe` int NOT NULL AUTO_INCREMENT,
+  `id_equipe` int NOT NULL,
   `partidas` int NOT NULL,
   `pontos` int NOT NULL,
   `vitoria` int NOT NULL,
@@ -102,8 +136,8 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `dif_round` int NOT NULL,
   `confronto_direito` int NOT NULL,
   `wo` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_id_equipe` (`id_equipe`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
@@ -118,6 +152,24 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, ''),
 ('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, ''),
 ('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '');
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `partidas`
+--
+ALTER TABLE `partidas`
+  ADD CONSTRAINT `fk_id_equipe1` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  ADD CONSTRAINT `fk_id_equipe2` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  ADD CONSTRAINT `fk_id_equipe3` FOREIGN KEY (`id_equipe2`) REFERENCES `equipe` (`id_equipe`);
+
+--
+-- Limitadores para a tabela `rankingcs`
+--
+ALTER TABLE `rankingcs`
+  ADD CONSTRAINT `fk_id_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
