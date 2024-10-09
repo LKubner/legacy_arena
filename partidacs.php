@@ -1,50 +1,97 @@
+<?php
+include_once "header.php";
+include_once "conexao.php";
+$conexao = conectar();
+// Simulando dados das partidas (
+   $partidas = [
+      [
+          'time_casa' => 'Imperial',
+          'gols_casa' => 2,
+          'time_fora' => 'Furia',
+          'gols_fora' => 1,
+          'data' => '10/10/2024',
+          'horario' => '16:00',
+          'fase' => 'Fase de Grupos'
+      ],
+      [
+         'time_casa' => 'Pain',
+         'gols_casa' => 2,
+         'time_fora' => 'Wildcard',
+         'gols_fora' => 0,
+         'data' => '10/10/2024',
+         'horario' => '18:30',
+         'fase' => 'Fase de Grupos'
+     ],
+     [
+      'time_casa' => '9z',
+      'gols_casa' => 2,
+      'time_fora' => 'Dusty Roots',
+      'gols_fora' => 0,
+      'data' => '10/10/2024',
+      'horario' => '18:30',
+      'fase' => 'Fase de Grupos'
+  ],
+  [
+   'time_casa' => 'Navi',
+   'gols_casa' => 1,
+   'time_fora' => 'G2',
+   'gols_fora' => 2,
+   'data' => '10/10/2024',
+   'horario' => '20:30',
+   'fase' => 'Fase de Grupos'
+],
+      // Adicionar mais partidas aqui
+  ];
+// Consultas ao banco de dados
+
+?>
+
+
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partidas</title>
-
-    <?php
-    //navbar e sidebar 
-     ?>
+    <title>Tabela de Partidas</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/js.js"> </script>
-
-
-
 <body>
-<br>
-<h1 class="titulo"> Partidas </h1>
-<br> 
-<h2 class="titulo">1°rodada </h2>
-
-
-
-<div class="jp-header bg-black text-white p-2 px-4 flex items-baseline justify-between">
-   <h3 class="text-2xl">website header</h3>
-   <ul>
-      <li class="mr-3 inline-block">archives</li>
-      <li class="inline-block">contact</li>
-   </ul>
-</div>
-<div class="jp-posts">
-   <router-view name="posts" v-if="posts" :wrap-height="wrapHeight" :posts="posts" :next="next" :current="current" :prev="prev"></router-view>
-   <button v-if="posts" class="jp-posts__nav -prev" @click="prevPost()" :disabled="current===0" :disabled="loading">
-      <i class="fas fa-arrow-left"></i><span class="hidden">prev</span>
-   </button>
-   <button v-if="posts" class="jp-posts__nav -next" @click="nextPost()" :disabled="current === firstpost" :disabled="loading">
-      <i class="fas fa-arrow-right"></i><span class="hidden">next</span>
-   </button>
-</div>
-<div class="jp-footer bg-black text-white p-4 flex justify-between">
-   <h3 class="text-2xl">website footer</h3>
-   <p class="mt-20 opacity-50">disclaimer / etc</p>   
-</div>
-
-
-
-
+   <div id="main-content"> 
+    <div class="tabela-partidas">
+        <h1>Tabela de Partidas - Counter Strike</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horario</th>
+                    <th>Time A </th>
+                    <th>Placar</th>
+                    <th>Time B</th>
+                    <th> Fase </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($partidas as $partida): ?>
+<tr>
+    <td><?php echo $partida['data']; ?></td>
+    <td><?php echo $partida['horario']; ?></td>
+    <td><?php echo $partida['time_casa']; ?></td>
+    <td><?php echo $partida['gols_casa'] . " - " . $partida['gols_fora']; ?></td>
+    <td><?php echo $partida['time_fora']; ?></td>
+    <td> <?php echo $partida['fase'] ?> </td>
+</tr>
+<?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

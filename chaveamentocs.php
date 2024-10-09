@@ -33,7 +33,7 @@ if ($teste != null) {
 </head>
 <body>
     <div id="main-content">
-        <h1>Grupos CS</h1>
+        <h1>Grupos Counter Strike 2</h1>
         <?php
         $grp = '';
         $primeira = true;
