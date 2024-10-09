@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03-Out-2024 às 20:04
+-- Tempo de geração: 09-Out-2024 às 15:54
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `equipe` (
 
 INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`) VALUES
 (22, 'dragoes', 'baroes.png'),
-(23, 'limbo', NULL),
 (24, 'capivara', NULL),
 (25, 'ratoes', NULL),
 (26, 'phoenix', NULL),
@@ -88,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   PRIMARY KEY (`id_partida`),
   KEY `fk_id_equipe3` (`id_equipe2`),
   KEY `fk_id_equipe1` (`id_equipe`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
@@ -115,7 +114,10 @@ INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `r
 (37, 51, 52, 1, 0, '2024-10-07 19:00:00', 'Fase de Grupos'),
 (38, 49, 53, 3, 2, '2024-10-08 15:00:00', 'Semifinal'),
 (39, 54, 43, 1, 3, '2024-10-09 18:00:00', 'Quartas'),
-(40, 46, 51, 2, 2, '2024-10-10 20:00:00', 'Fase de Grupos');
+(40, 46, 51, 2, 2, '2024-10-10 20:00:00', 'Fase de Grupos'),
+(49, 26, 27, 1, 2, '0000-00-00 00:00:00', ''),
+(50, 39, 40, 1, 2, '0000-00-00 00:00:00', ''),
+(51, 34, 32, 2, 0, '2024-10-06 17:30:00', 'Fase de Grupos');
 
 -- --------------------------------------------------------
 
@@ -136,22 +138,24 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `dif_round` int NOT NULL,
   `confronto_direito` int NOT NULL,
   `wo` varchar(255) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   KEY `fk_id_equipe` (`id_equipe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
 --
 
-INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`) VALUES
-('A', 32, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('A', 34, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('A', 37, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('A', 38, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, ''),
-('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '');
+INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`, `id`) VALUES
+('A', 32, 1, 1, 1, 1, 0, 0, 1, 0, '', 1),
+('A', 34, 1, 1, 1, 1, 0, 0, 1, 0, '', 2),
+('A', 37, 1, 1, 1, 1, 0, 0, 1, 0, '', 3),
+('A', 38, 1, 1, 1, 1, 0, 0, 1, 0, '', 4),
+('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, '', 5),
+('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6),
+('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7),
+('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8);
 
 --
 -- Restrições para despejos de tabelas
