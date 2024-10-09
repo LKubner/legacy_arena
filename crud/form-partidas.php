@@ -1,10 +1,11 @@
 <?php
 require_once "../conexao.php";
 $conexao = conectar();
-$sql = "SELECT partidas.*, equipe1.nome AS nome1, equipe1.foto_time as foto1, equipe2.nome AS nome2, equipe2.foto_time as foto2 FROM partidas INNER JOIN equipe AS equipe1 ON partidas.id_equipe = equipe1.id_equipe INNER JOIN equipe AS equipe2 ON partidas.id_equipe2 = equipe2.id_equipe";
-$resultado = executarSQL($conexao, $sql);
-?>
 
+// Consulta para pegar todas as equipes
+$sql = "SELECT id_equipe, nome FROM equipe";
+$resultado_equipes = executarSQL($conexao, $sql);
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,45 +13,44 @@ $resultado = executarSQL($conexao, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inserir Partida</title>
 </head>
 
 <body>
-<form action="partidas.php" method="post" enctype="multipart/form-data">
-
-
-
-            
+    <form action="partidas.php" method="post" enctype="multipart/form-data">
+        <label for="equipe1">Equipe 1:</label>
+        <select name="equipe1" id="equipe1">
+            <?php
+            // Preencher o select de Equipe 1
+            while ($equipe = mysqli_fetch_assoc($resultado_equipes)) {
+                echo '<option value="' . $equipe["id_equipe"] . '">' . $equipe["nome"] . '</option>';
+            }
+            ?>
         </select>
         <br><br>
-       
-        <label for="equipe">Equipe 1:</label> 
-        <select name="equipe" id="equipe">
-            <?php
-            while($retorno = mysqli_fetch_assoc($resultado)){
-                echo '<option value="' . $retorno["id_equipe"] . '">' . $retorno["nome1"] . '</option>';
-            };
-            ?>
-    </select> 
-<label for="equipe">Equipe 2:</label> 
-        <select name="equipe" id="equipe2">
-            <?php
-            while($retorno = mysqli_fetch_assoc($resultado)){
-                echo '<option value="' . $retorno["id_equipe2"] . '">' . $retorno["nome2"] . '</option>';
-            };
-            ?>
-     </select>
 
-            <br>
-        Resultado time 1: <input type="text" name="resultado1"><br>
-        Resultado time 2:: <input type="text" name="resultado2"> <br>
-  
-     
-    
-
- <input type="submit" value="Enviar">
+        <?php
+        // Resetar o resultado para pegar as equipes novamente
+        $resultado_equipes = executarSQL($conexao, $sql);
+        ?>
         
+        <label for="equipe2">Equipe 2:</label>
+        <select name="equipe2" id="equipe2">
+            <?php
+            // Preencher o select de Equipe 2
+            while ($equipe = mysqli_fetch_assoc($resultado_equipes)) {
+                echo '<option value="' . $equipe["id_equipe"] . '">' . $equipe["nome"] . '</option>';
+            }
+            ?>
+        </select>
 
+        <br><br>
+        Resultado time 1: <input type="text" name="resultado1"><br>
+        Resultado time 2: <input type="text" name="resultado2"><br>
+        Fase da Partida: <input type="text" name="fase"><br>
+        Data da Partida: <input type="datetime" name="data"><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
 </body>
-</form>
 </html>
