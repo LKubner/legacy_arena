@@ -32,7 +32,8 @@ if ($teste != null) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="main-content">
+    <div id="main-content"> 
+    <div class="tabela-container">
         <h1>Grupos Counter Strike 2</h1>
         <?php
         $grp = '';
@@ -47,6 +48,7 @@ if ($teste != null) {
                 $primeira = false;
         ?>
                 <table border="1">
+                     <table class="tabela-partidas">
                     <thead>
                         <tr>
                             <th>Grupo <?= $dados['grupo']; ?></th>

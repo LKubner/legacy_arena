@@ -9269,65 +9269,55 @@ body {
     background-color: #f5f5f5;
 }
 
-
-.tabela-partidas {
-    width: 1000px; /* Largura fixa da tabela */
-    max-height: 500px; /* Altura máxima */
-    overflow-y: auto; /* Adiciona rolagem vertical */
+.tabela-container {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     margin: 30px auto;
-    padding: 20px;
-    background-color: white;
+    padding: 30px;
+    width: 1000px; /* Defina a largura desejada */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.tabela-partidas h1 {
+.tabela-container h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-table {
+.tabela-partidas {
     width: 100%; /* A tabela ocupará 100% da largura do container */
     border-collapse: collapse;
     text-align: center;
 }
 
-table, th, td {
+.tabela-partidas, .tabela-partidas th, .tabela-partidas td {
     border: 1px solid #ddd;
 }
 
-th, td {
+.tabela-partidas th, .tabela-partidas td {
     padding: 12px;
     color: #333;
 }
 
-th {
+.tabela-partidas th {
     background-color: blueviolet;
     color: white;
     font-size: 16px;
 }
 
-td {
+.tabela-partidas td {
     font-size: 14px;
 }
 
-tr:nth-child(even) {
+.tabela-partidas tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-tr:hover {
+.tabela-partidas tr:hover {
     background-color: #f1f1f1;
 }
+
 
 
 

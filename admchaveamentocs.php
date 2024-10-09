@@ -39,6 +39,7 @@ if ($teste != null) {
 </head>
 <body>
     <div id="main-content">
+    <div class="tabela-container">
         <h1>Grupos Counter Strike 2</h1>
         <a href="crud/form-equipecs.php">Nova equipe</a>
         <a href="crud/form-partidas.php">Nova partida </a>
@@ -56,6 +57,7 @@ if ($teste != null) {
                 $primeira = false;
         ?>
                 <table border="1">
+                <table class="tabela-partidas">
                     <thead>
                         <tr>
                             <th>Grupo <?= $dados['grupo']; ?></th>
