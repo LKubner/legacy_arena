@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-        <a href="index.php" class="brand-logo"><img src="imagens/legacy.png" width="50px"></a>
+        <a href="index.php" class="brand-logo"><img src="imagens/legacyarena.png" width="50px"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
           <a class="linkedital" href="edital.php"> Editais </a>
           </ul>

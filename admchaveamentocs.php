@@ -1,4 +1,7 @@
+!
+
 <?php
+include_once "header.php";
 require_once "conexao.php";
 $conexao = conectar();
 $sql = "SELECT * FROM rankingcs";
@@ -29,61 +32,67 @@ if ($teste != null) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <title>Grupos CS</title>
+    <title>Grupos e Play-offs CS</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <a href="crud/form-grupocs.php">Novo Grupo</a> <br>
-    <a href="crud/form-equipecs.php">Nova Equipe </a>
+    <div id="main-content">
+    <div class="tabela-container">
+        <h1>Grupos Counter Strike 2</h1>
+        <a href="crud/form-equipecs.php">Nova equipe</a>
+        <a href="crud/form-partidas.php">Nova partida </a>
+        <a href="crud/form-grupocs.php">Novo grupo </a>
+        <?php
+        $grp = '';
+        $primeira = true;
+        while ($dados = mysqli_fetch_assoc($resultado1)) {
+            if ($grp != $dados['grupo']) {
+                $grp = $dados['grupo'];
 
-    <?php
-    $grp = '';
-    $primeira = true;
-    while ($dados = mysqli_fetch_assoc($resultado1)) {
-        if ($grp != $dados['grupo']) {
-            $grp = $dados['grupo'];
-
-            if (!$primeira) {
-                echo "</tbody></table><br>";
+                if (!$primeira) {
+                    echo "</tbody></table><br>";
+                }
+                $primeira = false;
+        ?>
+                <table border="1">
+                <table class="tabela-partidas">
+                    <thead>
+                        <tr>
+                            <th>Grupo <?= $dados['grupo']; ?></th>
+                            <th>Nome</th>
+                            <th>Partidas</th>
+                            <th>Vitórias</th>
+                            <th>Derrotas</th>
+                            <th>Dif. Round</th>
+                            <th>Pontos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
             }
-            $primeira = false;
-    ?>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Grupo <?= $dados['grupo']; ?></th>
-                        <th>Nome</th>
-                        <th>Partidas</th>
-                        <th>Vitórias</th>
-                        <th>Derrotas</th>
-                        <th>Dif. Round</th>
-                        <th>Pontos</th>
-                    </tr>
-                </thead>
-                <tbody>
+
+            $foto_time = 'imagens/' . (isset($dados['foto_time']) ? $dados['foto_time'] : 'default.png');
+            if (!file_exists($foto_time)) {
+                $foto_time = 'imagens/default.png'; // Caminho para uma imagem padrão se a imagem não for encontrada
+            }
+            ?>
+            <tr>
+                <td><img src="<?= $foto_time; ?>" alt="foto do time" style="width:32px;height:28px;"></td>
+                <td><?= $dados['nome']; ?></td>
+                <td><?= $dados['partidas']; ?></td>
+                <td><?= $dados['vitoria']; ?></td>
+                <td><?= $dados['derrota']; ?></td>
+                <td><?= $dados['dif_round']; ?></td>
+                <td><?= $dados['pontos']; ?></td>
+            </tr>
             <?php
         }
-
-        //print_r($dados); 
-        $foto_time = 'imagens/' . (isset($dados['foto_time']) ? $dados['foto_time'] : 'default.png');
-        // Verifique se a imagem existe
-        if (!file_exists($foto_time)) {
-            $foto_time = 'imagens/default.png'; // Caminho para uma imagem padrão se a imagem não for encontrada
-        }
-        echo "<tr>";
-        echo "<td> <img src='" . $foto_time . "' alt='foto do time' style='width:32px;height:28px;'></td>";
-        echo "<td>" . $dados['nome'] . "</td>";
-        echo "<td>" . $dados['partidas'] . "</td>";
-        echo "<td>" . $dados['vitoria'] . "</td>";
-        echo "<td>" . $dados['derrota'] . "</td>";
-        echo "<td>" . $dados['dif_round'] . "</td>";
-        echo "<td>" . $dados['pontos'] . "</td>";
-        echo "</tr>";
-    } ?>
+        ?>
+        </tbody>
+        </table>
+        <a href="playoffscs.php">Acessar Play-Offs</a>
+</div>
 </body>
-
 </html>
