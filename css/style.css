@@ -9216,6 +9216,9 @@ input[type=range]::-ms-thumb {
 #main-content {
     margin-left: 60px; /* Espaço suficiente para a sidebar */
     padding: 20px;
+    width: 90%;
+    min-width: 18em;
+    margin: 20px auto;
 }
 
 body {
@@ -9251,8 +9254,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Ajuste conforme necessário */
-    text-align: center; /* Garante que o texto dentro do link esteja centralizado */
+    width: 100%; /* Para ocupar toda a largura */
+    text-align: center;
 }
 
 .centralizar-link a {
@@ -9316,6 +9319,46 @@ body {
 
 .tabela-partidas tr:hover {
     background-color: #f1f1f1;
+}
+.bodylol {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/leagueof.jpg'); /* Caminho para a sua imagem */
+    background-color: #818181;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+}
+.bodychess {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/xadrezar.png'); /* Caminho para a sua imagem */
+    background-color: #818181;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+}
+.bodyfree {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/free.png'); /* Caminho para a sua imagem */
+    background-color: #818181;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+}
+.bodyvalorant {
+    margin: 0;
+    padding: 0;
+    background-image: url('../imagens/valorant.jpg'); /* Caminho para a sua imagem */
+    background-color: #818181;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
 }
 
 
