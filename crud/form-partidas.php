@@ -20,8 +20,6 @@ $resultado = executarSQL($conexao, $sql);
 
 
 
-            
-        </select>
         <br><br>
        
         <label for="equipe">Equipe 1:</label> 
@@ -33,7 +31,7 @@ $resultado = executarSQL($conexao, $sql);
             ?>
     </select> 
 <label for="equipe">Equipe 2:</label> 
-        <select name="equipe" id="equipe2">
+        <select name="equipe2" id="equipe2">
             <?php
             while($retorno = mysqli_fetch_assoc($resultado)){
                 echo '<option value="' . $retorno["id_equipe2"] . '">' . $retorno["nome2"] . '</option>';
@@ -54,3 +52,14 @@ $resultado = executarSQL($conexao, $sql);
 </body>
 </form>
 </html>
+
+
+SELECT p.id_partida, 
+       (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+       (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1,
+        p.resultado1
+
+       (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2,
+       (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+       p.resultado2 
+FROM partidas p;
