@@ -3,45 +3,9 @@ include_once "header.php";
 include_once "conexao.php";
 $conexao = conectar();
 // Simulando dados das partidas
-$partidas = [
-    [
-        'time_casa' => 'Imperial',
-        'gols_casa' => 2,
-        'time_fora' => 'Furia',
-        'gols_fora' => 1,
-        'data' => '10/10/2024',
-        'horario' => '16:00',
-        'fase' => 'Fase de Grupos'
-    ],
-    [
-        'time_casa' => 'Pain',
-        'gols_casa' => 2,
-        'time_fora' => 'Wildcard',
-        'gols_fora' => 0,
-        'data' => '10/10/2024',
-        'horario' => '18:30',
-        'fase' => 'Fase de Grupos'
-    ],
-    [
-        'time_casa' => '9z',
-        'gols_casa' => 2,
-        'time_fora' => 'Dusty Roots',
-        'gols_fora' => 0,
-        'data' => '10/10/2024',
-        'horario' => '18:30',
-        'fase' => 'Fase de Grupos'
-    ],
-    [
-        'time_casa' => 'Navi',
-        'gols_casa' => 1,
-        'time_fora' => 'G2',
-        'gols_fora' => 2,
-        'data' => '10/10/2024',
-        'horario' => '20:30',
-        'fase' => 'Fase de Grupos'
-    ],
-    // Adicionar mais partidas aqui
-];
+$dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, p.fase FROM partidas p";
+$resultado = mysqli_query($conexao, $dados);
+$exibegp = mysqli_fetch_assoc($resultado);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +15,7 @@ $partidas = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Partidas</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
       
 
@@ -59,31 +24,44 @@ $partidas = [
 <div id="main-content"> 
     <div class="tabela-container">
         <h1>Tabela de Partidas - Counter Strike</h1>
-        <table class="tabela-partidas">
+        <table class="tabela-partidas centered responsive-table">
             <thead>
                 <tr>
                     <th>Data</th>
-                    <th>Horário</th>
                     <th>Time A</th>
                     <th>Placar</th>
                     <th>Time B</th>
                     <th>Fase</th>
                 </tr>
             </thead>
-            <tbody>
-            <?php foreach ($partidas as $partida): ?>
+            <tbody class="">
                 <tr>
-                    <td><?php echo $partida['data']; ?></td>
-                    <td><?php echo $partida['horario']; ?></td>
-                    <td><?php echo $partida['time_casa']; ?></td>
-                    <td><?php echo $partida['gols_casa'] . " - " . $partida['gols_fora']; ?></td>
-                    <td><?php echo $partida['time_fora']; ?></td>
-                    <td><?php echo $partida['fase']; ?></td>
+                   <?php foreach($resultado as $resultados){ ?>
+                    <td> <?php  $resultados3 = date('d/m/Y',strtotime($resultados['data_hora'])); echo $resultados3; ?></td>
+                    <td><?= $resultados['nome_equipe1']; ?></td>
+                    <td><?= $resultados['resultado']." X ".$resultados['resultado2']; ?></td>
+                    <td><?= $resultados['nome_equipe2']; ?></td>
+                    <td><?= $resultados['fase']; ?></td>
                 </tr>
-            <?php endforeach; ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
+   
+    <div class="center">
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">arrow_back</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">arrow_forward</i></a></li>
+        </ul>
+    </div>
+</div>
+  </ul>
+            
 </div>
 <script src="script.js"></script>
 </body>

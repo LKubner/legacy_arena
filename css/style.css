@@ -9157,7 +9157,14 @@ input[type=range]::-ms-thumb {
 
 
 
-
+    @font-face {
+        font-family: 'Batman Forever';
+        src: url('../fontes/BatmanForever.ttf') format('truetype'); /* Ajuste o caminho conforme necessário */
+    }
+    
+    * {
+        font-family: 'Batman Forever', sans-serif; /* Aplica a fonte a todo o documento */
+    }
 
 .titulo {
     display: flex;
