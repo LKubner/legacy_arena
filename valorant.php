@@ -25,7 +25,7 @@ include_once "conexao.php";
 <body>
 <div id="container">
 <div class="centralizar-link">
-    <a href="chaveamentocs.php">Chaveamento</a>
+    <a href="chaveamentovalo.php">Chaveamento</a>
 </div>
 <div class="centralizar-link"> <br>
     <a href="partidacs.php">Partidas</a>

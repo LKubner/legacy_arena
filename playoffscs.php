@@ -13,8 +13,10 @@ if ($resultado) {
 }
 
 $sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe ORDER BY cs.grupo";
-$resultado1 = mysqli_query($conexao, $sql2);
+$dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, p.fase FROM partidas p";
 
+$resultado1 = mysqli_query($conexao, $dados);
+$exibegp = mysqli_fetch_assoc($resultado1);
 
 
 ?>
@@ -45,14 +47,14 @@ $resultado1 = mysqli_query($conexao, $sql2);
               </caption>
               <thead class="sr-only">
                 <tr>
-                  <th>Country</th>
-                  <th>Score</th>
+                  <th>Equipe</th>
+                  <th>Placar</th>
                 </tr>
               </thead>  
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
+                    <abbr class="tournament-bracket__code" title="Canada">FUR</abbr>
                     <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -61,7 +63,7 @@ $resultado1 = mysqli_query($conexao, $sql2);
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
+                    <abbr class="tournament-bracket__code" title="Kazakhstan">WIL</abbr>
                     <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -88,7 +90,7 @@ $resultado1 = mysqli_query($conexao, $sql2);
               <tbody class="tournament-bracket__content">
                 <tr class="tournament-bracket__team tournament-bracket__team--winner">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
+                    <abbr class="tournament-bracket__code" title="Czech Republic">LGCY</abbr>
                     <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
@@ -97,7 +99,7 @@ $resultado1 = mysqli_query($conexao, $sql2);
                 </tr>
                 <tr class="tournament-bracket__team">
                   <td class="tournament-bracket__country">
-                    <abbr class="tournament-bracket__code" title="Unitede states of America">USA</abbr>
+                    <abbr class="tournament-bracket__code" title="Unitede states of America">Liq</abbr>
                     <span class="tournament-bracket__flag flag-icon flag-icon-us" aria-label="Flag"></span>
                   </td>
                   <td class="tournament-bracket__score">
