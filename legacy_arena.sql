@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 01-Nov-2024 às 18:32
+-- Tempo de geração: 07-Nov-2024 às 20:04
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `id_equipe` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `id_game` int NOT NULL,
+  `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_equipe`)
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
 -- Extraindo dados da tabela `equipe`
 --
 
-INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`, `id_game`) VALUES
+INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`, `id_jogo`) VALUES
 (22, 'dragoes', 'baroes.png', 0),
 (24, 'capivara', NULL, 0),
 (25, 'ratoes', NULL, 0),
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   `resultado2` int NOT NULL,
   `data_hora` datetime NOT NULL,
   `fase` varchar(255) NOT NULL,
-  `id_game` int NOT NULL,
+  `id_pfase` int NOT NULL,
   PRIMARY KEY (`id_partida`),
   KEY `fk_id_equipe3` (`id_equipe2`),
   KEY `fk_id_equipe1` (`id_equipe`) USING BTREE
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
 -- Extraindo dados da tabela `partidas`
 --
 
-INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `fase`, `id_game`) VALUES
+INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `fase`, `id_pfase`) VALUES
 (1, 24, 26, 2, 1, '2024-10-01 17:38:52', 'Fase de Grupos', 0),
 (21, 43, 44, 3, 1, '2024-10-01 16:00:00', 'Semifinal', 0),
 (22, 45, 46, 0, 0, '2024-10-02 18:00:00', 'Quartas', 0),

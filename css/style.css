@@ -9367,7 +9367,11 @@ body {
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
 }
+.h1playoff {
 
+    margin: 3em;
+
+}
 
 
 
