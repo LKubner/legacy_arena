@@ -62,3 +62,15 @@ $resultado = executarSQL($conexao, $sql);
 </body>
 </form>
 </html>
+
+
+SELECT p.id_partida,
+(SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, 
+(SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado,
+(SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+(SELECT e.foto_time FROM equipe e  WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, fases.nome
+FROM partidas p
+
+inner join fases on fases.id = p.id_fase
+
+order by fases.ordem asc;
