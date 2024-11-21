@@ -3,7 +3,7 @@ include_once "header.php";
 include_once "conexao.php";
 $conexao = conectar();
 // Simulando dados das partidas
-$dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, p.fase FROM partidas p";
+$dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome FROM fases f WHERE f.id = p.id_fase) AS fase FROM partidas p";
 $resultado = mysqli_query($conexao, $dados);
 $exibegp = mysqli_fetch_assoc($resultado);
 ?>

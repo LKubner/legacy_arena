@@ -64,3 +64,13 @@ inner join equipe as equipe2  on equipe2.id_equipe = partidas.id_equipe2
 
 where (equipe.id = 1) or (equipe2.id = 1)
 ?>
+select do play offs abaixo
+
+
+SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome, f.id FROM fases f) ORDER BY f.id
+
+
+
+
+
+SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome FROM fases f WHERE f.id = p.id_fase) AS nome_fase, (SELECT f.id FROM fases f WHERE f.id = p.id_fase) AS id_fase FROM partidas p ORDER BY p.id_fase;

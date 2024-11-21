@@ -47,7 +47,7 @@ $resultado_equipes = executarSQL($conexao, $sql);
         <br><br>
         Resultado time 1: <input type="text" name="resultado1"><br>
         Resultado time 2: <input type="text" name="resultado2"><br>
-        Fase da Partida: <input type="text" name="fase"><br>
+        Fase da Partida: <input type="text" name="fases"><br>
         Data da Partida: <input type="datetime" name="data"><br>
         
         <input type="submit" value="Enviar">

@@ -22,7 +22,8 @@ if ($resultado3 == true) {
     if ($resultado3 != false) {
 
         // Inserir os dados na tabela partidas
-        $sql = "INSERT INTO partidas (id_equipe, id_equipe2, resultado, resultado2,data_hora,fase) VALUES ('$equipe1','$equipe2','$resultado1','$resultado2','$datapartida','$fase')";
+        $sql = "INSERT INTO partidas (id_equipe, id_equipe2, resultado, resultado2,data_hora,) VALUES ('$equipe1','$equipe2','$resultado1','$resultado2','$datapartida')";
+        // arrumar o sql de cima!!!!!
 
         // Executar a consulta 
         $resultado = executarSQL($conexao, $sql);
