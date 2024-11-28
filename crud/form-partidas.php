@@ -49,6 +49,8 @@ $resultado_equipes = executarSQL($conexao, $sql);
         Resultado time 2: <input type="text" name="resultado2"><br>
         Fase da Partida: <input type="text" name="fases"><br>
         Data da Partida: <input type="datetime" name="data"><br>
+        Edição da Partida: 
+        <br>
         
         <input type="submit" value="Enviar">
     </form>
@@ -72,3 +74,13 @@ FROM partidas p;
 resolvido abaixo
 
 SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2 FROM partidas p;
+
+
+
+
+
+
+
+
+Código para a pessoa poder diferenciar de qual edição é a tabela de partidas ( preciso fazer o select no formulario e depois fazer uma tela para selecionar a ediçao do torneio)
+SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome FROM fases f WHERE f.id = p.id_fase) AS fase FROM partidas p where p.id_torneio = 1
