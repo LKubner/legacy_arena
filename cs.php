@@ -29,7 +29,7 @@
     <a href="chaveamentocs.php">Chaveamento</a>
 </div>
 <div class="centralizar-link"> <br>
-    <a href="partidacs.php">Partidas</a>
+ <?php  //arrumar isso aqui: echo ?>  "<a href='partidacs.php?torneio_id=" >Partidas </a> 
 </div>
    
     

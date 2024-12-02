@@ -8,52 +8,18 @@
   <script src="../js.js"></script>
   <title>Legacy</title>
 </head>
-<body class= "testebodyindex">
+<body class="bodyedicao">
   <?php
   // Navbar e Sidebar 
   include_once "header.php";
   ?>
  <div id="main-content">
-    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
+    <h1 class="titulo">Campeonatos</h1>
+
  
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
 
+  
 </div>
-
 </body>
 
 </html>
