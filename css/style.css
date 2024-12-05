@@ -9381,63 +9381,64 @@ body {
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
     transition: all 0.3s ease; /* Transição suave para hover */
-  }
+    width: 250px; /* Largura reduzida */
+    height: 350px; /* Altura ajustada */
+ 
+}
 
-  /* Efeito de hover do card */
-  .custom-card:hover {
+/* Efeito de hover do card */
+.custom-card:hover {
     transform: translateY(-5px); /* Leve elevação no hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
-  }
+}
 
-  /* Estilo da imagem do card */
-  .custom-card .card-image img {
+/* Estilo da imagem do card */
+.custom-card .card-image img {
     border-radius: 10px 10px 0 0; /* Bordas arredondadas na parte superior da imagem */
-    max-height: 200px; /* Limitar a altura da imagem */
     object-fit: cover; /* Manter a proporção da imagem */
-  }
+}
 
-  /* Estilo do título */
-  .custom-card .card-title {
-    font-size: 20px;
+/* Estilo do título */
+.custom-card .card-title {
+    font-size: 18px; /* Tamanho do título reduzido */
     color: #2c3e50; /* Cor do título */
     font-weight: bold;
-  }
+}
 
-  /* Estilo do texto do card */
-  .custom-card .card-content {
-    padding: 16px; /* Espaçamento interno */
+/* Estilo do texto do card */
+.custom-card .card-content {
+    padding: 12px; /* Espaçamento interno reduzido */
     color: #555; /* Cor do texto */
-  }
+}
 
-  /* Estilo do link dentro do card */
-  .custom-card .card-content a {
+/* Estilo do link dentro do card */
+.custom-card .card-content a {
     color: #3498db; /* Cor azul para o link */
     text-decoration: none;
-  }
+}
 
-  .custom-card .card-content a:hover {
+.custom-card .card-content a:hover {
     text-decoration: underline; /* Sublinha o link no hover */
-  }
+}
 
-  /* Estilo da parte de "revelar" o conteúdo adicional */
-  .custom-card .card-reveal {
+/* Estilo da parte de "revelar" o conteúdo adicional */
+.custom-card .card-reveal {
     background-color: #ecf0f1; /* Cor de fundo da parte revelada */
-    padding: 16px;
-  }
+    padding: 12px; /* Padding reduzido */
+}
 
-  /* Estilo do ícone de fechar */
-  .custom-card .card-reveal .material-icons {
+/* Estilo do ícone de fechar */
+.custom-card .card-reveal .material-icons {
     color: #e74c3c; /* Cor vermelha para o ícone de fechar */
-  }
+}
 
-  /* Estilo do ícone de mais opções */
-  .custom-card .card-title i {
-    font-size: 24px; /* Tamanho do ícone */
-  }
-</style>
+/* Estilo do ícone de mais opções */
+.custom-card .card-title i {
+    font-size: 20px; /* Tamanho do ícone ajustado */
+}
 
 
-*/
+
 
 
 
