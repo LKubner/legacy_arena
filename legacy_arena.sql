@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 28-Nov-2024 às 19:48
+-- Tempo de geração: 05-Dez-2024 às 19:47
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -99,6 +99,19 @@ INSERT INTO `fases` (`id`, `nome`, `ordem`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `jogo`
+--
+
+DROP TABLE IF EXISTS `jogo`;
+CREATE TABLE IF NOT EXISTS `jogo` (
+  `id` int NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `partidas`
 --
 
@@ -112,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   `data_hora` datetime NOT NULL,
   `id_fase` int DEFAULT NULL,
   `id_torneio` int NOT NULL,
+  `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_partida`),
   KEY `fk_id_equipe3` (`id_equipe2`),
   KEY `fk_id_equipe1` (`id_equipe`) USING BTREE,
@@ -123,31 +137,31 @@ CREATE TABLE IF NOT EXISTS `partidas` (
 -- Extraindo dados da tabela `partidas`
 --
 
-INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `id_fase`, `id_torneio`) VALUES
-(1, 24, 26, 2, 1, '2024-10-01 17:38:52', NULL, 1),
-(21, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1),
-(22, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1),
-(23, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1),
-(24, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1),
-(25, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1),
-(26, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1),
-(27, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1),
-(28, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1),
-(29, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1),
-(30, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1),
-(31, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1),
-(32, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1),
-(33, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1),
-(34, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1),
-(35, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1),
-(36, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1),
-(37, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1),
-(38, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1),
-(39, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1),
-(40, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1),
-(49, 26, 27, 1, 2, '0000-00-00 00:00:00', 1, 1),
-(50, 39, 40, 1, 2, '0000-00-00 00:00:00', 1, 1),
-(51, 34, 32, 2, 0, '2024-10-06 17:30:00', NULL, 1);
+INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `id_fase`, `id_torneio`, `id_jogo`) VALUES
+(1, 24, 26, 2, 1, '2024-10-01 17:38:52', NULL, 1, 0),
+(21, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 0),
+(22, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 0),
+(23, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 0),
+(24, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 0),
+(25, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 0),
+(26, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 0),
+(27, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 0),
+(28, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 0),
+(29, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 0),
+(30, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 0),
+(31, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 0),
+(32, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 0),
+(33, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 0),
+(34, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 0),
+(35, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 0),
+(36, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 0),
+(37, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 0),
+(38, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 0),
+(39, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 0),
+(40, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 0),
+(49, 26, 27, 1, 2, '0000-00-00 00:00:00', 1, 1, 0),
+(50, 39, 40, 1, 2, '0000-00-00 00:00:00', 1, 1, 0),
+(51, 34, 32, 2, 0, '2024-10-06 17:30:00', NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -202,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
   `nome` varchar(255) NOT NULL,
   `data_inicio` date DEFAULT NULL,
   `data_fim` date DEFAULT NULL,
+  `atual` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -209,8 +224,8 @@ CREATE TABLE IF NOT EXISTS `torneios` (
 -- Extraindo dados da tabela `torneios`
 --
 
-INSERT INTO `torneios` (`id`, `nome`, `data_inicio`, `data_fim`) VALUES
-(1, 'CS 2024', '2024-11-01', NULL);
+INSERT INTO `torneios` (`id`, `nome`, `data_inicio`, `data_fim`, `atual`) VALUES
+(1, 'CS 2024', '2024-11-01', NULL, 0);
 
 --
 -- Restrições para despejos de tabelas
