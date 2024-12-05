@@ -9166,6 +9166,11 @@ input[type=range]::-ms-thumb {
         font-family: 'Batman Forever', sans-serif; /* Aplica a fonte a todo o documento */
     }
 
+.linkbnt{
+
+}
+
+
 .titulo {
     display: flex;
     justify-content: center;
@@ -9231,7 +9236,7 @@ input[type=range]::-ms-thumb {
 body {
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: black;
     
 }
 #playoffs{
@@ -9246,17 +9251,7 @@ body {
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
 }
-.testebodyindex {
-    margin: 0;
-    padding: 0;
-    background-image: url('../imagens/fps.jfif'); /* Caminho para a sua imagem */
-    background-color: #818181;
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    background-size: 100%; /* Faz a imagem cobrir toda a área disponível */
-    background-position: center; /* Centraliza a imagem */
-    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
-    ;
-}
+
 .centralizar-link {
     display: flex;
     justify-content: center;
@@ -9377,6 +9372,72 @@ body {
     background-color: #007bff;
 }
 
+/* Personalizando os cards das ediçoes
+
+<style>
+  /* Estilo geral do card */
+  .custom-card {
+    background-color: #f5f5f5; /* Cor de fundo do card */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: all 0.3s ease; /* Transição suave para hover */
+  }
+
+  /* Efeito de hover do card */
+  .custom-card:hover {
+    transform: translateY(-5px); /* Leve elevação no hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+  }
+
+  /* Estilo da imagem do card */
+  .custom-card .card-image img {
+    border-radius: 10px 10px 0 0; /* Bordas arredondadas na parte superior da imagem */
+    max-height: 200px; /* Limitar a altura da imagem */
+    object-fit: cover; /* Manter a proporção da imagem */
+  }
+
+  /* Estilo do título */
+  .custom-card .card-title {
+    font-size: 20px;
+    color: #2c3e50; /* Cor do título */
+    font-weight: bold;
+  }
+
+  /* Estilo do texto do card */
+  .custom-card .card-content {
+    padding: 16px; /* Espaçamento interno */
+    color: #555; /* Cor do texto */
+  }
+
+  /* Estilo do link dentro do card */
+  .custom-card .card-content a {
+    color: #3498db; /* Cor azul para o link */
+    text-decoration: none;
+  }
+
+  .custom-card .card-content a:hover {
+    text-decoration: underline; /* Sublinha o link no hover */
+  }
+
+  /* Estilo da parte de "revelar" o conteúdo adicional */
+  .custom-card .card-reveal {
+    background-color: #ecf0f1; /* Cor de fundo da parte revelada */
+    padding: 16px;
+  }
+
+  /* Estilo do ícone de fechar */
+  .custom-card .card-reveal .material-icons {
+    color: #e74c3c; /* Cor vermelha para o ícone de fechar */
+  }
+
+  /* Estilo do ícone de mais opções */
+  .custom-card .card-title i {
+    font-size: 24px; /* Tamanho do ícone */
+  }
+</style>
+
+
+*/
 
 
 

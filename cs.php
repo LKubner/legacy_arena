@@ -29,7 +29,10 @@
     <a href="chaveamentocs.php">Chaveamento</a>
 </div>
 <div class="centralizar-link"> <br>
- <?php  //arrumar isso aqui: echo ?>  "<a href='partidacs.php?torneio_id=" >Partidas </a> 
+<?php
+// atribuir ao banco de dados
+echo "<a href='partidacs.php?torneio_id=1'>Partidas</a>";
+?>
 </div>
    
     

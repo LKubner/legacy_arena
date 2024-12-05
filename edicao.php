@@ -25,14 +25,14 @@
         <img src="imagens/iffar.jfif" alt="Campeonato 2" class="campeonato-img">
         <h3 class="campeonato-nome">eJIF 2024</h3>
         <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
-        <a href="campeonatoteste.php"> <button class="inscrever-btn"> Campeonato</button>
+        <a href="campeonatoteste.php?ano=2024"> <button class="inscrever-btn"> Campeonato</button>
       </div>
 
       <div class="campeonato-card">
         <img src="imagens/iffar.jfif" alt="Campeonato 2" class="campeonato-img">
         <h3 class="campeonato-nome">eJIF 2025</h3>
         <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
-        <a href="campeonatoteste.php"> <button class="inscrever-btn"> Campeonato</button>
+        <a href="campeonatoteste.php?ano=2025"> <button class="inscrever-btn"> Campeonato</button>
       </div>
     
       <!-- Adicione mais campeonatos conforme necessário -->
