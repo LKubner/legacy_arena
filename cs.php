@@ -31,7 +31,13 @@
 <div class="centralizar-link"> <br>
 <?php
 // atribuir ao banco de dados
-echo "<a href='partidacs.php?torneio_id=1'>Partidas</a>";
+include_once "conexao.php";
+$sql = "SELECT * FROM torneios WHERE atual=1";
+$conexao = conectar();
+$resultado = executarSQL($conexao,$sql);
+while ($cs = mysqli_fetch_assoc($resultado)) {
+   echo "<a href='partidacs.php?id=" . $cs['id'] . "'>Partidas</a>";
+}
 ?>
 </div>
    

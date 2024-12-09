@@ -13,8 +13,14 @@
 <?php
 // Navbar e Sidebar 
 include_once "header.php";
-$ano = $_GET['ano'];
-echo "JEIF do ano $ano";
+//atribuir ao banco de dados
+include_once "conexao.php";
+$sql = "SELECT * FROM torneios WHERE atual=1";
+$conexao = conectar();
+$resultado = executarSQL($conexao,$sql);
+while ($cs = mysqli_fetch_assoc($resultado)) {
+   echo "<a href='partidacs.php?id=" . $cs['id'] . "'>Partidas</a>";
+}
 ?>
 <div id="main-content">
   <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
@@ -25,7 +31,11 @@ echo "JEIF do ano $ano";
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">Counter-Strike 2<i class="material-icons right">more_vert</i></span>
-      <p><a href="chaveamentocs.php">Acessar Classificação</a></p>
+    <?php  while ($cs = mysqli_fetch_assoc($resultado)) {
+    echo "<p> '<a href="chaveamentocs.php?' . $cs["id"] . '">Acessar Classificação</a> </p>'"};
+    <?php  while ($edicao = mysqli_fetch_assoc($resultado)) {
+      echo '<a href="campeonatoteste.php?' . $edicao["data_inicio"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
+    ?>
     </div>
 
     <div class="card custom-card">

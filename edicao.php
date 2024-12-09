@@ -8,12 +8,21 @@
   <script src="../js.js"></script>
   <title>Campeonatos - Legacy</title>
 </head>
+<?php
+// atribuir ao banco de dados
+include_once "conexao.php";
+$sql = "SELECT * FROM torneios WHERE atual=1";
+$conexao = conectar();
+$resultado = executarSQL($conexao,$sql);
 
+?>
 <body class="bodyedicao">
   <?php
   // Navbar e Sidebar 
   include_once "header.php";
+ 
   ?>
+
 
   <div id="main-content">
     <h1 class="titulo">Campeonatos Disponíveis</h1>
@@ -25,7 +34,9 @@
         <img src="imagens/iffar.jfif" alt="Campeonato 2" class="campeonato-img">
         <h3 class="campeonato-nome">eJIF 2024</h3>
         <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
-        <a href="campeonatoteste.php?ano=2024"> <button class="inscrever-btn"> Campeonato</button>
+        <?php  while ($edicao = mysqli_fetch_assoc($resultado)) {
+        echo '<a href="campeonatoteste.php?' . $edicao["data_inicio"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
+        
       </div>
 
       <div class="campeonato-card">
