@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 05-Dez-2024 às 19:47
+-- Tempo de geração: 12-Dez-2024 às 20:01
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -99,15 +99,27 @@ INSERT INTO `fases` (`id`, `nome`, `ordem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `jogo`
+-- Estrutura da tabela `jogos`
 --
 
-DROP TABLE IF EXISTS `jogo`;
-CREATE TABLE IF NOT EXISTS `jogo` (
-  `id` int NOT NULL,
+DROP TABLE IF EXISTS `jogos`;
+CREATE TABLE IF NOT EXISTS `jogos` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
+  `imagem` varchar(400) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `jogos`
+--
+
+INSERT INTO `jogos` (`id`, `nome`, `imagem`) VALUES
+(1, 'Counter-Strike', 'cs2.png'),
+(2, 'League of Legends', 'lol.png'),
+(3, 'Valorant', 'valorant.png'),
+(4, 'Free Fire', 'free.png'),
+(5, 'Xadrez Arena', 'xadrezar.png');
 
 -- --------------------------------------------------------
 
@@ -184,25 +196,27 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   `wo` varchar(255) NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   `id_torneio` int NOT NULL,
+  `id_jogos` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_equipe` (`id_equipe`),
-  KEY `fk_id_torneio2` (`id_torneio`)
+  KEY `fk_id_torneio2` (`id_torneio`),
+  KEY `fk_id_jogos` (`id_jogos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
 --
 
-INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`, `id`, `id_torneio`) VALUES
-('A', 32, 1, 1, 1, 1, 0, 0, 1, 0, '', 1, 1),
-('A', 34, 1, 1, 1, 1, 0, 0, 1, 0, '', 2, 1),
-('A', 37, 1, 1, 1, 1, 0, 0, 1, 0, '', 3, 1),
-('A', 38, 1, 1, 1, 1, 0, 0, 1, 0, '', 4, 1),
-('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, '', 5, 1),
-('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6, 1),
-('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7, 1),
-('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1),
-('E', 25, 5, 9, 4, 1, 0, 0, 13, 0, '', 11, 1);
+INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direito`, `wo`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 32, 1, 1, 1, 1, 0, 0, 1, 0, '', 1, 1, 1),
+('A', 34, 1, 1, 1, 1, 0, 0, 1, 0, '', 2, 1, 1),
+('A', 37, 1, 1, 1, 1, 0, 0, 1, 0, '', 3, 1, 1),
+('A', 38, 1, 1, 1, 1, 0, 0, 1, 0, '', 4, 1, 1),
+('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, '', 5, 1, 1),
+('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6, 1, 1),
+('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7, 1, 1),
+('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1, 1),
+('E', 25, 5, 9, 4, 1, 0, 0, 13, 0, '', 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -225,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
 --
 
 INSERT INTO `torneios` (`id`, `nome`, `data_inicio`, `data_fim`, `atual`) VALUES
-(1, 'CS 2024', '2024-11-01', NULL, 0);
+(1, 'CS 2024', '2024-11-01', NULL, 1);
 
 --
 -- Restrições para despejos de tabelas
@@ -246,6 +260,7 @@ ALTER TABLE `partidas`
 --
 ALTER TABLE `rankingcs`
   ADD CONSTRAINT `fk_id_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  ADD CONSTRAINT `fk_id_jogos` FOREIGN KEY (`id_jogos`) REFERENCES `jogos` (`id`),
   ADD CONSTRAINT `fk_id_torneio2` FOREIGN KEY (`id_torneio`) REFERENCES `torneios` (`id`);
 COMMIT;
 

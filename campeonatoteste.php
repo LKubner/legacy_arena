@@ -15,104 +15,34 @@
 include_once "header.php";
 //atribuir ao banco de dados
 include_once "conexao.php";
-$sql = "SELECT * FROM torneios WHERE atual=1";
-$conexao = conectar();
-$resultado = executarSQL($conexao,$sql);
-while ($cs = mysqli_fetch_assoc($resultado)) {
-   echo "<a href='partidacs.php?id=" . $cs['id'] . "'>Partidas</a>";
-}
 ?>
-<div id="main-content">
-  <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
 
-  <div class="card custom-card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="imagens/cs2.png" alt="Imagem do Card">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Counter-Strike 2<i class="material-icons right">more_vert</i></span>
-    <?php  while ($cs = mysqli_fetch_assoc($resultado)) {
-    echo "<p> '<a href="chaveamentocs.php?' . $cs["id"] . '">Acessar Classificação</a> </p>'"};
-    <?php  while ($edicao = mysqli_fetch_assoc($resultado)) {
-      echo '<a href="campeonatoteste.php?' . $edicao["data_inicio"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
-    ?>
-    </div>
+<body>
+  <div id="main-content">
+    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
 
-    <div class="card custom-card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="imagens/lol.png" alt="Imagem do Card">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">League of Legends<i class="material-icons right">more_vert</i></span>
-      <p><a href="chaveamentocs.php">Acessar Classificação</a></p>
-    </div>
+    <?php
 
-    <div class="card custom-card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="imagens/valorant.png" alt="Imagem do Card">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Valorant<i class="material-icons right">more_vert</i></span>
-      <p><a href="chaveamentocs.php">Acessar Classificação</a></p>
-    </div>
+    $sql = "SELECT * FROM jogos";
+    $conexao = conectar();
+    $resultado = executarSQL($conexao, $sql);
+    $sql2 = "SELECT * FROM torneios";
+    $resultado2 = executarSQL($conexao, $sql2);
 
-    <div class="card custom-card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="imagens/free.png" alt="Imagem do Card">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Free Fire<i class="material-icons right">more_vert</i></span>
-      <p><a href="chaveamentocs.php">Acessar Classificação</a></p>
-    </div>
+    while ($jogo = mysqli_fetch_assoc($resultado)) { ?>
 
-    <div class="card custom-card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="imagens/xadrezar.png" alt="Imagem do Card">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Xadrez Arena<i class="material-icons right">more_vert</i></span>
-      <p><a href="chaveamentocs.php">Acessar Classificação</a></p>
-    </div>
-    
+      <div class="card custom-card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="imagens/<?= $jogo['imagem'] ?>" alt="Imagem do Card">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
+          <p><a href="chaveamentocs.php?id=<?= $jogo['id']  ?>">Acessar Classificação</a></p>
+        </div>
+      </div>
+    <?php  } ?>
+
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
 
 </body>
 
