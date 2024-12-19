@@ -1,4 +1,15 @@
 <?php
+//pegar as informações que mando via GET
+$idjogo = $_GET['id'];
+
+
+if ($idjogo){
+$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe WHERE cs.id_jogos = $idjogo ORDER BY cs.grupo";
+
+} else {
+echo "Edição do Jogo não identificada!!"; 
+die();
+}
 require_once "conexao.php";
 $conexao = conectar();
 include_once "header.php";
@@ -11,10 +22,7 @@ if ($resultado) {
 } else {
     echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
 }
-
-$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe ORDER BY cs.grupo";
 $resultado1 = mysqli_query($conexao, $sql2);
-
 $teste = mysqli_fetch_assoc($resultado1);
 if ($teste != null) {
     $grupo = $teste['grupo'];
