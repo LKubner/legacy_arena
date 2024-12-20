@@ -1,76 +1,80 @@
-<?php
-require_once "conexao.php";
-$conexao = conectar();
-include_once "header.php";
-
-$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe ORDER BY cs.grupo";
-$resultado1 = mysqli_query($conexao, $sql2);
-
-$dados = mysqli_fetch_assoc($resultado1)
-
-?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html> 
 <head>
-    <meta charset="UTF-8">
-    <title>Partidas</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div id="main-content"> 
-    <div class="tabela-container">
-        <h1>Grupos Counter Strike 2</h1>
-                <table border="1">
-                     <table class="tabela-partidas">
-                    <thead>
-                <tr>
-                    <th>Data/Hora</th>
-                    <th>Time A</th>
-                    <th>Placar</th>
-                    <th>Time B</th>
-                    <th>Fase</th>
-                </tr>
-                    </thead>
-                    <tbody>
-                <?php
+<meta charset="utf-8"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">
+</script>
 
-           
-            ?>
-            <tr>
-                <td><?= $dados['data_hora']; ?></td>
-                <td><?= $dados['vitoria']; ?></td>
-                <td><?= $dados['derrota']; ?></td>
-                <td><?= $dados['dif_round']; ?></td>
-                <td><?= $dados['pontos']; ?></td>
-            </tr>
-            <?php
+<script type="text/javascript">
+$(document).ready(function(){
+  // Ao clicar em qualquer um dos botões, chama a função hideShow
+  $("#fisica").on("click", function(){
+    hideShow('inv');  // Mostrar o div com id 'inv'
+  });
+
+  $("#juridica").on("click", function(){
+    hideShow('inv2');  // Mostrar o div com id 'inv2'
+  });
+
+  // Chama a função para inicializar o estado da página
+  hideShow('inv');  // Por padrão, mostra o div 'inv'
+});
+
+function hideShow(tipo) {
+  // Controla a visibilidade dos divs com base no tipo
+  if (tipo === 'inv') {
+    $('#inv').show();   // Exibe o div 'inv'
+    $('#inv2').hide();  // Esconde o div 'inv2'
+  } else {
+    $('#inv').hide();   // Esconde o div 'inv'
+    $('#inv2').show();  // Exibe o div 'inv2'
+  }
+}
+</script>
+</head>
+<body>   
         
-        ?>
-        </tbody>
-        </table>
-        <a href="playoffscs.php">Acessar Play-Offs</a>
+
+<form method="get" action="campo_variavel.php">		
+<fieldset>
+<legend> Tipo de conta</legend>
+<div id="tipo">
+<p>Tipo de conta:  
+    <input name="tipoPessoa" type="button" value="fis" id="fisica"> 
+    <input name="tipoPessoa" type="button" value="jur" id="juridica"> 
+</p>
 </div>
+
+<div id="inv">
+  <label class="form-label" for="alimento">Alimento:</label>
+  <input class="form-control" type="text" name="alimento" id="alimento" placeholder="alimento"><br>
+
+  <label class="form-label" for="quantidade">Quantidade:</label>
+  <input class="form-control" type="number" name="quantidade" id="quantidade" placeholder="Quantidade"><br>
+  <label class="form-label" for="descri">Descrição:</label>
+  <textarea class="form-control" rows="3" placeholder="Coisas referentes a localização ou especificação da doação" aria-label="With textarea"></textarea><br>
+
+  <label class="form-label" for="data">Data de validade:</label>
+  <input class="form-control" type="date" name="data_validade" id="data" placeholder="data de validade"><br>
+</div>
+
+<div id="inv2">
+  <label class="form-label" for="nome">Nome:</label>
+  <input class="form-control" type="text" name="nome" id="nome">
+
+  <label class="form-label" for="quantidade">Quantidade:</label>
+  <input class="form-control" type="number" name="quantidade" id="quantidade">
+
+  <label class="form-label" for="tamanho">Tamanho:</label>
+  <input class="form-control" type="text" name="tamanho" id="tamanho">
+
+  <label class="form-label" for="descri">Descrição:</label>
+   <textarea class="form-control" id="descri" rows="3" placeholder="Coisas referentes a localização ou especificação da doação" aria-label="With textarea"></textarea>
+</div>
+</fieldset>
+ 
+<input type="submit" value="Calcular orçamento">    
+</form>
+
 </body>
 </html>
-
-
-<?php
-//teste select distinct partidas.id_partida,  equipe.id_equipe, equipe.nome,  equipe2.nome, partidas.resultado, partidas.resultado2,   partidas.data_hora, partidas.fase from equipe
-inner join partidas on equipe.id_equipe = partidas.id_equipe
-inner join equipe as equipe2  on equipe2.id_equipe = partidas.id_equipe2
-
-
-
-where (equipe.id = 1) or (equipe2.id = 1)
-?>
-select do play offs abaixo
-
-
-SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome, f.id FROM fases f) ORDER BY f.id
-
-
-
-
-
-SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, (SELECT f.nome FROM fases f WHERE f.id = p.id_fase) AS nome_fase, (SELECT f.id FROM fases f WHERE f.id = p.id_fase) AS id_fase FROM partidas p ORDER BY p.id_fase;

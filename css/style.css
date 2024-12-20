@@ -9271,7 +9271,7 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #141414;
 }
 
 .tabela-container {
@@ -9526,7 +9526,7 @@ body {
   }
   
   body.bodyedicao {
-    background-color: #ececec;
+    background-color: #313131;
   }
   
   #main-content {
@@ -9596,8 +9596,12 @@ body {
   .inscrever-btn:hover {
     background-color: #0056b3;
   }
-  
-  
+  #tipo {
+    position: absolute;
+    top: 50%;            /* Centraliza verticalmente */
+    left: 50%;           /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta a posição para garantir que o centro real do elemento esteja no meio da página */
+  }
 
 
 

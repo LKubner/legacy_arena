@@ -16,7 +16,8 @@
 include_once "header.php";
 //atribuir ao banco de dados
 include_once "conexao.php";
-session_start();
+$edicao = $_GET['edicao'];
+
 ?>
 <style> 
   .imgcard{
@@ -25,7 +26,7 @@ session_start();
 </style>
 <body>
   <div id="main-content">
-    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
+    <h1 class="titulo"> Bem-vindo ao <?=$edicao?> </h1>
     <div class="row">
       <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php

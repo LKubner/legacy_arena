@@ -35,7 +35,7 @@ $resultado = executarSQL($conexao,$sql);
         <h3 class="campeonato-nome">eJIF 2024</h3>
         <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
         <?php  while ($edicao = mysqli_fetch_assoc($resultado)) {
-        echo '<a href="campeonatoteste.php?' . $edicao["data_inicio"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
+        echo '<a href="campeonatoteste.php?edicao=' . $edicao["nome"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
         
       </div>
 
@@ -44,6 +44,7 @@ $resultado = executarSQL($conexao,$sql);
         <h3 class="campeonato-nome">eJIF 2025</h3>
         <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
         <a href="campeonatoteste.php?ano=2025"> <button class="inscrever-btn"> Campeonato</button>
+        
       </div>
     
       <!-- Adicione mais campeonatos conforme necessário -->
