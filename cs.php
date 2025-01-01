@@ -1,87 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-  // Ao clicar em qualquer um dos botões, chama a função hideShow
-  $("#fisica").on("click", function(){
-    hideShow('inv');  // Mostrar o div com id 'inv'
-  });
 
-  $("#juridica").on("click", function(){
-    hideShow('inv2');  // Mostrar o div com id 'inv2'
-  });
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/js.js"> </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Alternar entre Visão Geral e Descricao
+      $("#fisica").on("click", function() {
+        hideShow('inv'); // Mostrar Visão Geral
+      });
 
-  // Chama a função para inicializar o estado da página
-  hideShow('inv');  // Por padrão, mostra o div 'inv'
-});
+      $("#juridica").on("click", function() {
+        hideShow('inv2'); // Mostrar Descricao
+      });
 
-function hideShow(tipo) {
-  // Controla a visibilidade dos divs com base no tipo
-  if (tipo === 'inv') {
-    $('#inv').show();   // Exibe o div 'inv'
-    $('#inv2').hide();  // Esconde o div 'inv2'
-  } else {
-    $('#inv').hide();   // Esconde o div 'inv'
-    $('#inv2').show();  // Exibe o div 'inv2'
-  }
-}
-</script>
+      // Mostrar a coluna Visão Geral por padrão ao carregar a página
+      hideShow('inv');
+    });
+
+    function hideShow(tipo) {
+      if (tipo === 'inv') {
+        $('#inv').show(); // Exibe o que tem em visao geral
+        $('#inv2').hide(); // Esconde a descricao
+      } else {
+        $('#inv').hide(); // Esconde o que tem em visao geral
+        $('#inv2').show(); // Exibe a descricao
+      }
+    }
+  </script>
 
 
-    <title>Counter-Strike 2</title>
+  <style>
+    .textobonito {
+      font-size: 18px;
+      color: #333;
+      background-color: #f1f1f1;
+      /* Cor de fundo clara */
+      padding: 10px;
+      /* Adiciona um pouco de espaço ao redor do texto */
+      border-radius: 5px;
+      /* Adiciona bordas arredondadas */
+      transition: all 0.3s ease;
+      /* Suaviza a transição */
+      display: inline-block;
+
+      #tipo {
+        display: flex;
+        /* Flexbox para organizar os itens */
+        justify-content: center;
+        /* Centraliza os botões horizontalmente */
+        gap: 20px;
+        /* Espaço entre os botões */
+        margin-top: 10px;
+        /* Distância do conteúdo acima */
+        
+      }
+
+      #inv,
+      #inv2 {
+        padding: 20px;
+        /* Espaçamento interno */
+        margin-top: 20px;
+        /* Distância do conteúdo acima */
+      }
+
+
+
+    }
+  </style>
+
 </head>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/js.js"> </script>
-
 <body class="testebodycs">
-<div id="main-content">
-<?php
-    //navbar e sidebar 
-  include_once "header.php";
-  
-     ?>
+  <div id="main-content">
+  <?php
+    //navbar e sidebar e conexao com bd
+    include_once "header.php";
+    include_once "conexao.php";
+    $conexao = conectar();
+    $sql = "SELECT id FROM torneios WHERE atual = 1"; 
+    $resultado = executarSQL($conexao,$sql );
+    $torneioatual = mysqli_fetch_assoc($resultado); 
+?>
 
     <h1 class="titulo"> Counter-Strike 2 </h1>
-    
+
     <style>
-        .col { cursor: pointer; }
+      .col {
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
-<div id="main-content">
-<div class="centralizar-link">
-    <a href="chaveamentocs.php">Chaveamento</a>
-</div>
-<div id="tipo">
-<input name="tipoPessoa" type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
-<input name="tipoPessoa" type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
-</div>
-
-<div class="centralizar-link"> <br>
-<?php
-// atribuir ao banco de dados
-include_once "conexao.php";
-$sql = "SELECT * FROM torneios WHERE atual=1";
-$conexao = conectar();
-$resultado = executarSQL($conexao,$sql);
-while ($cs = mysqli_fetch_assoc($resultado)) {
-   echo "<a href='partidacs.php?id=" . $cs['id'] . "'>Partidas</a>";
-}
-?>
-</div>
    
+
+    <body>
     
+      <div id="tipo">
+        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
+        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
 
-</div>
+        <?php   if ($torneioatual) { // verifica se existe um torneio atual
+       echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
+       echo "<a href='partidacs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
+    } 
+   
+    ?>
+     
+
+<!-- Conteúdo de Visão Geral -->
+<div id="inv">
+        <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
+      </div>
+
+      <!-- Conteúdo de Descrição -->
+      <div id="inv2">
+        <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+  </div>
 </body>
-</html>
 
+</html>
 
 
 <!-- <!DOCTYPE html>
