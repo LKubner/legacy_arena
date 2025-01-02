@@ -9181,7 +9181,13 @@ input[type=range]::-ms-thumb {
     font-weight: bold; /* Deixa o texto mais marcante */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra para melhorar a legibilidade */
     border-radius: 10px; /* Bordas arredondadas para um toque mais suave */
+    position: absolute; /* Fixa o título no topo da página */
+    top: 10%; /* Centraliza verticalmente em relação à página */
+    left: 50%; /* Centraliza horizontalmente em relação à página */
+    transform: translate(-50%, -50%); /* Ajuste final para centralizar corretamente */
+    z-index: 1; /* Coloca o título à frente do banner */
 }
+
 .linkedital {
     margin-left: 15px;
     color: white;
@@ -9245,11 +9251,7 @@ body {
 .testebodycs {
     margin: 0;
     padding: 0;
-    background-image: url('../imagens/counter-strike2.jpg'); /* Caminho para a sua imagem */
-    background-size: cover; /* Faz a imagem cobrir toda a área disponível */
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    background-position: center; /* Centraliza a imagem */
-    background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+    background-color: #001a33;
 }
 
 .centralizar-link {
@@ -9601,7 +9603,47 @@ body {
     top: 50%;            /* Centraliza verticalmente */
     left: 50%;           /* Centraliza horizontalmente */
     transform: translate(-50%, -50%); /* Ajusta a posição para garantir que o centro real do elemento esteja no meio da página */
+    
   }
+
+
+/* Banner cs
+
+/* Garantindo que o banner ocupe toda a largura da tela */
+.bannercs {
+    width: 100%;
+    height: 330px; /* Altura do banner */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 50, 0.5), rgba(0, 0, 100, 0.8)), url('../imagens/counter-strike2.jpg');
+    background-size: cover; /* Faz com que a imagem cubra toda a área do banner */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative; /* Para os textos ficarem sobre o banner */
+    z-index: -1;
+    margin-top: 60px;
+   
+  }
+  
+  /* Estilos do título */
+  .bannercs h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombras para destaque */
+  }
+  
+  /* Estilos para o subtítulo */
+  .bannercs p {
+    font-size: 24px;
+    margin: 15px 0 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  }
+  
+  
+
 
 
 
