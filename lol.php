@@ -113,7 +113,7 @@
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
        echo "<a href='chaveamentolol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
-       echo "<a href='partidacs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
+       echo "<a href='partidalol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
     } 
    
     ?>

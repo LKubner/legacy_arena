@@ -46,7 +46,11 @@ $edicao = $_GET['edicao'];
             </div>
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
-              <p><a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a></p>
+              <p><?php if ($jogo['id'] == 1) { ?>
+                        <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação CS</a>
+                    <?php } elseif ($jogo['id'] == 2) { ?>
+                        <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação LoL</a>
+                    <?php } ?></p>
             </div>
           </div>
         </div>
