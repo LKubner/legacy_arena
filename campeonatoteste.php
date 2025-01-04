@@ -26,7 +26,7 @@ $edicao = $_GET['edicao'];
 </style>
 <body>
   <div id="main-content">
-    <h1 class="titulo"> Bem-vindo ao <?=$edicao?> </h1>
+    <h1> Bem-vindo ao <?=$edicao?> </h1>
     <div class="row">
       <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php

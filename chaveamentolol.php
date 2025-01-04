@@ -4,7 +4,11 @@ $idjogo = $_GET['id'];
 
 
 if ($idjogo){
-$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe WHERE cs.id_jogos = $idjogo ORDER BY cs.grupo";
+$sql2 = "SELECT lol.*, eq.nome, eq.foto_time
+FROM rankinglol lol
+INNER JOIN equipe eq ON lol.id_equipe = eq.id_equipe
+WHERE lol.id_jogos = 2
+ORDER BY lol.grupo;";
 
 } else {
 echo "Edição do Jogo não identificada!!"; 
@@ -15,7 +19,7 @@ $conexao = conectar();
 include_once "header.php";
 
 // Consultas ao banco de dados
-$sql = "SELECT * FROM rankingcs";
+$sql = "SELECT * FROM rankinglol";
 $resultado = mysqli_query($conexao, $sql);
 if ($resultado) {
     $grupos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -42,7 +46,7 @@ if ($teste != null) {
 <body>
     <div id="main-content"> 
     <div class="tabela-container">
-        <h1>Grupos Counter Strike 2</h1>
+        <h1>Grupos League of Legends</h1>
         <?php
         $grp = '';
         $primeira = true;
@@ -64,7 +68,6 @@ if ($teste != null) {
                             <th>Partidas</th>
                             <th>Vitórias</th>
                             <th>Derrotas</th>
-                            <th>Dif. Round</th>
                             <th>Pontos</th>
                         </tr>
                     </thead>
@@ -83,7 +86,6 @@ if ($teste != null) {
                 <td><?= $dados['partidas']; ?></td>
                 <td><?= $dados['vitoria']; ?></td>
                 <td><?= $dados['derrota']; ?></td>
-                <td><?= $dados['dif_round']; ?></td>
                 <td><?= $dados['pontos']; ?></td>
             </tr>
             <?php

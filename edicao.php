@@ -25,7 +25,7 @@ $resultado = executarSQL($conexao,$sql);
 
 
   <div id="main-content">
-    <h1 class="titulo">Campeonatos Disponíveis</h1>
+    <h1 class="tituloedicao">Campeonatos Disponíveis</h1>
 
     <!-- Seção de Campeonatos -->
     <div class="campeonatos-container">

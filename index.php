@@ -14,7 +14,7 @@
   include_once "header.php";
   ?>
  <div id="main-content">
-    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
+    <h1 class="tituloindex">Bem-vindo ao Legacy Arena</h1>
 
  <div class="center-align">
     <a href="edicao.php" class="waves-effect waves-light btn center">Ver Edições </a>

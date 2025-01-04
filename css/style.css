@@ -9172,7 +9172,6 @@ input[type=range]::-ms-thumb {
 
 
 .titulo {
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center; /* Centraliza o texto dentro do <h1> */
@@ -9187,6 +9186,15 @@ input[type=range]::-ms-thumb {
     transform: translate(-50%, -50%); /* Ajuste final para centralizar corretamente */
     z-index: 1; /* Coloca o título à frente do banner */
 }
+
+.tituloedicao {
+
+    color: white; /* Contrasta o texto com o fundo */
+    font-size: 3em; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Deixa o texto mais marcante */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra para melhorar a legibilidade  */
+}
+
 
 .linkedital {
     margin-left: 15px;
@@ -9370,9 +9378,7 @@ body {
 
 }
 
-.bodyedicao {
-    background-color: #007bff;
-}
+
 
 /* Personalizando os cards das ediçoes
 
@@ -9518,7 +9524,7 @@ main{
       border-top:1px solid #aaa;
     }
 
-/* Cards da tabela edicai.php
+/* Cards da tabela edicao.php
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
@@ -9529,6 +9535,7 @@ body {
   
   body.bodyedicao {
     background-color: #313131;
+   
   }
   
   #main-content {
@@ -9642,6 +9649,40 @@ body {
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
   }
   
+  /* Banner lol
+
+/* Garantindo que o banner ocupe toda a largura da tela */
+.bannerlol {
+    width: 100%;
+    height: 330px; /* Altura do banner */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 50, 0.5), rgba(0, 0, 100, 0.8)), url('../imagens/thresh.png');
+    background-size: cover; /* Faz com que a imagem cubra toda a área do banner */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative; /* Para os textos ficarem sobre o banner */
+    z-index: -1;
+    margin-top: 60px;
+   
+  }
+  
+  /* Estilos do título */
+  .bannerlol h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombras para destaque */
+  }
+  
+  /* Estilos para o subtítulo */
+  .bannerlol p {
+    font-size: 24px;
+    margin: 15px 0 0;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  }
   
 
 
