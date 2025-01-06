@@ -4,7 +4,6 @@
 <head>
 
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/js.js"> </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">

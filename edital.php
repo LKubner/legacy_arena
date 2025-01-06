@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="../js.js"></script>
 </head>
-<body>
+
+<body class="main-content">
         
 </body>
 </html>

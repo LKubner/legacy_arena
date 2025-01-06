@@ -9240,11 +9240,14 @@ input[type=range]::-ms-thumb {
 }
 
 #main-content {
-    margin-left: 60px; /* Espaço suficiente para a sidebar */
+    margin-left: 240px; /* Espaço suficiente para a sidebar (ajuste conforme a largura da sidebar) */
     padding: 20px;
-    width: 90%;
+    width: calc(100% - 240px); /* Garante que o conteúdo ocupe o restante da largura após a sidebar */
     min-width: 18em;
-    margin: 20px auto;
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo de cima para baixo */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    box-sizing: border-box; /* Garante que o padding não altere a largura total */
 }
 
 body {
@@ -9445,20 +9448,20 @@ body {
     font-size: 20px; /* Tamanho do ícone ajustado */
 }
 
-
-
-
-
-
-
-
-
-
-
-/*
-   Next / Previous css
-*/
-
+.logo-text {
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: white;
+    margin-top: -200px; /* Ajusta a posição do texto para cima */
+    position: relative;
+    top: -14px; /* Ajusta o texto para cima */
+    font-family: 'Playfair Display', serif; 
+  }
+  .brand-logo {
+    display: flex; /* Usa flexbox para alinhar os itens horizontalmente */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    top: 5px;
+  }
 
 
 
@@ -9614,81 +9617,97 @@ body {
   }
 
 
-/* Banner cs
+/* Banner cs */
 
-/* Garantindo que o banner ocupe toda a largura da tela */
 .bannercs {
     width: 100%;
-    height: 330px; /* Altura do banner */
+    height: 40vh; /* Altura relativa à altura da janela */
     background-image: linear-gradient(to bottom, rgba(0, 0, 50, 0.5), rgba(0, 0, 100, 0.8)), url('../imagens/counter-strike2.jpg');
-    background-size: cover; /* Faz com que a imagem cubra toda a área do banner */
-    background-position: center; /* Centraliza a imagem */
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     text-align: center;
-    position: relative; /* Para os textos ficarem sobre o banner */
+    position: relative;
     z-index: -1;
     margin-top: 60px;
-   
-  }
-  
-  /* Estilos do título */
-  .bannercs h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombras para destaque */
-  }
-  
-  /* Estilos para o subtítulo */
-  .bannercs p {
-    font-size: 24px;
-    margin: 15px 0 0;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-  }
-  
-  /* Banner lol
+}
 
-/* Garantindo que o banner ocupe toda a largura da tela */
+@media (max-width: 768px) {
+    .bannercs {
+        height: 50vh; /* Ajusta para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .bannercs {
+        height: 60vh; /* Ajusta para celulares pequenos */
+    }
+}
+
+  
+  /* Banner lol */
+
 .bannerlol {
     width: 100%;
-    height: 330px; /* Altura do banner */
+    height: 40vh; /* Altura relativa à altura da janela */
     background-image: linear-gradient(to bottom, rgba(0, 0, 50, 0.5), rgba(0, 0, 100, 0.8)), url('../imagens/thresh.png');
-    background-size: cover; /* Faz com que a imagem cubra toda a área do banner */
-    background-position: center; /* Centraliza a imagem */
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     text-align: center;
-    position: relative; /* Para os textos ficarem sobre o banner */
+    position: relative;
     z-index: -1;
     margin-top: 60px;
-   
-  }
-  
-  /* Estilos do título */
-  .bannerlol h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombras para destaque */
-  }
-  
-  /* Estilos para o subtítulo */
-  .bannerlol p {
-    font-size: 24px;
-    margin: 15px 0 0;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-  }
+}
+
+@media (max-width: 768px) {
+    .bannerlol {
+        height: 50vh; /* Altura maior em dispositivos menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .bannerlol {
+        height: 60vh; /* Ajusta para celulares bem pequenos */
+    }
+}
+
   
 
+/* Banner Valorant */
 
+.bannervalo {
+    width: 100%;
+    height: 40vh; /* Usa altura relativa à tela */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 50, 0.5), rgba(0, 0, 100, 0.8)), url('../imagens/valo.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: -1;
+    margin-top: 60px;
+}
 
-
-
+@media (max-width: 768px) {
+    .bannervalo {
+        height: 50vh; /* Ajusta a altura para dispositivos menores */
+    }
+    @media (max-width: 480px) {
+        .bannerlol {
+            height: 60vh; /* Ajusta para celulare pequeno */
+        }
+    }
+}
 
 /* responsive tournament brackets
 */

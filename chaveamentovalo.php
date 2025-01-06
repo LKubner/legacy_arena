@@ -4,7 +4,7 @@ $conexao = conectar();
 include_once "header.php";
 
 // Consultas ao banco de dados
-$sql = "SELECT * FROM rankingcs";
+$sql = "SELECT * FROM rankingvalo";
 $resultado = mysqli_query($conexao, $sql);
 if ($resultado) {
     $grupos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -12,7 +12,18 @@ if ($resultado) {
     echo mysqli_errno($conexao) . ": " . mysqli_error($conexao);
 }
 
-$sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe ORDER BY cs.grupo";
+
+
+//pegar as informações que mando via GET
+$idjogo = $_GET['id'];
+
+if ($idjogo){
+$sql2 = "SELECT val.*, eq.nome, eq.foto_time
+FROM rankingvalo val
+INNER JOIN equipe eq ON val.id_equipe = eq.id_equipe
+WHERE val.id_jogos = 3
+ORDER BY val.grupo;";
+}
 $resultado1 = mysqli_query($conexao, $sql2);
 
 $teste = mysqli_fetch_assoc($resultado1);

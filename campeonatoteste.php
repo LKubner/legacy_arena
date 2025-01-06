@@ -47,10 +47,17 @@ $edicao = $_GET['edicao'];
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
               <p><?php if ($jogo['id'] == 1) { ?>
-                        <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação CS</a>
+                        <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação </a>
+                      <br>  <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                     <?php } elseif ($jogo['id'] == 2) { ?>
-                        <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação LoL</a>
-                    <?php } ?></p>
+                        <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a>
+                       <br> <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                    <?php } elseif ($jogo['id'] == 3) { ?>
+                      <a href="chaveamentovalo.php?id=<?=$jogo['id'] ?>"> Acessar Classificação </a>
+                    <br>  <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                    <?php } ?>
+                    
+                    </p>
             </div>
           </div>
         </div>

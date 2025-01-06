@@ -1,8 +1,3 @@
-SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, " .
-"(SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, " .
-"(SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, " .
-"(SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, " .
-"(SELECT f.nome FROM fases f WHERE f.id = p.id_fase) AS fase FROM partidas p where p.id_torneio = " . $torneioID . " AND where p.id_jogo = 2
 
 <?php
 include_once "header.php";
@@ -20,10 +15,12 @@ $dados = "SELECT p.id_partida,
        p.resultado2, 
        p.data_hora, 
        (SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 
-       IFNULL ((SELECT f.nome FROM fases f WHERE id = p.id_fase), 'Fase de Grupos')  AS fase 
+        (SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 
+       IFNULL ((SELECT f.nome FROM fases f WHERE id = p.id_fase), 'Fase de Grupos') 
+        AS fase 
 FROM partidas p 
 WHERE p.id_torneio = 1 
-AND p.id_jogo = 2 
+AND p.id_jogo = 3
 ";
 
 
@@ -49,7 +46,7 @@ $exibegp = mysqli_fetch_assoc($resultado);
 
     <div id="main-content">
         <div class="tabela-container">
-            <h1>Tabela de Partidas - League of Legends</h1>
+            <h1>Tabela de Partidas - Valorant</h1>
             <table class="tabela-partidas centered responsive-table">
                 <thead>
                     <tr>

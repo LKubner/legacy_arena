@@ -3,7 +3,7 @@ require_once "../conexao.php";
 $conexao = conectar();
 
 $equipe = $_POST['equipe'];
-
+$jogo = $_POST['jogo'];
 //UPLOAD DA IMAGEM
 $pastaDestino = "../imagens/";
 
@@ -40,7 +40,7 @@ $fezUpload = move_uploaded_file(
 
 if ($fezUpload == true) {
     // Insere os dados na tabela equipe 
-    $sql2 = "INSERT INTO equipe(nome, foto_time) VALUES ('$equipe', '$nomeArquivo.$extensao')";
+    $sql2 = "INSERT INTO equipe (nome, foto_time, id_jogo) VALUES ('$equipe', '$nomeArquivo.$extensao', '$jogo')";
     $resultado2 = executarSQL($conexao, $sql2);
 
     if ($resultado2 != false) {
