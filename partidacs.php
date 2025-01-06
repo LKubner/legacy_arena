@@ -2,8 +2,15 @@
 include_once "header.php";
 include_once "conexao.php";
 $conexao = conectar();
+if (isset($_GET['id'])) {
+    $edicao = $_GET['id'];
+} else {
+    $resultado = mysqli_query($conexao, "SELECT * FROM torneios WHERE atual=1");
+    $ed = mysqli_fetch_assoc($resultado);
+    $edicao = $ed['id'];
+}
 
-$torneioID =   $_GET['id'];
+//$torneioID =   $_GET['id'];
 // Simulando dados das partidas
 $dados = "SELECT p.id_partida, 
 (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, 
@@ -12,11 +19,12 @@ $dados = "SELECT p.id_partida,
 (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, 
 p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase
 FROM partidas p  
-WHERE p.id_torneio = " .  $torneioID;
+WHERE p.id_torneio = " .  $edicao;
 
 
 $resultado = mysqli_query($conexao, $dados);
 $exibegp = mysqli_fetch_assoc($resultado);
+
 ?>
 
 <!DOCTYPE html>

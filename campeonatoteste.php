@@ -16,7 +16,13 @@
 include_once "header.php";
 //atribuir ao banco de dados
 include_once "conexao.php";
-$edicao = $_GET['edicao'];
+if (isset($_GET['id'])) {
+  $edicao = $_GET['id'];
+} else {
+  $resultado = mysqli_query($conexao, "SELECT * FROM torneios WHERE atual=1");
+  $ed = mysqli_fetch_assoc($resultado);
+  $edicao = $ed['id'];
+}
 
 ?>
 <style> 
@@ -26,7 +32,7 @@ $edicao = $_GET['edicao'];
 </style>
 <body>
   <div id="main-content">
-    <h1> Bem-vindo ao <?=$edicao?> </h1>
+    <h1> Bem-vindo ao campeonato </h1>
     <div class="row">
       <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php

@@ -8454,8 +8454,8 @@ input[type=range]::-ms-thumb {
 }
 
 .carousel .carousel-item {
-    visibility: hidden;
-    width: 200px;
+ 
+    width: 500px;
     height: 200px;
     position: absolute;
     top: 0;
@@ -9536,7 +9536,7 @@ body {
     padding: 0;
   }
   
-  body.bodyedicao {
+  .bodyedicao {
     background-color: #313131;
    
   }
