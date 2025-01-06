@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 12-Dez-2024 às 20:01
+-- Tempo de geração: 06-Jan-2025 às 02:47
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -69,7 +69,33 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`, `id_jogo`) VALUES
 (52, 'Botafogo', 'botafogo.jpg', 0),
 (53, 'Fluminense', 'fluminense.jpg', 0),
 (54, 'Cruzeiro', 'cruzeiro.jpg', 0),
-(57, 'fortnite', '673f8b4fb04b5.jpg', 0);
+(57, 'fortnite', '673f8b4fb04b5.jpg', 0),
+(58, 'T1', 't1.png', 2),
+(59, 'Fnatic', 'fnatic.png', 2),
+(60, 'Cloud9', 'cloud9.png', 2),
+(61, 'G2 Esports', 'g2_esports.png', 2),
+(62, 'EDward Gaming', 'edg.png', 2),
+(63, 'Gen.G', 'geng.png', 2),
+(64, 'DRX', 'drx.png', 2),
+(65, 'Royal Never Give Up', 'rng.png', 2),
+(66, 'Team Liquid', 'teamliquid.png', 2),
+(67, 'Evil Geniuses', 'evilgeniuses.png', 2),
+(68, 'MAD Lions', 'madlions.png', 2),
+(69, '100 Thieves', '100thieves.png', 2),
+(70, 'KT Rolster', 'ktrolster.png', 2),
+(71, 'Sentinels', 'sentinels.png', 3),
+(72, 'LOUD', 'loud.png', 3),
+(73, 'Natus Vincere (Na\'Vi)', '66c79344c8648.jfif', 3),
+(74, 'Team Liquid', 'teamliquid.png', 3),
+(75, 'G2 Esports', 'g2_esports.png', 3),
+(76, 'Fnatic', 'fnatic.png', 3),
+(77, 'Cloud9', 'cloud9.png', 3),
+(78, 'FURIA', 'furia.png', 3),
+(79, 'DRX', 'drx.png', 3),
+(80, 'KRU Esports', 'kru_esports.png', 3),
+(81, 'XSET', 'xset.png', 3),
+(82, '100 Thieves', '100thieves.png', 3),
+(83, 'Red Canids', '677aec8adf226.png', 1);
 
 -- --------------------------------------------------------
 
@@ -81,9 +107,9 @@ DROP TABLE IF EXISTS `fases`;
 CREATE TABLE IF NOT EXISTS `fases` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
-  `ordem` int NOT NULL,
+  `ordem` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `fases`
@@ -94,7 +120,8 @@ INSERT INTO `fases` (`id`, `nome`, `ordem`) VALUES
 (2, 'Quartas de finais', 2),
 (3, 'Semifinais', 3),
 (4, 'Disputa de terceiro lugar', 4),
-(5, 'Final', 5);
+(5, 'Final', 5),
+(7, 'Fase de Grupos', NULL);
 
 -- --------------------------------------------------------
 
@@ -142,38 +169,62 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   KEY `fk_id_equipe3` (`id_equipe2`),
   KEY `fk_id_equipe1` (`id_equipe`) USING BTREE,
   KEY `fk_id_fase` (`id_fase`),
-  KEY `fk_id_torneio` (`id_torneio`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_id_torneio` (`id_torneio`),
+  KEY `fk_id_jogo_plol` (`id_jogo`)
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
 --
 
 INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `id_fase`, `id_torneio`, `id_jogo`) VALUES
-(1, 24, 26, 2, 1, '2024-10-01 17:38:52', NULL, 1, 0),
-(21, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 0),
-(22, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 0),
-(23, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 0),
-(24, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 0),
-(25, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 0),
-(26, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 0),
-(27, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 0),
-(28, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 0),
-(29, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 0),
-(30, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 0),
-(31, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 0),
-(32, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 0),
-(33, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 0),
-(34, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 0),
-(35, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 0),
-(36, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 0),
-(37, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 0),
-(38, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 0),
-(39, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 0),
-(40, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 0),
-(49, 26, 27, 1, 2, '0000-00-00 00:00:00', 1, 1, 0),
-(50, 39, 40, 1, 2, '0000-00-00 00:00:00', 1, 1, 0),
-(51, 34, 32, 2, 0, '2024-10-06 17:30:00', NULL, 1, 0);
+(1, 24, 26, 2, 1, '2024-10-01 17:38:52', NULL, 1, 1),
+(21, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 1),
+(22, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 1),
+(23, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 1),
+(24, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 1),
+(25, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 1),
+(26, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 1),
+(27, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 1),
+(28, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 1),
+(29, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 1),
+(30, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 1),
+(31, 43, 44, 3, 1, '2024-10-01 16:00:00', 3, 1, 1),
+(32, 45, 46, 0, 0, '2024-10-02 18:00:00', 2, 1, 1),
+(33, 47, 48, 2, 1, '2024-10-03 20:00:00', NULL, 1, 1),
+(34, 43, 45, 1, 1, '2024-10-04 15:00:00', NULL, 1, 1),
+(35, 44, 47, 4, 2, '2024-10-05 19:00:00', NULL, 1, 1),
+(36, 49, 50, 1, 2, '2024-10-06 17:00:00', NULL, 1, 1),
+(37, 51, 52, 1, 0, '2024-10-07 19:00:00', NULL, 1, 1),
+(38, 49, 53, 3, 2, '2024-10-08 15:00:00', 3, 1, 1),
+(39, 54, 43, 1, 3, '2024-10-09 18:00:00', 2, 1, 1),
+(40, 46, 51, 2, 2, '2024-10-10 20:00:00', NULL, 1, 1),
+(49, 26, 27, 1, 2, '0000-00-00 00:00:00', 1, 1, 1),
+(50, 39, 40, 1, 2, '0000-00-00 00:00:00', 1, 1, 1),
+(51, 34, 32, 2, 0, '2024-10-06 17:30:00', NULL, 1, 1),
+(52, 58, 59, 2, 1, '2024-10-01 14:00:00', NULL, 1, 2),
+(53, 60, 61, 3, 2, '2024-10-02 15:30:00', NULL, 1, 2),
+(54, 62, 63, 2, 3, '2024-10-03 16:45:00', NULL, 1, 2),
+(55, 64, 65, 1, 3, '2024-10-04 17:20:00', NULL, 1, 2),
+(56, 66, 67, 2, 1, '2024-10-05 18:10:00', NULL, 1, 2),
+(57, 68, 69, 3, 1, '2024-10-06 19:00:00', NULL, 1, 2),
+(58, 70, 58, 2, 2, '2024-10-07 20:30:00', NULL, 1, 2),
+(59, 59, 60, 1, 2, '2024-10-08 21:00:00', NULL, 1, 2),
+(60, 61, 62, 3, 0, '2024-10-09 22:00:00', NULL, 1, 2),
+(61, 63, 64, 2, 2, '2024-10-10 23:00:00', NULL, 1, 2),
+(62, 71, 72, 2, 1, '2024-01-06 15:00:00', NULL, 1, 3),
+(63, 73, 74, 3, 2, '2024-01-06 17:00:00', NULL, 1, 3),
+(64, 75, 76, 2, 3, '2024-01-07 18:00:00', NULL, 1, 3),
+(65, 77, 78, 1, 2, '2024-01-07 20:00:00', NULL, 1, 3),
+(66, 79, 80, 2, 1, '2024-01-08 16:00:00', NULL, 1, 3),
+(67, 81, 82, 3, 2, '2024-01-08 18:00:00', NULL, 1, 3),
+(68, 71, 75, 1, 2, '2024-01-09 14:00:00', NULL, 1, 3),
+(69, 72, 76, 2, 3, '2024-01-09 16:00:00', NULL, 1, 3),
+(70, 73, 77, 2, 1, '2024-01-10 17:00:00', NULL, 1, 3),
+(71, 74, 78, 3, 2, '2024-01-10 19:00:00', NULL, 1, 3),
+(74, 39, 39, 1, 0, '2025-01-05 00:00:00', NULL, 1, 1),
+(76, 22, 25, 1, 0, '2025-01-05 00:00:00', NULL, 1, 1),
+(77, 50, 62, 1, 0, '2025-01-05 00:00:00', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -221,6 +272,96 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `rankinglol`
+--
+
+DROP TABLE IF EXISTS `rankinglol`;
+CREATE TABLE IF NOT EXISTS `rankinglol` (
+  `grupo` char(8) NOT NULL,
+  `id_equipe` int NOT NULL,
+  `partidas` int NOT NULL,
+  `pontos` int NOT NULL,
+  `vitoria` int NOT NULL,
+  `derrota` int NOT NULL,
+  `wo` varchar(255) NOT NULL,
+  `confronto_direto` int NOT NULL,
+  `tempo_total_vitorias` float NOT NULL,
+  `tempo_medio_vitorias` float NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_torneio` int NOT NULL,
+  `id_jogos` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_id_equipe_lol` (`id_equipe`),
+  KEY `fk_id_torneiolol` (`id_torneio`),
+  KEY `fk_id_jogo_lol` (`id_jogos`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `rankinglol`
+--
+
+INSERT INTO `rankinglol` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `wo`, `confronto_direto`, `tempo_total_vitorias`, `tempo_medio_vitorias`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 58, 10, 30, 10, 0, 'N/A', 0, 300.5, 30.05, 12, 1, 2),
+('A', 59, 9, 27, 9, 0, 'N/A', 1, 280.3, 31.14, 13, 1, 2),
+('A', 60, 8, 24, 8, 0, 'N/A', 2, 270.2, 33.78, 14, 1, 2),
+('B', 61, 7, 21, 7, 0, 'N/A', 0, 240, 34.29, 15, 1, 2),
+('B', 62, 6, 18, 6, 1, 'N/A', 3, 200.7, 33.45, 16, 1, 2),
+('B', 63, 5, 15, 5, 2, 'N/A', 1, 180.6, 36.12, 17, 1, 2),
+('C', 64, 4, 12, 4, 3, 'N/A', 2, 160.3, 40.08, 18, 1, 2),
+('C', 65, 3, 9, 3, 4, 'N/A', 1, 140.1, 46.7, 19, 1, 2),
+('C', 66, 2, 6, 2, 5, 'N/A', 0, 120, 60, 20, 1, 2),
+('D', 67, 1, 3, 1, 6, 'N/A', 1, 100.5, 100.5, 21, 1, 2),
+('D', 68, 0, 0, 0, 7, 'N/A', 0, 0, 0, 22, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `rankingvalo`
+--
+
+DROP TABLE IF EXISTS `rankingvalo`;
+CREATE TABLE IF NOT EXISTS `rankingvalo` (
+  `grupo` char(7) NOT NULL,
+  `id_equipe` int NOT NULL,
+  `partidas` int NOT NULL,
+  `pontos` int NOT NULL,
+  `vitoria` int NOT NULL,
+  `derrota` int NOT NULL,
+  `rounds_vencidos` int NOT NULL,
+  `rounds_perdidos` int NOT NULL,
+  `dif_round` int NOT NULL,
+  `confronto_direto` int NOT NULL,
+  `wo` varchar(255) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_torneio` int NOT NULL,
+  `id_jogos` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_id_equipevalo` (`id_equipe`),
+  KEY `fk_id_torneiovalo` (`id_torneio`),
+  KEY `fk_id_jogo_valo` (`id_jogos`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `rankingvalo`
+--
+
+INSERT INTO `rankingvalo` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `rounds_vencidos`, `rounds_perdidos`, `dif_round`, `confronto_direto`, `wo`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 71, 5, 15, 3, 2, 50, 30, 20, 1, 'Não', 25, 1, 3),
+('A', 72, 5, 12, 2, 3, 40, 35, 5, 0, 'Não', 26, 1, 3),
+('A', 73, 5, 18, 4, 1, 60, 25, 35, 3, 'Sim', 27, 1, 3),
+('A', 74, 5, 9, 1, 4, 30, 50, -20, 0, 'Sim', 28, 1, 3),
+('B', 75, 5, 12, 3, 2, 45, 28, 17, 2, 'Não', 29, 1, 3),
+('B', 76, 5, 15, 3, 2, 52, 30, 22, 1, 'Não', 30, 1, 3),
+('B', 77, 5, 10, 2, 3, 39, 36, 3, 1, 'Não', 31, 1, 3),
+('B', 78, 5, 13, 3, 2, 50, 28, 22, 2, 'Sim', 32, 1, 3),
+('C', 79, 5, 14, 3, 2, 48, 32, 16, 1, 'Não', 33, 1, 3),
+('C', 80, 5, 11, 2, 3, 40, 35, 5, 0, 'Não', 34, 1, 3),
+('C', 81, 5, 9, 1, 4, 38, 42, -4, 0, 'Sim', 35, 1, 3),
+('C', 82, 5, 16, 4, 1, 55, 30, 25, 3, 'Não', 36, 1, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `torneios`
 --
 
@@ -239,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
 --
 
 INSERT INTO `torneios` (`id`, `nome`, `data_inicio`, `data_fim`, `atual`) VALUES
-(1, 'CS 2024', '2024-11-01', NULL, 1);
+(1, 'Ejif 2024', '2024-11-01', NULL, 1);
 
 --
 -- Restrições para despejos de tabelas
@@ -253,6 +394,7 @@ ALTER TABLE `partidas`
   ADD CONSTRAINT `fk_id_equipe2` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
   ADD CONSTRAINT `fk_id_equipe3` FOREIGN KEY (`id_equipe2`) REFERENCES `equipe` (`id_equipe`),
   ADD CONSTRAINT `fk_id_fase` FOREIGN KEY (`id_fase`) REFERENCES `fases` (`id`),
+  ADD CONSTRAINT `fk_id_jogo_plol` FOREIGN KEY (`id_jogo`) REFERENCES `jogos` (`id`),
   ADD CONSTRAINT `fk_id_torneio` FOREIGN KEY (`id_torneio`) REFERENCES `torneios` (`id`);
 
 --
@@ -262,6 +404,22 @@ ALTER TABLE `rankingcs`
   ADD CONSTRAINT `fk_id_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
   ADD CONSTRAINT `fk_id_jogos` FOREIGN KEY (`id_jogos`) REFERENCES `jogos` (`id`),
   ADD CONSTRAINT `fk_id_torneio2` FOREIGN KEY (`id_torneio`) REFERENCES `torneios` (`id`);
+
+--
+-- Limitadores para a tabela `rankinglol`
+--
+ALTER TABLE `rankinglol`
+  ADD CONSTRAINT `fk_id_equipe_lol` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  ADD CONSTRAINT `fk_id_jogo_lol` FOREIGN KEY (`id_jogos`) REFERENCES `jogos` (`id`),
+  ADD CONSTRAINT `fk_id_torneiolol` FOREIGN KEY (`id_torneio`) REFERENCES `torneios` (`id`);
+
+--
+-- Limitadores para a tabela `rankingvalo`
+--
+ALTER TABLE `rankingvalo`
+  ADD CONSTRAINT `fk_id_equipevalo` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`),
+  ADD CONSTRAINT `fk_id_jogo_valo` FOREIGN KEY (`id_jogos`) REFERENCES `jogos` (`id`),
+  ADD CONSTRAINT `fk_id_torneiovalo` FOREIGN KEY (`id_torneio`) REFERENCES `torneios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
