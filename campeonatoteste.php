@@ -25,11 +25,12 @@ if (isset($_GET['id'])) {
 }
 
 ?>
-<style> 
-  .imgcard{
+<style>
+  .imgcard {
     object-fit: cover;
   }
 </style>
+
 <body>
   <div id="main-content">
     <h1> Bem-vindo ao campeonato </h1>
@@ -53,17 +54,17 @@ if (isset($_GET['id'])) {
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
               <p><?php if ($jogo['id'] == 1) { ?>
-                        <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação </a>
-                      <br>  <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                    <?php } elseif ($jogo['id'] == 2) { ?>
-                        <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a>
-                       <br> <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                    <?php } elseif ($jogo['id'] == 3) { ?>
-                      <a href="chaveamentovalo.php?id=<?=$jogo['id'] ?>"> Acessar Classificação </a>
-                    <br>  <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                    <?php } ?>
-                    
-                    </p>
+                  <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação </a>
+                  <br> <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } elseif ($jogo['id'] == 2) { ?>
+                  <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a>
+                  <br> <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } elseif ($jogo['id'] == 3) { ?>
+                  <a href="chaveamentovalo.php?id=<?= $jogo['id'] ?>"> Acessar Classificação </a>
+                  <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } ?>
+
+              </p>
             </div>
           </div>
         </div>
