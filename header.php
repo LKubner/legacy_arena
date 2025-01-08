@@ -7,6 +7,7 @@
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <a class="linkedital" href="edital.php"> Editais </a>
+       <!-- <a href="edicao.php" class="waves-effect waves-light btn">Ver Edições</a> -->
       </ul>
     </div>
   </nav>

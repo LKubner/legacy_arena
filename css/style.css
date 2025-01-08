@@ -9387,66 +9387,84 @@ body {
 
 <style>
   /* Estilo geral do card */
+  .rowcards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Espaçamento entre os cards */
+}
+
+.colcards {
+    flex: 1 1 calc(20% - 16px); /* 5 cards por linha */
+    box-sizing: border-box;
+}
+
+.rowcards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  
+  .colcards {
+    flex: 1 1 calc(20% - 16px); /* Garantir que 5 cards caibam */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
   .custom-card {
-    background-color: #f5f5f5; /* Cor de fundo do card */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: all 0.3s ease; /* Transição suave para hover */
-    width: 250px; /* Largura reduzida */
-    height: 350px; /* Altura ajustada */
- 
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Assegura que todos os cards terão altura total */
+    min-height: 400px; /* Garante uma altura mínima, ajustável conforme necessário */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 16px;
+    flex-grow: 1; /* Faz com que o conteúdo ocupe o restante do espaço */
+  }
+  
 
-/* Efeito de hover do card */
-.custom-card:hover {
-    transform: translateY(-5px); /* Leve elevação no hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
-}
-
-/* Estilo da imagem do card */
-.custom-card .card-image img {
-    border-radius: 10px 10px 0 0; /* Bordas arredondadas na parte superior da imagem */
-    object-fit: cover; /* Manter a proporção da imagem */
-}
-
-/* Estilo do título */
-.custom-card .card-title {
-    font-size: 18px; /* Tamanho do título reduzido */
-    color: #2c3e50; /* Cor do título */
+.custom-card .card-content a {
+    color: #3498db;
+    text-decoration: none;
     font-weight: bold;
 }
 
-/* Estilo do texto do card */
-.custom-card .card-content {
-    padding: 12px; /* Espaçamento interno reduzido */
-    color: #555; /* Cor do texto */
-}
-
-/* Estilo do link dentro do card */
-.custom-card .card-content a {
-    color: #3498db; /* Cor azul para o link */
-    text-decoration: none;
-}
-
 .custom-card .card-content a:hover {
-    text-decoration: underline; /* Sublinha o link no hover */
+    text-decoration: underline;
 }
 
-/* Estilo da parte de "revelar" o conteúdo adicional */
-.custom-card .card-reveal {
-    background-color: #ecf0f1; /* Cor de fundo da parte revelada */
-    padding: 12px; /* Padding reduzido */
+/* Responsividade */
+@media (max-width: 1024px) {
+    .colcards {
+        flex: 1 1 calc(25% - 16px); /* 4 cards por linha em telas médias */
+    }
 }
 
-/* Estilo do ícone de fechar */
-.custom-card .card-reveal .material-icons {
-    color: #e74c3c; /* Cor vermelha para o ícone de fechar */
+@media (max-width: 768px) {
+    .colcards {
+        flex: 1 1 calc(33.33% - 16px); /* 3 cards por linha */
+    }
 }
 
-/* Estilo do ícone de mais opções */
-.custom-card .card-title i {
-    font-size: 20px; /* Tamanho do ícone ajustado */
+@media (max-width: 480px) {
+    .colcards {
+        flex: 1 1 100%; /* 1 card por linha */
+    }
 }
+
+
 
 .logo-text {
     font-size: 1.3rem; 
@@ -9457,6 +9475,7 @@ body {
     top: -14px; /* Ajusta o texto para cima */
     font-family: 'Playfair Display', serif; 
   }
+
   .brand-logo {
     display: flex; /* Usa flexbox para alinhar os itens horizontalmente */
     align-items: center; /* Alinha verticalmente os itens no centro */

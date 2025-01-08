@@ -1,93 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<style>
-  #main-contentindex {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-    margin-left: 60px;
-    /* Ajuste para o espaço da sidebar */
-    width: 90%;
-    min-width: 18em;
-    height: 100vh;
-    margin-top: 70px;
-    /* Distância do topo */
-  }
-
-  .tituloindex {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #212121;
-  }
-
-  .descricao {
-    font-size: 1.3rem;
-    color: #212121;
-    margin-bottom: 20px;
-    word-wrap: break-word;
-    width: 100%;
-  }
-
-  .bodytestees {
-    background-color: #f4f4f4;
-  }
-</style>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/style.css?nocache=<?php rand(); ?>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="../js.js"></script>
   <title>Legacy</title>
-  <style>
-  </style>
 </head>
 
-<body class="">
+<?php
+// Navbar e Sidebar 
+include_once "header.php";
+//atribuir ao banco de dados
+include_once "conexao.php";
+$conexao = conectar();
+if (isset($_GET['id'])) {
+  $edicao = $_GET['id'];
+} else {
+  $resultado = mysqli_query($conexao, "SELECT * FROM torneios WHERE atual=1");
+  $ed = mysqli_fetch_assoc($resultado);
+  $edicao = $ed['id'];
+}
 
-  <?php include_once "header.php"; ?>
+?>
+<style>
+  .imgcard {
+    object-fit: cover;
+  }
+</style>
 
+<body>
+  <div id="main-content">
+    <h1> Bem-vindo ao Legacy Arena </h1>
+    <div class="rowcards">
+      <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
+      <?php
+      // Consultas para jogos e torneios
+      $sql = "SELECT * FROM jogos";
 
-  <div id="main-contentindex">
-    <div class="row">
-      <div class="col m6">
-        <h1 class="tituloindex">Bem-vindo ao Legacy Arena</h1>
+      $resultado = executarSQL($conexao, $sql);
+      $sql2 = "SELECT * FROM torneios";
+      $resultado2 = executarSQL($conexao, $sql2);
 
-        <p class="descricao">
-          O Legacy Arena oferece uma plataforma para você acompanhar os torneios do eJif.
-          Aqui você pode ver os resultados, participar das edições e torcer pela sua instituição!!
-        <div class="center-align">
-          <a href="edicao.php" class="waves-effect waves-light btn">Ver Edições</a>
+      // Exibindo os jogos na página
+      while ($jogo = mysqli_fetch_assoc($resultado)) { ?>
+        <div class="colcards s12 m4 l3"> <!-- Aqui podemos ajustar para ocupar mais ou menos espaço em telas maiores -->
+          <div class="card custom-card imgcard">
+            <div class="card-image waves-effect waves-block waves-light">
+
+            <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">
+                <img class="activator" src="imagens/<?= $jogo['imagem'] ?>" alt="Imagem do Card" height="250px">
+              </a>
+            </div>
+
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
+              <p><?php if ($jogo['id'] == 1) { ?>
+                  <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação </a>
+                  <br> <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } elseif ($jogo['id'] == 2) { ?>
+                  <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a>
+                  <br> <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } elseif ($jogo['id'] == 3) { ?>
+                  <a href="chaveamentovalo.php?id=<?= $jogo['id'] ?>"> Acessar Classificação </a>
+                  <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } ?>
+
+              </p>
+            </div>
+          </div>
         </div>
-        </p>
-
-      </div>
-
-      <div class="col m6">
-      <h1 class="tituloindex">Se torne um campeão</h1>
-        <div class="carousel">
-          <a class="carousel-item" href=""><img src="imagens/camp.png"></a>
-          <a class="carousel-item" href="#two!"><img src="imagens/camp2.jfif"></a>
-          <a class="carousel-item" href="#three!"><img src=""></a>
-          <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-          <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-        </div>
-      </div>
-
-
+      <?php  } ?>
     </div>
   </div>
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.carousel');
-      var instances = M.Carousel.init(elems, {});
-    });
-  </script>
-
 </body>
-
-</html>
