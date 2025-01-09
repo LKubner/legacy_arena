@@ -68,7 +68,7 @@ if ($idjogo === '1') {
 
 <body>
     <div id="main-content">
-    <?php include_once ('playoffscs.php') ?>
+    <?php //include_once ('playoffscs.php') ?>
         <div class="tabela-container">
             <h1>Grupos </h1>
             <?php

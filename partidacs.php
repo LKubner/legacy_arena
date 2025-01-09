@@ -11,7 +11,6 @@ if (isset($_GET['id'])) {
 }
 
 //$torneioID =   $_GET['id'];
-// Simulando dados das partidas
 $dados = "SELECT p.id_partida, 
 (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, 
 (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, 
