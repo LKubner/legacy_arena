@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Legacy</title>
 </head>
 <body>
   <h1> </h1> <br>
 <div class="theme theme-dark">
 <h1> Play-Offs </h1> 
   <div class="bracket disable-image">
+    
+
+
+  
     <div class="column one">
       <div class="match winner-top">
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">1</span>
-          <span class="name">Orlando Jetsetters</span>
+          <span class="name">Furia</span>
           <span class="score">2</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">8</span>
-          <span class="name">D.C. Senators</span>
+          <span class="name">BIG</span>
           <span class="score">1</span>
         </div>
         <div class="match-lines">
@@ -36,13 +40,13 @@
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">4</span>
-          <span class="name">New Orleans Rockstars</span>
+          <span class="name">Legacy</span>
           <span class="score">1</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">5</span>
-          <span class="name">West Virginia Runners</span>
+          <span class="name">Vitality</span>
           <span class="score">2</span>
         </div>
         <div class="match-lines">
@@ -57,13 +61,13 @@
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">2</span>
-          <span class="name">Denver Demon Horses</span>
+          <span class="name">Faze</span>
           <span class="score">2</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">7</span>
-          <span class="name">Chicago Pistons</span>
+          <span class="name">Spirit</span>
           <span class="score">0</span>
         </div>
         <div class="match-lines">
@@ -78,13 +82,13 @@
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">3</span>
-          <span class="name">San Francisco Porters</span>
+          <span class="name">Navi</span>
           <span class="score">2</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">6</span>
-          <span class="name">Seattle Climbers</span>
+          <span class="name">Liquid</span>
           <span class="score">1</span>
         </div>
         <div class="match-lines">
@@ -101,13 +105,13 @@
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">1</span>
-          <span class="name">Orlando Jetsetters</span>
+          <span class="name">Furia</span>
           <span class="score">1</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">5</span>
-          <span class="name">West Virginia Runners</span>
+          <span class="name">Vitality</span>
           <span class="score">2</span>
         </div>
         <div class="match-lines">
@@ -122,13 +126,13 @@
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">2</span>
-          <span class="name">Denver Demon Horses</span>
+          <span class="name">Faze</span>
           <span class="score">1</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">3</span>
-          <span class="name">San Francisco Porters</span>
+          <span class="name">Navi</span>
           <span class="score">2</span>
         </div>
         <div class="match-lines">
@@ -140,30 +144,54 @@
         </div>
       </div>
     </div>
+
+    
     <div class="column three">
       <div class="match winner-top">
         <div class="match-top team">
           <span class="image"></span>
           <span class="seed">5</span>
-          <span class="name">West Virginia Runners</span>
+          <span class="name">Vitality</span>
           <span class="score">3</span>
         </div>
         <div class="match-bottom team">
           <span class="image"></span>
           <span class="seed">3</span>
-          <span class="name">San Francisco Porters</span>
+          <span class="name">Liquid</span>
           <span class="score">2</span>
         </div>
         <div class="match-lines">
-          <div class="line one"></div>
-          <div class="line two"></div>
+         
+          
         </div>
         <div class="match-lines alt">
           <div class="line one"></div>
         </div>
       </div>        
     </div>
+    <div class="column four"> <!-- Terceiro Lugar -->
+  <div class="match">
+    <div class="match-top team">
+      <span class="image"></span>
+      <span class="seed">2</span>
+      <span class="name">Furia</span>
+      <span class="score">3</span>
+    </div>
+    <div class="match-bottom team">
+      <span class="image"></span>
+      <span class="seed">1</span>
+      <span class="name">Navi</span>
+      <span class="score">2</span>
+    </div>
+    
+    </div>
+    
+    </div>
   </div>
+</div>
+
+  </div>
+  
 </div>
 
 </body>
@@ -318,4 +346,17 @@
 }
 .disable-seperator .team:first-child {
   margin-bottom: 0px;
-} </style>
+} 
+
+.column.four {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+  margin-left: -264px;
+}
+.column.four .match-lines {
+  display: none; /* Não conectamos partidas adicionais */
+}
+</style>
