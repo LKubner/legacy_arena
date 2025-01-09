@@ -1,7 +1,7 @@
 <?php
 require_once "conexao.php";
 $conexao = conectar();
-include_once "header.php";
+
 
 // Consultas ao banco de dados
 $sql = "SELECT * FROM rankingvalo";

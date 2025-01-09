@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
 
       // Exibindo os jogos na página
       while ($jogo = mysqli_fetch_assoc($resultado)) { ?>
-        <div class="colcards s12 m4 l3"> <!-- Aqui podemos ajustar para ocupar mais ou menos espaço em telas maiores -->
+        <div class="colcards s12 m4 l3"> 
           <div class="card custom-card imgcard">
             <div class="card-image waves-effect waves-block waves-light">
 
@@ -59,13 +59,10 @@ if (isset($_GET['id'])) {
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
               <p><?php if ($jogo['id'] == 1) { ?>
-                  <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">Acessar Classificação </a>
-                  <br> <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                   <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 2) { ?>
-                  <a href="chaveamentolol.php?id=<?= $jogo['id'] ?>">Acessar Classificação</a>
-                  <br> <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } elseif ($jogo['id'] == 3) { ?>
-                  <a href="chaveamentovalo.php?id=<?= $jogo['id'] ?>"> Acessar Classificação </a>
+                   <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
+                <?php } elseif ($jogo['id'] == 3) { ?> <br> 
                   <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } ?>
 

@@ -6,9 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-  <h1> </h1> <br>
 <div class="theme theme-dark">
-<h1> Play-Offs </h1> 
   <div class="bracket disable-image">
     <div class="column one">
       <div class="match winner-top">
@@ -186,22 +184,14 @@
 
 <style> 
 .theme {
-
+  height: 100%;
+  width: 100%;
   position: relative;
-  justify-content: center; 
-  background-color: white;
-  margin: 0 auto;
-  height: auto; 
-  width: auto; 
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
 }
 .bracket {
-  margin-top: 100px;
-  padding: 20px; /* Reduz o espaço interno */
-  margin: 10px;  /* Reduz o espaço externo */
-  
+  padding: 40px;
+  margin: 5px;
 }
 .bracket {
   display: flex;

@@ -35,7 +35,6 @@ if (isset($_GET['id'])) {
   <div id="main-content">
     <h1> Bem-vindo ao campeonato </h1>
     <div class="row">
-      <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php
       // Consultas para jogos e torneios
       $sql = "SELECT * FROM jogos";
@@ -46,7 +45,7 @@ if (isset($_GET['id'])) {
 
       // Exibindo os jogos na página
       while ($jogo = mysqli_fetch_assoc($resultado)) { ?>
-        <div class="col s12 m4 l3"> <!-- Aqui podemos ajustar para ocupar mais ou menos espaço em telas maiores -->
+        <div class="col s12 m4 l3"> 
           <div class="card custom-card imgcard">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="imagens/<?= $jogo['imagem'] ?>" alt="Imagem do Card" height="250px">

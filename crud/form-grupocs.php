@@ -46,10 +46,6 @@ $resultado_torneios = executarSQL($conexao, $sql3);
                 Tempo total das vitórias: <input type="text" name="tempot"> <br>
             </div>
 
-            <div class="campos jogo_3">
-                Rounds Vencidos: <input type="text" name="roundv"> <br>
-                Rounds Perdidos: <input type="text" name="roundp"> <br>
-            </div>
 
             <label for="equipe">Equipe:</label>
             <select name="equipe" id="equipe">
@@ -99,11 +95,11 @@ $resultado_torneios = executarSQL($conexao, $sql3);
             campos.forEach(campo => campo.style.display = 'none');
 
             if (jogoId == 1) {
-                document.querySelector('.jogo_1').style.display = 'block'; // CS
+                document.querySelector('.jogo_1').style.display = 'block'; // CS e Valorant
             } else if (jogoId == 2) {
                 document.querySelector('.jogo_2').style.display = 'block'; // LOL
             } else if (jogoId == 3) {
-                document.querySelector('.jogo_3').style.display = 'block'; // VALORANT
+                document.querySelector('.jogo_1').style.display = 'block'; // VALORANT
             }
         }
         document.addEventListener("DOMContentLoaded", function() {

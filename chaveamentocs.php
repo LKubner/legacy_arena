@@ -68,6 +68,7 @@ if ($idjogo === '1') {
 
 <body>
     <div id="main-content">
+    <?php include_once ('playoffscs.php') ?>
         <div class="tabela-container">
             <h1>Grupos </h1>
             <?php
@@ -91,7 +92,11 @@ if ($idjogo === '1') {
                                     <th>Partidas</th>
                                     <th>Vitórias</th>
                                     <th>Derrotas</th>
-                                    <th>Dif. Round</th>
+                                    <?php if ($idjogo === '1' || $idjogo === '3'): ?>
+                                        <th>Dif. Round</th>
+                                    <?php elseif ($idjogo === '2'): ?>
+                                        <th>Tempo Médio</th>
+                                    <?php endif; ?>
                                     <th>Pontos</th>
                                 </tr>
                             </thead>
@@ -110,7 +115,11 @@ if ($idjogo === '1') {
                                 <td><?= $dados['partidas']; ?></td>
                                 <td><?= $dados['vitoria']; ?></td>
                                 <td><?= $dados['derrota']; ?></td>
-                                <td><?= $dados['dif_round']; ?></td>
+                                <?php if ($idjogo === '1' || $idjogo === '3'): ?>
+                                    <td><?= $dados['dif_round']; ?></td>
+                                <?php elseif ($idjogo === '2'): ?>
+                                    <td><?= $dados['tempo_medio_vitorias']; ?> </td>
+                                <?php endif; ?>
                                 <td><?= $dados['pontos']; ?></td>
                             </tr>
                         <?php
@@ -118,7 +127,6 @@ if ($idjogo === '1') {
                         ?>
                             </tbody>
                         </table>
-                        <a href="playoffscs.php">Acessar Play-Offs</a>
         </div>
 </body>
 

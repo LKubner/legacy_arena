@@ -7,17 +7,17 @@ $partidas = $_POST['partidas'];
 $equipe = $_POST['equipe'];
 $vitorias = $_POST['vitorias'];
 $derrotas = $_POST['derrotas'];
-// $roundven = $_POST['roundv']; //isso tmb
-// $roundperd = $_POST['roundp']; //isso tmb
-// var_dump($roundven,$roundperd);
-// die();
-// $difround = $roundven - $roundperd; //isso tmb
+if ($idjogo === '1' || $idjogo === '3'){$roundven = $_POST['roundv'];
+$roundperd = $_POST['roundp'];
+$difround = $roundven - $roundperd;
+};
 $pontos = $_POST['pontos'];
 $id_torneio = $_POST['torneios'];
 
-$tempototal = $_POST['tempot']; //arruamr pra isso aqui nao acontecer se nao for enviado
-$tempomedio = $tempototal / $partidas; //isso tmb
-
+if ($idjogo === '2') {
+    $tempototal = $_POST['tempot'];
+    $tempomedio = $tempototal / $partidas;
+}
 
 $nomeArquivo = uniqid();
 
@@ -29,7 +29,7 @@ if ($idjogo === '1') {
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php");
+        header("Location: ../admchaveamentocs.php?id=1");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
@@ -41,19 +41,19 @@ if ($idjogo === '1') {
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentolol.php");
+        header("Location: ../admchaveamentocs.php?id=2");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
     }
 } else if ($idjogo === '3') {
-    $sql = "INSERT INTO rankingcs (id_equipe, grupo, partidas, pontos, vitoria, derrota, dif_round, id_torneio, id_jogos) 
+    $sql = "INSERT INTO rankingvalo (id_equipe, grupo, partidas, pontos, vitoria, derrota, dif_round, id_torneio, id_jogos) 
     VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$difround','$id_torneio','$idjogo')";
     $resultado = executarSQL($conexao, $sql);
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php");
+        header("Location: ../admchaveamentocs.php?id=3");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
