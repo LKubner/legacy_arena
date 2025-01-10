@@ -1,6 +1,11 @@
 <?php
 include_once "conexao.php";
 $conexao = conectar();
+$dadosoitavas = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1 ";
+$dadosquartas = "";
+$dadossemis = "";
+$dadosterceiro = "";
+$dadosfinal = "";
 $dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1";
 $resultado = mysqli_query($conexao, $dados);
 
@@ -27,12 +32,6 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     <div class="bracket disable-image">
 
 
-      <?php
-
-     foreach ($variable as $key => $value) {
-      # code...
-     }
-      ?>
 
       <div class="column one">
         <div class="match winner-top">
@@ -220,8 +219,8 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 </body>
 
 </html>
-
-
+<!-- SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1; -->
+<!-- SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora AS p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1; -->
 
 
 
