@@ -285,47 +285,188 @@ $resultadofinal = executarSQL($conexao, $dadosfinal);
           }
           ?>
       </div>
-    <?php } else {
-         echo '<div class="theme theme-dark">
+    <?php } else {?>
+         <div class="theme theme-dark">
             <div class="bracket disable-image">
-                <div class="column one">
-                    <div class="match">
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                    </div>
-                    <div class="match">
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column two">
-                    <div class="match">
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                        <div class="team">
-                            <span class="name">TBD</span>
-                            <span class="score">-</span>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="match winner-top">
+              <div class="match-top team">
+                  <span class="pontuacao"> </span>
+                </span>
+
+                <span class="score"></span>
+              </div>
+              <div class="match-bottom team">
+                  <span class="pontuacao"> </span>
+                </span>
+                <span class="score"></span>
+              </div>
+              <div class="match-lines">
+                <div class="line one"></div>
+                <div class="line two"></div>
+              </div>
+              <div class="match-lines alt">
+              </div>
             </div>
-          </div>';;
- }
- ?>
+
+          </div>
+
+          <div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+<div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+<div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+<div class="bracket disable-image">
+
+<div class="match winner-top">
+  <div class="match-top team">
+      <span class="pontuacao"> </span>
+    </span>
+
+    <span class="score"></span>
+  </div>
+  <div class="match-bottom team">
+      <span class="pontuacao"> </span>
+    </span>
+    <span class="score"></span>
+  </div>
+  <div class="match-lines">
+    <div class="line one"></div>
+    <div class="line two"></div>
+  </div>
+  <div class="match-lines alt">
+  </div>
+</div>
+
+
+
+</div>
+
+          </div>
+ <?php } ?>
+ 
 
     <!--segunda coluna-->
 
