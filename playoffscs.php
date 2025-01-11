@@ -1,15 +1,234 @@
 <?php
-include_once "conexao.php";
-$conexao = conectar();
-$dadosoitavas = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1 ";
-$dadosquartas = "";
-$dadossemis = "";
-$dadosterceiro = "";
-$dadosfinal = "";
-$dados = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1";
-$resultado = mysqli_query($conexao, $dados);
+$idjogo = $_GET['id'];
 
-$mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+if ($idjogo === '1') {
+  $dadosoitavas = "  SELECT  p.id_partida, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+    p.resultado, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+    p.resultado2, 
+    p.data_hora, 
+    p.ordem_partidas, 
+    IFNULL((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase 
+FROM 
+    partidas p 
+WHERE 
+    p.id_torneio = 1 
+    AND p.ordem_partidas = 1  
+    AND p.id_jogo = 1";
+} else if ($idjogo === '2') {
+  $dadosoitavas = "  SELECT  p.id_partida, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+    p.resultado, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+    p.resultado2, 
+    p.data_hora, 
+    p.ordem_partidas, 
+    IFNULL((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase 
+FROM 
+    partidas p 
+WHERE 
+    p.id_torneio = 1 
+    AND p.ordem_partidas = 1  
+    AND p.id_jogo = 2";
+} else if ($idjogo === '3') {
+  $dadosoitavas = "  SELECT  p.id_partida, 
+  (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+  (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+  p.resultado, 
+  (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+  (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+  p.resultado2, 
+  p.data_hora, 
+  p.ordem_partidas, 
+  IFNULL((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase 
+FROM 
+  partidas p 
+WHERE 
+  p.id_torneio = 1 
+  AND p.ordem_partidas = 1  
+  AND p.id_jogo = 3";
+}
+
+if ($idjogo === '1') {
+  $dadosquartas = "SELECT 
+    p.id_partida, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+    p.resultado, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+    p.resultado2, 
+    p.data_hora, 
+    p.ordem_partidas, 
+    IFNULL((SELECT f.nome FROM fases f WHERE f.id = 2), 'Fase de Grupos') AS fase 
+FROM 
+    partidas p 
+WHERE 
+    p.id_torneio = 1 
+    AND p.ordem_partidas = 2
+     AND p.id_jogo = 1";
+} else if ($idjogo === '2') {
+  $dadosquartas = "SELECT 
+    p.id_partida, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+    p.resultado, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+    p.resultado2, 
+    p.data_hora, 
+    p.ordem_partidas, 
+    IFNULL((SELECT f.nome FROM fases f WHERE f.id = 2), 'Fase de Grupos') AS fase 
+FROM 
+    partidas p 
+WHERE 
+    p.id_torneio = 1 
+    AND p.ordem_partidas = 2
+     AND p.id_jogo = 2";
+} else if ($idjogo === '3') {
+  $dadosquartas = "SELECT 
+    p.id_partida, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, 
+    p.resultado, 
+    (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
+    (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, 
+    p.resultado2, 
+    p.data_hora, 
+    p.ordem_partidas, 
+    IFNULL((SELECT f.nome FROM fases f WHERE f.id = 2), 'Fase de Grupos') AS fase 
+FROM 
+    partidas p 
+WHERE 
+    p.id_torneio = 1 
+    AND p.ordem_partidas = 2
+     AND p.id_jogo = 3";
+}
+
+if ($idjogo === '1') {
+
+  $dadossemis = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+ foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 1";
+} else if ($idjogo === '2') {
+
+  $dadossemis = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+  AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+  foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+  nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+   foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 2";
+} else if ($idjogo === '3') {
+  $dadossemis = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+
+  AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+
+  foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+
+  nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+
+   foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
+
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 3";
+}
+
+
+
+
+
+if ($idjogo === '1') {
+  $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+
+nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+
+AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+
+nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+
+ foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
+
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 1;
+";
+} else if ($idjogo === '2') {
+  $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+
+  nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+  
+  AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+  
+  nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+  
+   foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
+  
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 2;
+  ";
+} else if ($idjogo === '3'){
+  $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
+
+nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+
+AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
+
+nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
+
+ foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
+
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 3;
+";
+}
+
+
+
+
+if($idjogo === '1'){
+$dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+ AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+ AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
+  AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
+  AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
+  IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
+   AS fase FROM partidas p
+    WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 1;";
+} else if ($idjogo === '2'){
+    $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+     AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+     AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
+      AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
+      AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
+      IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
+       AS fase FROM partidas p
+        WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 2;";
+    } else if ($idjogo === '3'){
+      $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+       AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
+       AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
+        AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
+        AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
+        IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
+         AS fase FROM partidas p
+          WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 3;";
+    }
+
+
+
+$resultadooitavas = executarSQL($conexao, $dadosoitavas);
+
+$resultadoquartas = executarSQL($conexao, $dadosquartas);
+
+$resultadosemis = executarSQL($conexao, $dadossemis);
+
+
+$resultadoterceiro = executarSQL($conexao, $dadosterceiro);
+
+$resultadofinal = executarSQL($conexao, $dadosfinal);
 ?>
 
 
@@ -28,199 +247,205 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 <body>
   <h1> </h1> <br>
   <div class="theme theme-dark">
-    <h1> Play-Offs </h1>
-    <div class="bracket disable-image">
+    <h1 class="center-align"> Play-Offs </h1>
+    <div class="bracket ">
 
 
 
       <div class="column one">
-        <div class="match winner-top">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">1</span>
-            <span class="name">Furia</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">8</span>
-            <span class="name">BIG</span>
-            <span class="score">1</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-        <div class="match winner-bottom">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">4</span>
-            <span class="name">Legacy</span>
-            <span class="score">1</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">5</span>
-            <span class="name">Vitality</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-        <div class="match winner-top">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">2</span>
-            <span class="name">Faze</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">7</span>
-            <span class="name">Spirit</span>
-            <span class="score">0</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-        <div class="match winner-top">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">3</span>
-            <span class="name">Navi</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">6</span>
-            <span class="name">Liquid</span>
-            <span class="score">1</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
+        <?php
+        if (mysqli_num_rows($resultadooitavas) > 0) {
+          while ($partidas = mysqli_fetch_assoc($resultadooitavas)) {
+        ?>
+            <div class="match winner-top">
+              <div class="match-top team">
+                <span class="image">
+                  <img src="imagens/<?= $partidas['foto_time1']; ?>" width="6%" />
+                  <span class="pontuacao"><?= $partidas['nome_equipe1']; ?> </span>
+                </span>
+
+                <span class="score"><?= $partidas['resultado']; ?></span>
+              </div>
+              <div class="match-bottom team">
+                <span class="image">
+                  <img src="imagens/<?= $partidas['foto_time2']; ?>" width="6%" />
+                  <span class="pontuacao"><?= $partidas['nome_equipe2']; ?> </span>
+                </span>
+                <span class="score"><?= $partidas['resultado2']; ?></span>
+              </div>
+              <div class="match-lines">
+                <div class="line one"></div>
+                <div class="line two"></div>
+              </div>
+              <div class="match-lines alt">
+                <div class="line one"></div>
+              </div>
+            </div>
+          <?php
+          }
+          ?>
       </div>
+    <?php } else {
+         echo '<div class="theme theme-dark">
+            <div class="bracket disable-image">
+                <div class="column one">
+                    <div class="match">
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                    </div>
+                    <div class="match">
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column two">
+                    <div class="match">
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                        <div class="team">
+                            <span class="name">TBD</span>
+                            <span class="score">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>';;
+ }
+ ?>
 
-      <!--segunda coluna-->
+    <!--segunda coluna-->
 
-      <div class="column two">
-        <div class="match winner-bottom">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">1</span>
-            <span class="name">Furia</span>
-            <span class="score">1</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">5</span>
-            <span class="name">Vitality</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-        <div class="match winner-bottom">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">2</span>
-            <span class="name">Faze</span>
-            <span class="score">1</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">3</span>
-            <span class="name">Navi</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-lines">
-            <div class="line one"></div>
-            <div class="line two"></div>
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-      </div>
+    <div class="column two">
+      <?php
+      if (mysqli_num_rows($resultadoquartas) > 0) {
+        while ($partidas = mysqli_fetch_assoc($resultadoquartas)) {
+      ?>
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time1']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe1']; ?> </span>
+              </span>
 
-      <!--terceira coluna-->
-      <div class="column three">
-        <div class="match winner-top">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">5</span>
-            <span class="name">Vitality</span>
-            <span class="score">3</span>
+              <span class="score"><?= $partidas['resultado']; ?></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time2']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe2']; ?> </span>
+              </span>
+              <span class="score"><?= $partidas['resultado2']; ?></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+              <div class="line one"></div>
+            </div>
           </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">3</span>
-            <span class="name">Liquid</span>
-            <span class="score">2</span>
-          </div>
-          <div class="match-lines">
-
-
-          </div>
-          <div class="match-lines alt">
-            <div class="line one"></div>
-          </div>
-        </div>
-      </div>
-      <div class="column four"> <!-- Terceiro Lugar -->
-        <div class="match">
-          <div class="match-top team">
-            <span class="image"></span>
-            <span class="seed">2</span>
-            <span class="name">Furia</span>
-            <span class="score">3</span>
-          </div>
-          <div class="match-bottom team">
-            <span class="image"></span>
-            <span class="seed">1</span>
-            <span class="name">Navi</span>
-            <span class="score">2</span>
-          </div>
-
-        </div>
-
-      </div>
+        <?php
+        }
+        ?>
+      <?php } else {
+        echo "";
+      } ?>
     </div>
-  </div>
+    <!--terceira coluna-->
+    <div class="column three">
+      <?php
+      if (mysqli_num_rows($resultadosemis) > 0) {
+        while ($partidas = mysqli_fetch_assoc($resultadosemis)) {
+      ?>
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time1']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe1']; ?> </span>
+              </span>
 
-  </div>
+              <span class="score"><?= $partidas['resultado']; ?></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time2']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe2']; ?> </span>
+              </span>
+              <span class="score"><?= $partidas['resultado2']; ?></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+              <div class="line one"></div>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+      <?php } else {
+        echo "<p> </p>";
+      } ?>
+    </div>
+    <div class="column five"> <!-- Final -->
+      <?php
+      if (mysqli_num_rows($resultadofinal) > 0) {
+        while ($partidas = mysqli_fetch_assoc($resultadofinal)) {
+      ?>
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time1']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe1']; ?> </span>
+              </span>
+
+              <span class="score"><?= $partidas['resultado']; ?></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="image">
+                <img src="imagens/<?= $partidas['foto_time2']; ?>" width="6%" />
+                <span class="pontuacao"><?= $partidas['nome_equipe2']; ?> </span>
+              </span>
+              <span class="score"><?= $partidas['resultado2']; ?></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+              <div class="line one"></div>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+      <?php } else {
+        echo "<p></p>";
+      } ?>
+    </div>
+
+    </div>
 
   </div>
 
 </body>
 
 </html>
-<!-- SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1; -->
-<!-- SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, p.data_hora AS p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 1), 'Fase de Grupos') AS fase FROM partidas p WHERE p.id_torneio = 1; -->
 
 
 
@@ -237,16 +462,34 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 <style>
   .theme {
-
     position: relative;
     justify-content: center;
     background-color: white;
     margin: 0 auto;
     height: auto;
     width: auto;
+
     border: 2px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    padding: 15px;
+    /* Diminui o padding */
+  }
+
+
+  @media (max-width: 768px) {
+    .theme {
+      width: 95%;
+      margin: 10px;
+    }
+  }
+
+
+  @media (max-width: 480px) {
+    .theme {
+      width: 90%;
+    }
   }
 
   .bracket {
@@ -262,6 +505,8 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     display: flex;
     flex-direction: row;
     position: relative;
+    padding: 10px;
+    /* Diminui o padding ao redor, se necessário */
   }
 
   .column {
@@ -270,6 +515,7 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     min-height: 100%;
     justify-content: space-around;
     align-content: center;
+
   }
 
   .match {
@@ -280,6 +526,10 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     max-width: 240px;
     height: 62px;
     margin: 12px 24px 12px 0;
+    min-width: 200px;
+    /* Reduz a largura das partidas */
+    height: 50px;
+    /* Reduz a altura das partidas */
   }
 
   .match .match-top {
@@ -325,7 +575,7 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
   }
 
   .match-lines .line {
-    background: red;
+    background: gray;
     position: absolute;
   }
 
@@ -406,10 +656,9 @@ $mata_mata = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
   .column.four {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 200px;
-    margin-left: -264px;
+    min-height: 100%;
+    justify-content: space-around;
+    align-content: center;
   }
 
   .column.four .match-lines {

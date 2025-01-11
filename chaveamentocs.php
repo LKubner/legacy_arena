@@ -1,9 +1,11 @@
 <?php
+
 //pegar as informações que mando via GET
 $idjogo = $_GET['id'];
 require_once "conexao.php";
 $conexao = conectar();
 include_once "header.php";
+include_once "playoffscs.php";
 if ($idjogo === '1') {
     $sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe WHERE cs.id_jogos = $idjogo ORDER BY cs.grupo";
     // Consultas ao banco de dados
@@ -68,7 +70,7 @@ if ($idjogo === '1') {
 
 <body>
     <div id="main-content">
-    <?php //include_once ('playoffscs.php') ?>
+    
         <div class="tabela-container">
             <h1>Grupos </h1>
             <?php
