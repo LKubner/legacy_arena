@@ -19,6 +19,14 @@ if ($idjogo === '2') {
     $tempomedio = $tempototal / $partidas;
 }
 
+if($idjogo === '4'){
+
+$kills = $_POST['kills']; 
+$colocacao = $_POST['ultima_colocacao']; 
+$pontos = $pontos + $kills;
+
+}
+
 $nomeArquivo = uniqid();
 
 if ($idjogo === '1') {
@@ -58,4 +66,16 @@ if ($idjogo === '1') {
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
     }
-} else  echo "Jogo não identificado"; //adicionar os outros jogos aqui
+} else if ($idjogo === '4') {
+    $sql = "INSERT INTO rankingff (id_equipe, grupo, partidas, pontos, vitoria, derrota, kills, ultima_colocacao, id_torneio, id_jogos) 
+    VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$kills','$colocacao','$id_torneio','$idjogo')";
+    $resultado = executarSQL($conexao, $sql);
+    if ($resultado) {
+
+        header("Location: ../admchaveamentocs.php?id=3");
+        exit;
+    } else {
+        echo "Erro ao registrar os dados no banco de dados.";
+    }
+} else  {
+echo "Jogo não identificado"; }

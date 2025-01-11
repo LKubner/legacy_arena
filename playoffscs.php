@@ -170,7 +170,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
   
    fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 2;
   ";
-} else if ($idjogo === '3'){
+} else if ($idjogo === '3') {
   $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
 
 nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
@@ -188,8 +188,8 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
 
 
 
-if($idjogo === '1'){
-$dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+if ($idjogo === '1') {
+  $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
  AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
  AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
   AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
@@ -197,8 +197,8 @@ $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equi
   IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
    AS fase FROM partidas p
     WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 1;";
-} else if ($idjogo === '2'){
-    $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+} else if ($idjogo === '2') {
+  $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
      AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
      AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
       AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
@@ -206,8 +206,8 @@ $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equi
       IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
        AS fase FROM partidas p
         WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 2;";
-    } else if ($idjogo === '3'){
-      $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
+} else if ($idjogo === '3') {
+  $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
        AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
        AS foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2)
         AS nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) 
@@ -215,7 +215,7 @@ $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equi
         IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
          AS fase FROM partidas p
           WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 3;";
-    }
+}
 
 
 
@@ -247,7 +247,7 @@ $resultadofinal = executarSQL($conexao, $dadosfinal);
 <body>
   <h1> </h1> <br>
   <div class="theme theme-dark">
-    <h1 class="center-align"> Play-Offs </h1>
+    <h1 class="center-align"> PLAY-OFFS </h1>
     <div class="bracket ">
 
 
@@ -285,188 +285,188 @@ $resultadofinal = executarSQL($conexao, $dadosfinal);
           }
           ?>
       </div>
-    <?php } else {?>
-         <div class="theme theme-dark">
-            <div class="bracket disable-image">
+    <?php } else { ?>
+      <div class="theme theme-dark">
+        <div class="bracket disable-image">
 
-            <div class="match winner-top">
-              <div class="match-top team">
-                  <span class="pontuacao"> </span>
-                </span>
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
 
-                <span class="score"></span>
-              </div>
-              <div class="match-bottom team">
-                  <span class="pontuacao"> </span>
-                </span>
-                <span class="score"></span>
-              </div>
-              <div class="match-lines">
-                <div class="line one"></div>
-                <div class="line two"></div>
-              </div>
-              <div class="match-lines alt">
-              </div>
+              <span class="score"></span>
             </div>
-
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
           </div>
 
-          <div class="bracket disable-image">
+        </div>
 
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
+        <div class="bracket disable-image">
 
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
 
-
-
-</div>
-
-<div class="bracket disable-image">
-
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
-
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
-
-
-
-</div>
-
-<div class="bracket disable-image">
-
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
-
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
-
-
-
-</div>
-<div class="bracket disable-image">
-
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
-
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
-
-
-
-</div>
-<div class="bracket disable-image">
-
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
-
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
-
-
-
-</div>
-<div class="bracket disable-image">
-
-<div class="match winner-top">
-  <div class="match-top team">
-      <span class="pontuacao"> </span>
-    </span>
-
-    <span class="score"></span>
-  </div>
-  <div class="match-bottom team">
-      <span class="pontuacao"> </span>
-    </span>
-    <span class="score"></span>
-  </div>
-  <div class="match-lines">
-    <div class="line one"></div>
-    <div class="line two"></div>
-  </div>
-  <div class="match-lines alt">
-  </div>
-</div>
-
-
-
-</div>
-
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
           </div>
- <?php } ?>
- 
+
+
+
+        </div>
+
+        <div class="bracket disable-image">
+
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
+
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="bracket disable-image">
+
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
+
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="bracket disable-image">
+
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
+
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="bracket disable-image">
+
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
+
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="bracket disable-image">
+
+          <div class="match winner-top">
+            <div class="match-top team">
+              <span class="pontuacao"> </span>
+              </span>
+
+              <span class="score"></span>
+            </div>
+            <div class="match-bottom team">
+              <span class="pontuacao"> </span>
+              </span>
+              <span class="score"></span>
+            </div>
+            <div class="match-lines">
+              <div class="line one"></div>
+              <div class="line two"></div>
+            </div>
+            <div class="match-lines alt">
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    <?php } ?>
+
 
     <!--segunda coluna-->
 
@@ -653,7 +653,7 @@ $resultadofinal = executarSQL($conexao, $dadosfinal);
   .column {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+
     justify-content: space-around;
     align-content: center;
 

@@ -46,6 +46,10 @@ $resultado_torneios = executarSQL($conexao, $sql3);
                 Tempo total das vitórias: <input type="text" name="tempot"> <br>
             </div>
 
+            <div class="campos jogo_4">
+                Kills: <input type="text" name="kills"> <br>
+                Colocação ultima queda: <input type="text" name="ultima_colocacao"> <br>
+            </div>
 
             <label for="equipe">Equipe:</label>
             <select name="equipe" id="equipe">
@@ -100,6 +104,8 @@ $resultado_torneios = executarSQL($conexao, $sql3);
                 document.querySelector('.jogo_2').style.display = 'block'; // LOL
             } else if (jogoId == 3) {
                 document.querySelector('.jogo_1').style.display = 'block'; // VALORANT
+            } else if (jogoId == 4) {
+                document.querySelector('.jogo_4').style.display = 'block'; // Free Fire
             }
         }
         document.addEventListener("DOMContentLoaded", function() {
