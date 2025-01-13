@@ -11,6 +11,7 @@ $sql3 = "SELECT id, nome FROM torneios";
 $resultado_torneios = executarSQL($conexao, $sql3);
 $sql4 = "SELECT id, nome FROM jogos";
 $resultado_jogos = executarSQL($conexao, $sql4);
+
 ?>
 
 <!DOCTYPE html>
