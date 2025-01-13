@@ -24,9 +24,13 @@ if($idjogo === '4'){
 $kills = $_POST['kills']; 
 $colocacao = $_POST['ultima_colocacao']; 
 $pontos = $pontos + $kills;
-
 }
+if($idjogo === '5'){
 
+    $etapa1 = $_POST['kills']; 
+    $etapa2= $_POST['ultima_colocacao']; 
+    $etapa = $pontos + $kills;
+    }
 $nomeArquivo = uniqid();
 
 if ($idjogo === '1') {
