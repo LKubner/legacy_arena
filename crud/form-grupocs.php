@@ -48,7 +48,8 @@ $resultado_torneios = executarSQL($conexao, $sql3);
 
             <div class="campos jogo_4">
                 Kills: <input type="text" name="kills"> <br>
-                Colocação ultima queda: <input type="text" name="ultima_colocacao"> <br>
+                Numero da Queda: <input type="text" name="numero_queda"> <br>
+                Colocação Queda: <input type="text" name="colocacao"> <br>
             </div>
 
             <div class="campos jogo_5">
@@ -112,8 +113,8 @@ $resultado_torneios = executarSQL($conexao, $sql3);
                 document.querySelector('.jogo_1').style.display = 'block'; // VALORANT
             } else if (jogoId == 4) {
                 document.querySelector('.jogo_4').style.display = 'block'; // Free Fire
-            } else if (jogoId === 5) {
-                document.querySelector ('.jogo_5').style.dispaly = 'block'; // Xadrez
+            } else if (jogoId == 5) {
+                document.querySelector ('.jogo_5').style.display = 'block'; // Xadrez
             }
         }
         document.addEventListener("DOMContentLoaded", function() {

@@ -109,8 +109,118 @@ if ($idjogo === '1') {
 <body>
     <div id="main-content">
 
-        ?> <div class="tabela-container">
-            <h1>Grupos </h1>
+    <div class="tabela-container">
+    <h1>Grupos </h1>
+    <?php
+    $grp = '';
+    $primeira = true;
+    while ($dados = mysqli_fetch_assoc($resultado1)) {
+        if ($grp != $dados['grupo']) {
+            $grp = $dados['grupo'];
+
+            if (!$primeira) {
+                echo "</tbody></table><br>";
+            }
+            $primeira = false;
+    ?>
+            <table border="1">
+                <table class="tabela-partidas">
+                    <thead>
+                        <tr>
+                            <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                <th>Grupo <?= $dados['grupo']; ?></th>
+                            <?php endif; ?>
+                            <th>Nome</th>
+                            <?php if ($idjogo === '5'): ?>
+                                <th> Nick </th>
+                            <?php endif; ?>
+
+                            <th>Partidas</th>
+                            <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                <th>Vitórias</th>
+                                <th>Derrotas</th>
+                            <?php endif; ?>
+                            <?php if ($idjogo === '1' || $idjogo === '3'): ?>
+                                <th>Dif. Round</th>
+                            <?php elseif ($idjogo === '2'): ?>
+                                <th>Tempo Médio</th>
+                            <?php elseif ($idjogo  === '4'): ?>
+                                <th> Kills </th>
+                                <th> Queda </th>
+                                <th> Colocação </th>
+                            <?php elseif ($idjogo  === '5'): ?>
+                                <th> Etapa 1 </th>
+                                <th> Etapa 2 </th>
+                                <th> Etapa 3 </th>
+                            <?php endif; ?>
+                            <th>Pontos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                }
+
+                $foto_time = 'imagens/' . (isset($dados['foto_time']) ? $dados['foto_time'] : 'default.png');
+                if (!file_exists($foto_time)) {
+                    $foto_time = 'imagens/default.png'; // Caminho para uma imagem padrão se a imagem não for encontrada
+                }
+                ?>
+                <tr>
+                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                        <td><img src="<?= $foto_time; ?>" alt="foto do time" style="width:32px;height:28px;"></td>
+                    <?php endif ?>
+                    <td><?= $dados['nome']; ?></td>
+                    <?php if ($idjogo  === '5'): ?>
+                        <td><?= $dados['nickname'] ?></td>
+                    <?php endif; ?>
+                    <td><?= $dados['partidas']; ?></td>
+                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                        <td><?= $dados['vitoria']; ?></td>
+                        <td><?= $dados['derrota']; ?></td>
+                    <?php endif; ?>
+                    <?php if ($idjogo === '1' || $idjogo === '3'): ?>
+                        <td><?= $dados['dif_round']; ?></td>
+                    <?php elseif ($idjogo === '2'): ?>
+                        <td><?= $dados['tempo_medio_vitorias']; ?> </td>
+                    <?php elseif ($idjogo  === '4'): ?>
+                        <td><?= $dados['kills']; ?> </td>
+                       
+                       <td> 
+                        <?php 
+                                if($dados['numero_queda'] > 0) {
+                            for($i = 1; $i<= $dados['numero_queda']; $i++ ){
+                                echo "Queda $i"; //  Numero de quedas vai ficar atrelaçado com o numero do indice
+                                if ($i < $dados['numero_queda']) {
+                                    echo " | ";  //separar com um pipe
+                                }
+                            }
+                                } else {
+                                    echo "Nenhuma Queda";
+                                }
+                        
+                        ?>
+                         <td><?= $dados['pontos']; ?> </td>
+                    <?php elseif ($idjogo  === '5'): ?>
+                        <td><?= $dados['pontose1']; ?> </td>
+                        <td><?= $dados['pontose2']; ?> </td>
+                        <td><?= $dados['pontose3']; ?> </td>
+                    <?php endif; ?>
+                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                        <td><?= $dados['pontos']; ?></td>
+                    <?php endif ?>
+                </tr>
+
+                <?php
+            }
+            ?>
+                    </tbody>
+                </table>
+</div>
+
+        <?php if($idjogo === '4') {  ?>
+            <div class="tabela-container">
+           
+            <h1>Grupo Final </h1>
             <?php
             $grp = '';
             $primeira = true;
@@ -127,14 +237,14 @@ if ($idjogo === '1') {
                         <table class="tabela-partidas">
                             <thead>
                                 <tr>
-                                <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
-                                    <th>Grupo <?= $dados['grupo']; ?></th>
-                                    <?php endif;?>
+                                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                        <th>Grupo <?= $dados['grupo']; ?></th>
+                                    <?php endif; ?>
                                     <th>Nome</th>
                                     <?php if ($idjogo === '5'): ?>
                                         <th> Nick </th>
-                                        <?php endif; ?>
-                                
+                                    <?php endif; ?>
+
                                     <th>Partidas</th>
                                     <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
                                         <th>Vitórias</th>
@@ -146,12 +256,13 @@ if ($idjogo === '1') {
                                         <th>Tempo Médio</th>
                                     <?php elseif ($idjogo  === '4'): ?>
                                         <th> Kills </th>
-                                        <th> P.Ultima Queda </th>
+                                        <th> Queda </th>
+                                        <th> Posição </th>
                                     <?php elseif ($idjogo  === '5'): ?>
                                         <th> Etapa 1 </th>
                                         <th> Etapa 2 </th>
                                         <th> Etapa 3 </th>
-                                       
+
                                     <?php endif; ?>
                                     <th>Pontos</th>
                                 </tr>
@@ -166,43 +277,46 @@ if ($idjogo === '1') {
                         }
                             ?>
                             <tr>
-                            <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
-                                <td><img src="<?= $foto_time; ?>" alt="foto do time" style="width:32px;height:28px;"></td>
-                            <?php endif ?>
-                                <td><?= $dados['nome']; ?></td>
-                                <?php if($idjogo  === '5'): ?>
-                                <td><?= $dados['nickname'] ?></th>
-                                <?php endif; ?>
-                                <td><?= $dados['partidas']; ?></td>
                                 <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
-                                <td><?= $dados['vitoria']; ?></td>
-                                <td><?= $dados['derrota']; ?></td>
-                                <?php endif;?>
-                                <?php if ($idjogo === '1' || $idjogo === '3'): ?>
-                                    <td><?= $dados['dif_round']; ?></td>
-                                <?php elseif ($idjogo === '2'): ?>
-                                    <td><?= $dados['tempo_medio_vitorias']; ?> </td>
-                                <?php elseif ($idjogo  === '4'): ?>
-                                    <td><?= $dados['kills']; ?> </td>
-                                    <td><?= $dados['ultima_colocacao']; ?> </td>
-                                <?php elseif ($idjogo  === '5'): ?>
-                                    <td><?= $dados['pontose1']; ?> </td>
-                                    <td><?= $dados['pontose2']; ?> </td>
-                                    <td><?= $dados['pontose3']; ?> </td>
-                                    <td><?= $dados['pontosT']; ?> </td>
-                                <?php endif; ?>
-                                <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
-                                <td><?= $dados['pontos']; ?></td>
+                                    <td><img src="<?= $foto_time; ?>" alt="foto do time" style="width:32px;height:28px;"></td>
                                 <?php endif ?>
+                                <td><?= $dados['nome']; ?></td>
+                                <?php if ($idjogo  === '5'): ?>
+                                    <td><?= $dados['nickname'] ?></th>
+                                    <?php endif; ?>
+                                    <td><?= $dados['partidas']; ?></td>
+                                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                        <td><?= $dados['vitoria']; ?></td>
+                                        <td><?= $dados['derrota']; ?></td>
+                                    <?php endif; ?>
+                                    <?php if ($idjogo === '1' || $idjogo === '3'): ?>
+                                        <td><?= $dados['dif_round']; ?></td>
+                                    <?php elseif ($idjogo === '2'): ?>
+                                        <td><?= $dados['tempo_medio_vitorias']; ?> </td>
+                                    <?php elseif ($idjogo  === '4'): ?>
+                                        <td><?= $dados['kills']; ?> </td>
+                                        <td><?= $dados['colocacao']; ?> </td>
+                                    <?php elseif ($idjogo  === '5'): ?>
+                                        <td><?= $dados['pontose1']; ?> </td>
+                                        <td><?= $dados['pontose2']; ?> </td>
+                                        <td><?= $dados['pontose3']; ?> </td>
+                                        <td><?= $dados['pontosT']; ?> </td>
+                                    <?php endif; ?>
+                                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                        <td><?= $dados['pontos']; ?></td>
+                                    <?php endif ?>
                             </tr>
                         <?php
                     }
+                    
                         ?>
+                        
                             </tbody>
                         </table>
-        </div>
 
-
+                   
+            </div>
+ <?php  } ?>
 
 
 </body>

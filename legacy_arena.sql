@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 13-Jan-2025 às 02:07
+-- Tempo de geração: 14-Jan-2025 às 03:29
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -322,7 +322,8 @@ CREATE TABLE IF NOT EXISTS `rankingff` (
   `vitoria` int NOT NULL,
   `derrota` int NOT NULL,
   `kills` int NOT NULL,
-  `ultima_colocacao` int NOT NULL,
+  `numero_queda` int NOT NULL,
+  `posicao_queda` int NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   `id_torneio` int NOT NULL,
   `id_jogos` int NOT NULL,
@@ -336,19 +337,19 @@ CREATE TABLE IF NOT EXISTS `rankingff` (
 -- Extraindo dados da tabela `rankingff`
 --
 
-INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `kills`, `ultima_colocacao`, `id`, `id_torneio`, `id_jogos`) VALUES
-('A', 89, 5, 10, 2, 3, 20, 4, 3, 1, 4),
-('A', 90, 5, 12, 3, 2, 25, 3, 4, 1, 4),
-('A', 91, 5, 9, 2, 3, 18, 5, 5, 1, 4),
-('A', 92, 5, 8, 1, 4, 15, 6, 6, 1, 4),
-('A', 93, 5, 11, 3, 2, 22, 2, 7, 1, 4),
-('A', 94, 5, 7, 1, 4, 14, 7, 8, 1, 4),
-('B', 95, 5, 10, 2, 3, 21, 4, 9, 1, 4),
-('B', 96, 5, 14, 4, 1, 30, 1, 10, 1, 4),
-('B', 97, 5, 9, 2, 3, 18, 5, 11, 1, 4),
-('B', 98, 5, 8, 1, 4, 16, 6, 12, 1, 4),
-('B', 99, 5, 13, 4, 1, 28, 2, 13, 1, 4),
-('B', 100, 5, 10, 2, 3, 20, 3, 14, 1, 4);
+INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `kills`, `numero_queda`, `posicao_queda`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 89, 5, 10, 2, 3, 20, 1, 2, 3, 1, 4),
+('A', 90, 5, 12, 3, 2, 25, 0, 0, 4, 1, 4),
+('A', 91, 5, 9, 2, 3, 18, 0, 0, 5, 1, 4),
+('A', 92, 5, 8, 1, 4, 15, 0, 0, 6, 1, 4),
+('A', 93, 5, 11, 3, 2, 22, 0, 0, 7, 1, 4),
+('A', 94, 5, 7, 1, 4, 14, 0, 0, 8, 1, 4),
+('B', 95, 5, 10, 2, 3, 21, 0, 0, 9, 1, 4),
+('B', 96, 5, 14, 4, 1, 30, 0, 0, 10, 1, 4),
+('B', 97, 5, 9, 2, 3, 18, 0, 0, 11, 1, 4),
+('B', 98, 5, 8, 1, 4, 16, 0, 0, 12, 1, 4),
+('B', 99, 5, 13, 4, 1, 28, 0, 0, 13, 1, 4),
+('B', 100, 5, 10, 2, 3, 20, 0, 0, 14, 1, 4);
 
 -- --------------------------------------------------------
 
