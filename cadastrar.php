@@ -8,7 +8,7 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 $hash = password_hash($senha,PASSWORD_ARGON2I);
 //Tem que armazenar a senha de modo seguro depois
-$sql = "INSERT INTO usuario (nome,email,senha,nivel) VALUES ('$nome','$email','$hash','1')";
+$sql = "INSERT INTO administrador (nome,email,senha) VALUES ('$nome','$email','$hash')";
 $resultado = mysqli_query($conexao, $sql);
 if ($resultado === false) {
         if(mysqli_errno($conexao) == 1062){

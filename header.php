@@ -15,11 +15,11 @@
   </nav>
 </div>
 <div id="sidenav">
-  <a href="cs.php"> <img class="cs" src="imagens/cs2.png"> </a>
-  <a href="lol.php"> <img class="cs" src="imagens/lol.png"> </a>
-  <a href="xadrez.php"> <img class="cs" src="imagens/lichess.png"> </a>
-  <a href="freefire.php"> <img class="cs" src="imagens/freefire.png"> </a>
-  <a href="valorant.php"> <img class="cs" src="imagens/valorant.png"> </a>
+<a href="cs.php"> <img class="cs" src="./imagens/cs2.png"> </a>
+<a href="lol.php"> <img class="cs" src="./imagens/lol.png"> </a>
+<a href="xadrez.php"> <img class="cs" src="./imagens/lichess.png"> </a>
+<a href="freefire.php"> <img class="cs" src="./imagens/freefire.png"> </a>
+<a href="valorant.php"> <img class="cs" src="./imagens/valorant.png"> </a>
 </div>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">

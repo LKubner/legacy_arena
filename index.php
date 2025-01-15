@@ -71,6 +71,12 @@ if (isset($_GET['id'])) {
           </div>
         </div>
       <?php  } ?>
+      <div class="row">
+  <div class="col s12 center-align">
+    <p>É um administrador? <a href="form-login.php">Acesse aqui!</a></p>
+  </div>
+</div>
+
     </div>
   </div>
 </body>

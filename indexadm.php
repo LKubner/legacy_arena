@@ -1,25 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="../js.js"></script>
-  <title>Legacy</title>
-</head>
-<body class= "testebodyindex">
-  <?php
-  // Navbar e Sidebar 
-  include_once "header.php";
-  ?>
- <div id="main-content">
-    <h1 class="titulo">Bem-vindo ao Legacy Arena</h1>
-    <h2> Admininstrador </h2>
- 
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  
+  <style>
+    /* tamanho da fonte */
+    .input-field label {
+      font-size: 16px !important;
+      /* Forçando o tamanho com !important */
+    }
+
+
+
+    /* cor label focus  */
+    .input-field input:focus+label {
+      color: black !important;
+    }
+
+    /* cor label underline focus  */
+    .row .input-field input:focus {
+      border-bottom: 1px solid black !important;
+      box-shadow: 0 1px 0 0 black !important
+    }
+
+    .material-icons {
+      color: black !important;
+    }
+
+    .material-icons.active {
+      color: black !important;
+    }
+
+    /* cor checkbox */
+    .checkbox-black[type="checkbox"].filled-in:checked+span:not(.lever):after {
+      border: 2px solid #607d8b;
+      background-color: #607d8b;
+    }
+
+    /* cores do radio */
+    [type="radio"]:checked+span:after,
+    [type="radio"].with-gap:checked+span:after {
+      background-color: black;
+    }
+
+    [type="radio"]:checked+span:after,
+    [type="radio"].with-gap:checked+span:before,
+    [type="radio"].with-gap:checked+span:after {
+      border: 2px solid black;
+    }
+
+    /*cores do select */
+    ul.dropdown-content li>a,
+    ul.dropdown-content li>span {
+      color: #000000;
+      /* Cor do texto das opções */
+      /* background-color: #f1f1f1;  Cor de fundo das opções */
+    }
+
+
+    /* Altera a cor do fundo do cabeçalho do Datepicker */
+    .datepicker-date-display {
+      background-color: #00aaff;
+      /* Cor do cabeçalho */
+    }
+
+    /* Altera a cor do texto da data selecionada no cabeçalho */
+    .datepicker-date-display .year-text,
+    .datepicker-date-display .date-text {
+      color: #fff;
+      /* Cor do texto da data no cabeçalho */
+    }
+
+    /* Altera a cor dos dias do calendário */
+    .datepicker-table td div {
+      color: #333;
+      /* Cor dos dias */
+    }
+
+    /* Altera a cor de fundo dos dias ao passar o mouse */
+    .datepicker-table td div:hover {
+      background-color: #ffcc00;
+      /* Cor de fundo ao passar o mouse */
+      color: #fff;
+    }
+
+    /* Altera a cor do dia selecionado */
+    .is-selected {
+      background-color: #00aaff;
+      /* Cor de fundo do dia selecionado */
+      color: #fff;
+      /* Cor do texto do dia selecionado */
+    }
+
+    /* Altera a cor dos botões de navegação (próximo e anterior) */
+    .datepicker-controls .datepicker-prev,
+    .datepicker-controls .datepicker-next {
+      color: #00aaff;
+      /* Cor das setas de navegação */
+    }
+  </style>
+
+</head>
+
+<body id="main-content">
+  <?php
+  include_once "header.php";
+  require_once "conexao.php";
+  $conexao = conectar();
+  $sql = "SELECT id, nome FROM jogos";
+  $resultado = executarSQL($conexao, $sql);
+  ?>
+  <main class="container">
+
+    <br>
+    <h1 class="center-align"> Cadastrar Equipe </h1>
+    <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+    <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+
+
+
+
+    <form action="crud/equipecs.php" method="get">
+
+    
+      <div class="card-panel">
+
+
+
+
+      <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix"> face</i>
+            <label> Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time">  </label> <br>
+          </div>
+
+
+        
+
+          <div class="input-field col s12">
+            <i class="material-icons prefix"> perm_identity</i>
+            <input id="equipe" type="text" class="validate" name="equipe" required>
+            <label for="equipe">Nome Equipe</label>
+         
+          </div>
+
+          <label for="jogo">Jogo da Equipe:</label> 
+        <select name="jogo" id="jogo"class="browser-default">
+            <?php
+            while($retorno = mysqli_fetch_assoc($resultado)){
+                echo '<option value="' . $retorno["id"] . '">' . $retorno["nome"] . '</option>';
+            };
+            ?>
+
+        </select> 
+
+        <div class="row"> 
+  <div class="col s12">   
+    <p class="center-align">  
+        <button class="btn waves-effect waves-light brown  lighten-3" type="submit" name="action">Enviar
+    <i class="material-icons right">send</i> </button>
+  </p>
 </div>
+</div>
+
+    </form>
+
+
+
+
+  </main>
+
+
 </body>
 
 </html>
