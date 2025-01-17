@@ -29,6 +29,7 @@ $resultado = executarSQL($conexao, $sql);
             };
             ?>
 
+
         </select> 
             <br> <input type="submit"> Enviar </input>
 </body>

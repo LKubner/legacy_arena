@@ -116,6 +116,11 @@
   $conexao = conectar();
   $sql = "SELECT id, nome FROM jogos";
   $resultado = executarSQL($conexao, $sql);
+  $sqlequipes = "SELECT e.id_equipe, e.nome AS nome, e.foto_time, j.nome AS jogo 
+               FROM equipe e
+               JOIN jogos j ON e.id_jogo = j.id"; // listar equipes
+  $resultado2 = executarSQL($conexao, $sqlequipes);
+  
   ?>
   <main class="container">
 
@@ -163,6 +168,8 @@
 
         </select> 
 
+      
+
         <div class="row"> 
   <div class="col s12">   
     <p class="center-align">  
@@ -173,8 +180,52 @@
 </div>
 
     </form>
+    <p class="center-align">Equipes Cadastradas</p>
+    <table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Equipe</th>
+                <th>Jogo</th>
+                <th>Alterar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+          <?php
+        while ($equipe = mysqli_fetch_assoc($resultado2)) {
+    echo '<tr>';
+ 
+    echo '<td>';
+    if (isset($equipe['foto_time']) && !empty($equipe['foto_time'])) {
+        echo '<img src="imagens/' . $equipe['foto_time'] . '" alt="Foto da equipe" style="width: 40px; height: 40px;">';
+    } else {
+        echo 'Sem foto';
+    }
+    echo '</td>';
 
+    // Exibe o nome da equipe
+    echo '<td>' . $equipe['nome'] . '</td>';
 
+    // Exibe o nome do jogo
+    echo '<td>' . $equipe['jogo'] . '</td>';
+
+    echo '<td> <a href="alterar.php"> <i class="material-icons">build</i> </a> </td>';
+    
+    echo '<td><i class="material-icons">clear</i></td>';
+
+    echo '</tr>';
+}
+
+if (mysqli_num_rows($resultado) == 0) {
+    // Caso não haja equipes cadastradas, exibe uma mensagem
+    echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
+}
+?>
+                </tr>
+            <?php ?>
+        </tbody>
+    </table>
 
 
   </main>

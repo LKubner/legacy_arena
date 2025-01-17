@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
 
 <body>
   <div id="main-content">
-    <h1> Bem-vindo ao Legacy Arena </h1>
+    <h1 class="center-align"> Bem-vindo ao Legacy Arena </h1>
     <div class="rowcards">
       <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php
@@ -57,12 +57,12 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?> <i class="material-icons right">more_vert</i></span>
+              <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?></span>
               <p><?php if ($jogo['id'] == 1) { ?>
                    <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 2) { ?>
                    <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } elseif ($jogo['id'] == 3) { ?> <br> 
+                <?php } elseif ($jogo['id'] == 3) { ?> 
                   <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } ?>
 
