@@ -4,6 +4,7 @@ $conexao = conectar();
 
 $equipe = $_POST['equipe'];
 $jogo = $_POST['jogo'];
+
 //UPLOAD DA IMAGEM
 $pastaDestino = "../imagens/";
 
@@ -22,7 +23,6 @@ if (
     $extensao != "jfif" && $extensao != "svg"
 ) {
     echo "O arquivo não é uma imagem! Apenas selecione arquivos com extensão png, jpg, jpeg, gif, jfif ou svg.";
-    die();
 }
 
 // verificar se é uma imagem de fato

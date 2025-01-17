@@ -1,7 +1,7 @@
 <?php
 require_once "../conexao.php";
 $conexao = conectar();
-require_once "../header.php";
+require_once "header.php";
 // Consulta para pegar todas as equipes
 $sql = "SELECT id_equipe, nome FROM equipe";
 $resultado_equipes = executarSQL($conexao, $sql);

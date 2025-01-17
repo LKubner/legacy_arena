@@ -134,7 +134,7 @@
 
 
 
-    <form action="crud/equipecs.php" method="get">
+    <form action="crud/equipecs.php" method="POST" enctype="multipart/form-data">
 
     
       <div class="card-panel">
@@ -153,8 +153,9 @@
 
           <div class="input-field col s12">
             <i class="material-icons prefix"> perm_identity</i>
-            <input id="equipe" type="text" class="validate" name="equipe" required>
-            <label for="equipe">Nome Equipe</label>
+            
+            <input id="equipe" type="text" placeholder="Nome equipe" class="validate" name="equipe" required>
+
          
           </div>
 
@@ -210,7 +211,7 @@
     // Exibe o nome do jogo
     echo '<td>' . $equipe['jogo'] . '</td>';
 
-    echo '<td> <a href="alterar.php"> <i class="material-icons">build</i> </a> </td>';
+    echo '<td> <a href="alterar.php"> <i class="material-icons">edit</i> </a> </td>';
     
     echo '<td><i class="material-icons">clear</i></td>';
 
