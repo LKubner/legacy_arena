@@ -211,7 +211,7 @@
     // Exibe o nome do jogo
     echo '<td>' . $equipe['jogo'] . '</td>';
 
-    echo '<td> <a href="alterar.php"> <i class="material-icons">edit</i> </a> </td>';
+    echo '<td> <a href="crud/alterarequipe.php?foto_time='.$equipe['foto_time']. '"> <i class="material-icons">edit</i> </a> </td>';
     
     echo '<td><i class="material-icons">clear</i></td>';
 

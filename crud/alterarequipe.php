@@ -1,5 +1,5 @@
 <?php
-$nome_arquivo = $_GET['nome_arquivo'];
+$foto_time = $_GET['foto_time'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -12,8 +12,8 @@ $nome_arquivo = $_GET['nome_arquivo'];
 
 <body>
     <form action="upload.php" method="post" enctype="multipart/form-data">
-        Alterando o arquivo <?= $nome_arquivo ?>:<br>
-        <input type="hidden" name="nome_arquivo" value="<?= $nome_arquivo ?>">
+        Alterando o arquivo <?= $foto_time ?>:<br>
+        <input type="hidden" name="nome_arquivo" value="<?= $foto_time ?>">
         <input type="file" name="arquivo"><br>
         <input type="submit" value="Enviar">
     </form>
