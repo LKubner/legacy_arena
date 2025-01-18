@@ -2,16 +2,19 @@
 
 //pegar as informações que mando via GET
 $idjogo = $_GET['id'];
+$edicao = $_GET['edicao'];
+
+
 require_once "conexao.php";
 $conexao = conectar();
-include_once "header.php";
+require_once "header.php";
 if (in_array($idjogo, [1, 2, 3])) {
     include_once "playoffscs.php";
 }
 
 
 if ($idjogo === '1') {
-    $sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe WHERE cs.id_jogos = $idjogo ORDER BY cs.grupo, cs.pontos DESC";
+    $sql2 = "SELECT cs.*, eq.nome, eq.foto_time FROM rankingcs cs INNER JOIN equipe eq ON cs.id_equipe = eq.id_equipe WHERE cs.id_jogos = $idjogo And id_torneio = $edicao ORDER BY cs.grupo, cs.pontos DESC";
     // Consultas ao banco de dados
     $sql = "SELECT * FROM rankingcs";
     $resultado = executarSQL($conexao, $sql);
@@ -28,7 +31,7 @@ if ($idjogo === '1') {
     $sql2 = "SELECT lol.*, eq.nome, eq.foto_time
              FROM rankinglol lol
              INNER JOIN equipe eq ON lol.id_equipe = eq.id_equipe
-             WHERE lol.id_jogos = 2
+             WHERE lol.id_jogos = 2 And id_torneio = $edicao
              ORDER BY lol.grupo, lol.pontos DESC";
     // Consultas ao banco de dados
     $sql = "SELECT * FROM rankinglol";
@@ -46,7 +49,7 @@ if ($idjogo === '1') {
     $sql2 = "SELECT val.*, eq.nome, eq.foto_time
      FROM rankingvalo val
      INNER JOIN equipe eq ON val.id_equipe = eq.id_equipe
-     WHERE val.id_jogos = 3
+     WHERE val.id_jogos = 3 And id_torneio = $edicao
      ORDER BY val.grupo, val.pontos DESC";
     // Consultas ao banco de dados
     $sql = "SELECT * FROM rankingvalo";
@@ -63,7 +66,7 @@ if ($idjogo === '1') {
     $sql2 = "SELECT ff.*, eq.nome, eq.foto_time
     FROM rankingff ff
     INNER JOIN equipe eq ON ff.id_equipe = eq.id_equipe
-    WHERE ff.id_jogos = 4
+    WHERE ff.id_jogos = 4 And id_torneio = $edicao
     ORDER BY ff.grupo, ff.pontos DESC;";
     // Consultas ao banco de dados
     $sql = "SELECT * FROM rankingff";
@@ -80,8 +83,8 @@ if ($idjogo === '1') {
     $sql2 = "SELECT chess.*, at.nome, at.nickname
     FROM rankingxadrez chess
     INNER JOIN atleta at ON chess.id_atleta = at.id
-    WHERE chess.id_jogos = 5
-    ORDER BY chess.grupo, chess.pontosT DESC;";
+    WHERE chess.id_jogos = 5 And id_torneio = $edicao
+    ORDER BY chess.grupo, chess.pontosT DESC";
     // Consultas ao banco de dados
     $sql = "SELECT * FROM rankingxadrez";
     $resultado = executarSQL($conexao, $sql);

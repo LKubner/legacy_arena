@@ -217,7 +217,7 @@
           </a> 
       </td>';
 
-          echo '<td><i class="material-icons">clear</i></td>';
+      echo '<td> <a href="crud/excluirequipe.php?foto_time=' . urlencode($equipe['foto_time']) . '"> <i class="material-icons">clear</i> </a> </td>';
 
           echo '</tr>';
         }

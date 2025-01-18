@@ -140,10 +140,11 @@ $resultado8 = executarSQL($conexao, $sql8);
 
 <body id="main-content">
   <main class="container">
-    <br> <br> <br>
+  <h1 class="center-align"> Cadastrar Grupo </h1>
+
     <div class="card-panel">
       <form action="grupocs.php" method="post" enctype="multipart/form-data">
-        <h1 class="center-align"> Cadastrar Grupo </h1>
+       
         <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
         <a href="form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
         <a href="form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>

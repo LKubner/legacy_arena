@@ -11,45 +11,44 @@
 <?php
 // atribuir ao banco de dados
 include_once "conexao.php";
-$sql = "SELECT * FROM torneios WHERE atual=1";
+$sql = "SELECT id as id_edicao, nome, descricao,atual FROM torneios";
 $conexao = conectar();
-$resultado = executarSQL($conexao,$sql);
+$resultado = executarSQL($conexao, $sql);
 
 ?>
+
 <body class="bodyedicao">
   <?php
   // Navbar e Sidebar 
   include_once "header.php";
- 
+
   ?>
 
 
   <div id="main-content">
-    <h1 class="tituloedicao">Campeonatos Disponíveis</h1>
+    <h1 class="tituloedicao center-align">Campeonatos Disponíveis</h1>
 
     <!-- Seção de Campeonatos -->
     <div class="campeonatos-container">
       <!-- Exemplo de campeonato -->
-      <div class="campeonato-card">
-        <img src="imagens/iffar.jfif" alt="Campeonato 2" class="campeonato-img">
-        <h3 class="campeonato-nome">eJIF 2024</h3>
-        <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
-        <?php  while ($edicao = mysqli_fetch_assoc($resultado)) {
-        echo '<a href="chaveamentocs.php?id=' . $edicao["id"] . '"> <button class="inscrever-btn"> Campeonato</button></a>'; }?>
-        
-      </div>
+      <?php
+      while ($edicao  = mysqli_fetch_assoc($resultado)) { ?>
 
-      <div class="campeonato-card">
-        <img src="imagens/iffar.jfif" alt="Campeonato 2" class="campeonato-img">
-        <h3 class="campeonato-nome">eJIF 2025</h3>
-        <p class="campeonato-descricao">Descrição breve do campeonato XYZ.</p>
-        <a href="campeonatoteste.php?ano=2025"> <button class="inscrever-btn"> Campeonato</button>
-        
-      </div>
-    
-      <!-- Adicione mais campeonatos conforme necessário -->
+        <div class="campeonato-card">
+          <img src="imagens/iffar.jfif" alt="Campeonato " class="campeonato-img">
+          <h3 class="campeonato-nome"><?= $edicao['nome'] ?> </h3>
+          <p class="campeonato-descricao"><?= $edicao['descricao'] ?></p>
+          <a href="index.php?id_edicao=<?= $edicao["id_edicao"] ?>">
+            <button class="inscrever-btn">Acessar Campeonato</button>
+          </a>
+
+        </div>
+
+      <?php }; ?>
+
     </div>
   </div>
+
 
 </body>
 

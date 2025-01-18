@@ -36,10 +36,10 @@ $resultado_partidas = executarSQL($conexao,$sql5);
   
     <main class="container">
         
-    <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+    <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
     <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
 
 
         <div class="card-panel" style="width:100%;">
@@ -169,7 +169,7 @@ $resultado_partidas = executarSQL($conexao,$sql5);
 
     echo '<td> <a href="crud/alterarequipe.php"> <i class="material-icons">edit</i> </a> </td>';
     
-    echo '<td><i class="material-icons">clear</i></td>';
+    echo '<td> <a href="crud/alterarequipe.php"> <i class="material-icons">clear</i> </a> </td>';
 
     echo '</tr>';
 }

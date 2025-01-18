@@ -17,12 +17,13 @@ include_once "header.php";
 //atribuir ao banco de dados
 include_once "conexao.php";
 $conexao = conectar();
-if (isset($_GET['id'])) {
-  $edicao = $_GET['id'];
+if (isset($_GET['id_edicao'])) {
+  $edicao = $_GET['id_edicao'];
+  $resultado = mysqli_query($conexao, "SELECT * FROM torneios where id=$edicao");
 } else {
   $resultado = mysqli_query($conexao, "SELECT * FROM torneios WHERE atual=1");
   $ed = mysqli_fetch_assoc($resultado);
-  $edicao = $ed['id'];
+  $edicao = $ed['id']; 
 }
 
 ?>
@@ -36,7 +37,6 @@ if (isset($_GET['id'])) {
   <div id="main-content">
     <h1 class="center-align"> Bem-vindo ao Legacy Arena </h1>
     <div class="rowcards">
-      <!-- Alterado para garantir que todos os cards fiquem na mesma linha -->
       <?php
       // Consultas para jogos e torneios
       $sql = "SELECT * FROM jogos";
@@ -50,33 +50,33 @@ if (isset($_GET['id'])) {
         <div class="colcards s12 m4 l3"> 
           <div class="card custom-card imgcard">
             <div class="card-image waves-effect waves-block waves-light">
-
-            <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>">
+              <!-- Corrigido a passagem do parâmetro edicao -->
+              <a href="chaveamentocs.php?id=<?= $jogo['id'] ?>&edicao=<?= $edicao ?>">
                 <img class="activator" src="imagens/<?= $jogo['imagem'] ?>" alt="Imagem do Card" height="250px">
               </a>
             </div>
 
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?></span>
-              <p><?php if ($jogo['id'] == 1) { ?>
+              <p>
+                <?php if ($jogo['id'] == 1) { ?>
                    <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 2) { ?>
                    <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 3) { ?> 
                   <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } ?>
-
               </p>
             </div>
           </div>
         </div>
       <?php  } ?>
       <div class="row">
-  <div class="col s12 center-align">
-    <p>É um administrador? <a href="form-login.php">Acesse aqui!</a></p>
-  </div>
-</div>
-
+        <div class="col s12 center-align">
+          <p>É um administrador? <a href="form-login.php">Acesse aqui!</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </body>
+</html>

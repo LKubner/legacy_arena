@@ -1,6 +1,6 @@
 <?php
 $idjogo = $_GET['id'];
-
+$edicao = $_GET['edicao'];
 if ($idjogo === '1') {
   $dadosoitavas = "  SELECT  p.id_partida, 
     (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
@@ -17,7 +17,9 @@ FROM
 WHERE 
     p.id_torneio = 1 
     AND p.ordem_partidas = 1  
-    AND p.id_jogo = 1";
+    AND p.id_jogo = 1
+    And id_torneio = $edicao";
+    
 } else if ($idjogo === '2') {
   $dadosoitavas = "  SELECT  p.id_partida, 
     (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
@@ -34,7 +36,8 @@ FROM
 WHERE 
     p.id_torneio = 1 
     AND p.ordem_partidas = 1  
-    AND p.id_jogo = 2";
+    AND p.id_jogo = 2
+    And id_torneio = $edicao";
 } else if ($idjogo === '3') {
   $dadosoitavas = "  SELECT  p.id_partida, 
   (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS nome_equipe1,
@@ -51,7 +54,8 @@ FROM
 WHERE 
   p.id_torneio = 1 
   AND p.ordem_partidas = 1  
-  AND p.id_jogo = 3";
+  AND p.id_jogo = 3
+  And id_torneio = $edicao";
 }
 
 if ($idjogo === '1') {
@@ -71,7 +75,8 @@ FROM
 WHERE 
     p.id_torneio = 1 
     AND p.ordem_partidas = 2
-     AND p.id_jogo = 1";
+     AND p.id_jogo = 1
+     And id_torneio = $edicao";
 } else if ($idjogo === '2') {
   $dadosquartas = "SELECT 
     p.id_partida, 
@@ -89,7 +94,8 @@ FROM
 WHERE 
     p.id_torneio = 1 
     AND p.ordem_partidas = 2
-     AND p.id_jogo = 2";
+     AND p.id_jogo = 2
+     And id_torneio = $edicao";
 } else if ($idjogo === '3') {
   $dadosquartas = "SELECT 
     p.id_partida, 
@@ -107,7 +113,8 @@ FROM
 WHERE 
     p.id_torneio = 1 
     AND p.ordem_partidas = 2
-     AND p.id_jogo = 3";
+     AND p.id_jogo = 3
+     And id_torneio = $edicao";
 }
 
 if ($idjogo === '1') {
@@ -117,7 +124,7 @@ AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equi
 foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
 nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
  foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
- fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 1";
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 1 And id_torneio = $edicao";
 } else if ($idjogo === '2') {
 
   $dadossemis = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) 
@@ -125,7 +132,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
   foto_time1, p.resultado, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS 
   nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS
    foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
-   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 2";
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 2 And id_torneio = $edicao";
 } else if ($idjogo === '3') {
   $dadossemis = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) 
 
@@ -137,7 +144,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
 
    foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 3), 'Fase de Grupos') AS 
 
-   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 3";
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 3 AND p.id_jogo = 3 And id_torneio = $edicao";
 }
 
 
@@ -155,7 +162,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
 
  foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
 
- fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 1;
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 1 And id_torneio = $edicao;
 ";
 } else if ($idjogo === '2') {
   $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
@@ -168,7 +175,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
   
    foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
   
-   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 2;
+   fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 2 And id_torneio = $edicao;
   ";
 } else if ($idjogo === '3') {
   $dadosterceiro = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe) AS 
@@ -181,7 +188,7 @@ nome_equipe2, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2
 
  foto_time2, p.resultado2, p.data_hora,p.ordem_partidas, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 4), 'Fase de Grupos') AS 
 
- fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 3;
+ fase FROM partidas p WHERE p.id_torneio = 1 AND p.ordem_partidas = 4 AND p.id_jogo = 3 And id_torneio = $edicao;
 ";
 }
 
@@ -196,7 +203,7 @@ if ($idjogo === '1') {
   AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
   IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
    AS fase FROM partidas p
-    WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 1;";
+    WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 1 And id_torneio = $edicao;";
 } else if ($idjogo === '2') {
   $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
      AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
@@ -205,7 +212,7 @@ if ($idjogo === '1') {
       AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
       IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
        AS fase FROM partidas p
-        WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 2;";
+        WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 2 And id_torneio = $edicao;";
 } else if ($idjogo === '3') {
   $dadosfinal = "SELECT p.id_partida, (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe)
        AS nome_equipe1, (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe) 
@@ -214,7 +221,7 @@ if ($idjogo === '1') {
         AS foto_time2, p.resultado2, p.data_hora, p.ordem_partidas, 
         IFNULL ((SELECT f.nome FROM fases f WHERE f.id = 5), 'Fase de Grupos')
          AS fase FROM partidas p
-          WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 3;";
+          WHERE p.id_torneio = 1 AND p.ordem_partidas = 5 AND p.id_jogo = 3 And id_torneio = $edicao;";
 }
 
 

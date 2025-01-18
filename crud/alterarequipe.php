@@ -35,9 +35,10 @@ if (empty($foto_time)) {
             id_jogo='$id_jogo'
             WHERE id_equipe=$id_equipe";
 
-        header('location:../indexadm.php');
-        exit();
+      
 }
-
 executarSQL($conexao, $sql);
+
+header('location:../indexadm.php');
+exit();
 ?>

@@ -1,13 +1,13 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">
+      <a href="../index.php" class="brand-logo">
         <img src="../imagens/legacyarena.png" width="50px">
         <span class="logo-text">Legacy Arena</span>
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li> <a class="linkedital" href="edital.php"> Editais </a> </li>
-      <li>    <a href="edicao.php" class="waves-effect waves-light btn">Ver Edições</a> </li>
+      <li> <a class="linkedital" href="../edital.php"> Editais </a> </li>
+      <li>    <a href="../edicao.php" class="waves-effect waves-light btn">Ver Edições</a> </li>
         
     
       </ul>
