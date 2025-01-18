@@ -120,7 +120,7 @@
                FROM equipe e
                JOIN jogos j ON e.id_jogo = j.id"; // listar equipes
   $resultado2 = executarSQL($conexao, $sqlequipes);
-  
+
   ?>
   <main class="container">
 
@@ -136,96 +136,100 @@
 
     <form action="crud/equipecs.php" method="POST" enctype="multipart/form-data">
 
-    
+
       <div class="card-panel">
 
 
-
-
-      <div class="row">
+        <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix"> face</i>
-            <label> Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time">  </label> <br>
+            <label> Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time"> </label> <br>
           </div>
 
 
-        
+
 
           <div class="input-field col s12">
             <i class="material-icons prefix"> perm_identity</i>
-            
+
             <input id="equipe" type="text" placeholder="Nome equipe" class="validate" name="equipe" required>
 
-         
+
           </div>
 
-          <label for="jogo">Jogo da Equipe:</label> 
-        <select name="jogo" id="jogo"class="browser-default">
+          <label for="jogo">Jogo da Equipe:</label>
+          <select name="jogo" id="jogo" class="browser-default">
             <?php
-            while($retorno = mysqli_fetch_assoc($resultado)){
-                echo '<option value="' . $retorno["id"] . '">' . $retorno["nome"] . '</option>';
+            while ($retorno = mysqli_fetch_assoc($resultado)) {
+              echo '<option value="' . $retorno["id"] . '">' . $retorno["nome"] . '</option>';
             };
             ?>
 
-        </select> 
+          </select>
 
-      
 
-        <div class="row"> 
-  <div class="col s12">   
-    <p class="center-align">  
-        <button class="btn waves-effect waves-light brown  lighten-3" type="submit" name="action">Enviar
-    <i class="material-icons right">send</i> </button>
-  </p>
-</div>
-</div>
+
+          <div class="row">
+            <div class="col s12">
+              <p class="center-align">
+                <button class="btn waves-effect waves-light brown  lighten-3" type="submit" name="action">Enviar
+                  <i class="material-icons right">send</i> </button>
+              </p>
+            </div>
+          </div>
 
     </form>
     <p class="center-align">Equipes Cadastradas</p>
     <table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
-        <thead>
-            <tr>
-                <th>Foto</th>
-                <th>Equipe</th>
-                <th>Jogo</th>
-                <th>Alterar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-          <?php
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Equipe</th>
+          <th>Jogo</th>
+          <th>Alterar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
         while ($equipe = mysqli_fetch_assoc($resultado2)) {
-    echo '<tr>';
- 
-    echo '<td>';
-    if (isset($equipe['foto_time']) && !empty($equipe['foto_time'])) {
-        echo '<img src="imagens/' . $equipe['foto_time'] . '" alt="Foto da equipe" style="width: 40px; height: 40px;">';
-    } else {
-        echo 'Sem foto';
-    }
-    echo '</td>';
+          echo '<tr>';
 
-    // Exibe o nome da equipe
-    echo '<td>' . $equipe['nome'] . '</td>';
+          echo '<td>';
+          if (isset($equipe['foto_time']) && !empty($equipe['foto_time'])) {
+            echo '<img src="imagens/' . $equipe['foto_time'] . '" alt="Foto da equipe" style="width: 40px; height: 40px;">';
+          } else {
+            echo 'Sem foto';
+          }
+          echo '</td>';
 
-    // Exibe o nome do jogo
-    echo '<td>' . $equipe['jogo'] . '</td>';
+         
+          echo '<td>' . $equipe['nome'] . '</td>';
 
-    echo '<td> <a href="crud/alterarequipe.php?foto_time='.$equipe['foto_time']. '"> <i class="material-icons">edit</i> </a> </td>';
-    
-    echo '<td><i class="material-icons">clear</i></td>';
+          echo '<td>' . $equipe['jogo'] . '</td>';
 
-    echo '</tr>';
-}
+          echo '<td> 
+          <a href="crud/form-alterarequipe.php?foto_time=' . $equipe['foto_time'] .
+            '&id_equipe=' . $equipe['id_equipe'] .
+            '&nome=' . urlencode($equipe['nome']) .
+            '&id_jogo=' . $equipe['jogo'] . '"> 
+              <i class="material-icons">edit</i> 
+          </a> 
+      </td>';
 
-if (mysqli_num_rows($resultado) == 0) {
-    // Caso não haja equipes cadastradas, exibe uma mensagem
-    echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
-}
-?>
-                </tr>
-            <?php ?>
-        </tbody>
+          echo '<td><i class="material-icons">clear</i></td>';
+
+          echo '</tr>';
+        }
+
+        if (mysqli_num_rows($resultado) == 0) {
+          // Caso não haja equipes cadastradas, exibe uma mensagem
+          echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
+        }
+        ?>
+        </tr>
+        <?php ?>
+      </tbody>
     </table>
 
 

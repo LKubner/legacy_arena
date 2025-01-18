@@ -225,7 +225,7 @@ $resultado8 = executarSQL($conexao, $sql8);
         </div>
 
 
-        <p class="center-align">Equipes Cadastradas</p>
+        <p class="center-align">Grupos Cadastrados</p>
         <table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
           <thead>
             <tr>
@@ -235,38 +235,48 @@ $resultado8 = executarSQL($conexao, $sql8);
               <th>Pontos</th>
               <th>Vitoria</th>
               <th>Derrota</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            // while ($equipe = mysqli_fetch_assoc($resultado2)) {
-            //   echo '<tr>';
 
-            //   echo '<td>';
-            //   if (isset($equipe['foto_time']) && !empty($equipe['foto_time'])) {
-            //     echo '<img src="imagens/' . $equipe['foto_time'] . '" alt="Foto da equipe" style="width: 40px; height: 40px;">';
-            //   } else {
-            //     echo 'Sem foto';
-            //   }
-            //   echo '</td>';
+        
+            if($idjogos){
+            while ($equipe = mysqli_fetch_assoc($resultado4)) {
+              echo '<tr>';
 
-            //   // Exibe o nome da equipe
-            //   echo '<td>' . $equipe['nome'] . '</td>';
 
-            //   // Exibe o nome do jogo
-            //   echo '<td>' . $equipe['jogo'] . '</td>';
 
-            //   echo '<td> <a href="alterar.php"> <i class="material-icons">edit</i> </a> </td>';
 
-            //   echo '<td><i class="material-icons">clear</i></td>';
+              echo '<td>' . $equipe['grupo'] . '</td>';
 
-            //   echo '</tr>';
-            // }
 
-            // if (mysqli_num_rows($resultado) == 0) {
-            //   // Caso não haja equipes cadastradas, exibe uma mensagem
-            //   echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
-            // }
+              echo '<td>' . $equipe['id_equipe'] . '</td>';
+
+
+
+              echo '<td>' . $equipe['partidas'] . '</td>';
+
+
+              echo '<td>' . $equipe['pontos'] . '</td>';
+
+              echo '<td>' . $equipe['vitoria'] . '</td>';
+
+           
+            }
+              
+              echo '<td> <a href="alterar.php"> <i class="material-icons">edit</i> </a> </td>';
+
+              echo '<td><i class="material-icons">clear</i></td>';
+
+              echo '</tr>';
+            }
+
+            if (mysqli_num_rows($resultado) == 0) {
+              // Caso não haja equipes cadastradas, exibe uma mensagem
+              echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
+            }
 
             ?>
             </tr>

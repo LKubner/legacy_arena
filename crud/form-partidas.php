@@ -11,8 +11,11 @@ $sql3 = "SELECT id, nome FROM torneios";
 $resultado_torneios = executarSQL($conexao, $sql3);
 $sql4 = "SELECT id, nome FROM jogos";
 $resultado_jogos = executarSQL($conexao, $sql4);
+$sql5 = "SELECT * from partidas";
+$resultado_partidas = executarSQL($conexao,$sql5);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,13 +24,25 @@ $resultado_jogos = executarSQL($conexao, $sql4);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="../css/style.css" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <br>
     <title>Cadastrar Partida</title>
+    
 </head>
 
 <body id="main-content">
+    
+    <h1 class="center-align"> Cadastrar Partida </h1>
+  
     <main class="container">
-        <br> <br> <br>
-        <div class="card-panel">
+        
+    <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+    <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+
+
+        <div class="card-panel" style="width:100%;">
 
 
 
@@ -42,8 +57,7 @@ $resultado_jogos = executarSQL($conexao, $sql4);
                     ?>
 
                 </select>
-                <br><br>
-
+                
                 <?php
                 // Resetar o resultado para pegar as equipes novamente
                 $resultado_equipes = executarSQL($conexao, $sql);
@@ -95,11 +109,90 @@ $resultado_jogos = executarSQL($conexao, $sql4);
 
                 <br>
 
-                <input type="submit" value="Enviar">
+                <button class="btn waves-effect waves-light brown  lighten-3 " type="submit" name="action">Enviar </button>
             </form>
+            <style>
+
+    table th, table td {
+        padding: 0px; /* Aumenta o espaçamento interno das células */
+        text-align: center; /* Ajusta o alinhamento do texto */
+        font-size: 10.2px; /* Diminui o tamanho da fonte */
+       
+    }
+
+    
+</style>
+            <p class="center-align">Partidas Cadastradas</p>
+            <table class="striped centered responsive-table" style="width: 100%; table-layout: fixed; max-width: 150%;">
+        <thead>
+            <tr>
+                <th>id_partida</th>
+                <th>id_equipe1</th>
+                <th>id_equipe2</th>
+                <th>resultado1</th>
+                <th>resultado2</th>
+                <th>Data_Hora</th>
+                <th>ordem Partida</th>
+                <th>id_fase</th>
+                <th>id_torneio</th>
+                <th>id_jogo</th>
+                <th>Alterar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+          <?php
+        while ($equipe = mysqli_fetch_assoc($resultado_partidas)) {
+    echo '<tr>';
+ 
+    // Exibe o nome da equipe
+    echo '<td>' . $equipe['id_partida'] . '</td>';
+
+    // Exibe o nome do jogo
+    echo '<td>' . $equipe['id_equipe'] . '</td>';
+
+      echo '<td>' . $equipe['id_equipe2'] . '</td>';
+
+        echo '<td>' . $equipe['resultado'] . '</td>';
+
+          echo '<td>' . $equipe['resultado2'] . '</td>';
+
+            echo '<td>' . $equipe['data_hora'] . '</td>';
+
+              echo '<td>' . $equipe['ordem_partidas'] . '</td>';
+
+              echo '<td>' . $equipe['id_fase'] . '</td>';
+
+              echo '<td>' . $equipe['id_torneio'] . '</td>';
+
+              echo '<td>' . $equipe['id_jogo'] . '</td>';
+
+    echo '<td> <a href="crud/alterarequipe.php"> <i class="material-icons">edit</i> </a> </td>';
+    
+    echo '<td><i class="material-icons">clear</i></td>';
+
+    echo '</tr>';
+}
+
+if (mysqli_num_rows($resultado_partidas) == 0) {
+    // Caso não haja equipes cadastradas, exibe uma mensagem
+    echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
+}
+?>
+                </tr>
+            <?php ?>
+        </tbody>
+    </table>
+
         </div>
+
+
+
+
     </main>
+
+   
 </body>
-</form>
+
 
 </html>
