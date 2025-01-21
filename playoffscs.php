@@ -254,7 +254,7 @@ $resultadofinal = executarSQL($conexao, $dadosfinal);
 <body>
   <h1> </h1> <br>
   <div class="theme theme-dark">
-    <h1 class="center-align"> PLAY-OFFS </h1>
+    <h1 class="center-align"> PLAYOFFS </h1>
     <div class="bracket ">
 
 

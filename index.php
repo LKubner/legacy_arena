@@ -35,7 +35,9 @@ if (isset($_GET['id_edicao'])) {
 
 <body>
   <div id="main-content">
-    <h1 class="center-align"> Bem-vindo ao Legacy Arena </h1>
+  <div class="titulo-container">
+    <h1 id="titulo-entrada">Bem-vindo ao Legacy Arena</h1>
+</div>
     <div class="rowcards">
       <?php
       // Consultas para jogos e torneios
@@ -65,7 +67,12 @@ if (isset($_GET['id_edicao'])) {
                    <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 3) { ?> 
                   <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } ?>
+                <?php } elseif ($jogo['id'] == 4) { ?> 
+                  <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de quedas </a>  
+                  <?php } elseif ($jogo['id'] == 5) { ?> 
+                    <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de etapas </a>  
+                    <?php } ?>
+
               </p>
             </div>
           </div>

@@ -130,6 +130,8 @@
     <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
     <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
     <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
+    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Editais</a>
 
 
 

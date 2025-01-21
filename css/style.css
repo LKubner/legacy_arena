@@ -9189,7 +9189,7 @@ input[type=range]::-ms-thumb {
 
 .tituloedicao {
 
-    color: white; /* Contrasta o texto com o fundo */
+    color: #444; /* Contrasta o texto com o fundo */
     font-size: 3em; /* Ajuste o tamanho da fonte conforme necessário */
     font-weight: bold; /* Deixa o texto mais marcante */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra para melhorar a legibilidade  */
@@ -9500,11 +9500,7 @@ body {
     padding: 0;
   }
   
-  .bodyedicao {
-    background-color: #313131;
-   
-  }
-  
+
   #main-content {
     padding: 20px;
     max-width: 1200px;
@@ -9515,6 +9511,7 @@ body {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #444; /* Cor do texto */
   }
   
   /* Estilos para a seção de campeonatos */
@@ -9673,3 +9670,24 @@ body {
     }
 }
 
+#titulo-entrada {
+    font-family: 'Poppins', sans-serif; /* Fonte moderna */
+    font-size: 3rem; /* Tamanho do texto */
+    color: #444; /* Cor do texto */
+    text-align: center; /* Centralizado */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra no texto */
+    margin-top: 50px; /* Espaço no topo */
+    letter-spacing: 2px; /* Espaçamento entre letras */
+    animation: fade-in 1s ease-in-out; /* Animação suave */
+}
+
+
+/* Animação do título */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

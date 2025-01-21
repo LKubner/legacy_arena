@@ -26,7 +26,7 @@ $dados = "SELECT p.id_partida,
        IFNULL ((SELECT f.nome FROM fases f WHERE id = p.id_fase), 'Fase de Grupos') 
         AS fase 
 FROM partidas p 
-WHERE p.id_torneio = $edicao 
+WHERE p.id_torneio = 1
 AND p.id_jogo = 3
 ";
 
