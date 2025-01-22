@@ -76,9 +76,8 @@
   </style>
 
 </head>
-<div class="bannerlol">
-</div>
-
+<div class="bannerlol"></div>
+<div class="clip-background"></div>
 
 <body class="testebodycs">
   <div id="main-content">
@@ -112,8 +111,8 @@
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
-       echo "<a href='chaveamentolol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
-       echo "<a href='partidalol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
+      //  echo "<a href='chaveamentolol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
+      //  echo "<a href='partidalol.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
     } 
    
     ?>

@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">
   </script>
   <script type="text/javascript">
@@ -75,9 +76,9 @@
   </style>
 
 </head>
-<div class="bannercs">
-</div>
 
+<div class="bannercs"></div>
+<div class="clip-background"></div>
 
 <body class="testebodycs">
   <div id="main-content">
@@ -95,7 +96,7 @@
 
 
 
-    <h1 class="titulo"> Counter-Strike 2 </h1>
+    
 
     <style>
       .col {
@@ -106,13 +107,24 @@
 
     <body>
     
-      <div id="tipo">
+    <div class="row" style="margin-left: 20%;">
+  <div class="col s6 m4">
+    <div class="card" style="width: 150px; height: 200px; border-radius: 15px; overflow: hidden;">
+      <div class="card-image" style="height: 100%; overflow: hidden;">
+        <img src="imagens/cs2.png" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</div>
+<h1 class="titulo" style="margin-top: 400px; margin-right: 300px; font-size: 3em;"> Counter-Strike 2 </h1>
+      <div id="tipo" class="center" style="margin-top: 22%">
         <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
+        <input type="button" value="Edital" class="waves-effect waves-light btn">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
-       echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
-       echo "<a href='partidacs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
+      //  echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
+      //  echo "<a href='partidacs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Partidas</a>";
     } 
    
     ?>
