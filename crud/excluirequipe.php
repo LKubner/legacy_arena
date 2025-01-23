@@ -1,4 +1,5 @@
 <?php
+$oi = 0;
 $id_equipe = $_GET['id_equipe'];
 if (!$id_equipe){
     echo "Parâmetro 'id_equipe' não foi enviado";
@@ -27,6 +28,7 @@ $apagou = unlink($caminhoArquivo);
 // die();
 if ($apagou == true) {
 
+    // SELECT * FROM rankingvalo as v, rankinglol as l, rankingcs as c, partidas WHERE v.id_equipe = 33333 or l.id_equipe = 33333 or c.id_equipe = 33333 or partidas.id_equipe = 33333 or partidas.id_equipe2 = 33333;
     $sql = "DELETE FROM equipe WHERE id_equipe='$id_equipe'";
     $resultado = mysqli_query($conexao, $sql);
     if ($resultado == false) {
@@ -38,3 +40,4 @@ if ($apagou == true) {
     die();
 }
 header("location: index.php");
+//se o select retornar mais linhas do que 0, avisar que tem que deletar as partidas e ranking da equipe, caso nao, pode deletar a equipe
