@@ -9251,6 +9251,10 @@ input[type=range]::-ms-thumb {
     box-sizing: border-box; /* Garante que o padding não altere a largura total */
 }
 
+.main-content-2 {
+    margin-top: 60px !important;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -9565,13 +9569,7 @@ body {
   .inscrever-btn:hover {
     background-color: #0056b3;
   }
-  #tipo {
-    position: absolute;
-    top: 50%;            /* Centraliza verticalmente */
-    left: 50%;           /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta a posição para garantir que o centro real do elemento esteja no meio da página */
-    
-  }
+
 
   .clip-background {
     position: absolute;

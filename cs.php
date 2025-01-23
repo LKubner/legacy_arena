@@ -33,6 +33,8 @@
         $('#inv2').show(); // Exibe a descricao
       }
     }
+
+  
   </script>
 
 
@@ -120,7 +122,6 @@
       <div id="tipo" class="center" style="margin-top: 22%">
         <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
-        <input type="button" value="Edital" class="waves-effect waves-light btn">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
       //  echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";

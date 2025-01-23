@@ -7,6 +7,9 @@
  * @return \mysqli retorna uma conexão com a base de dados, ou em caso
  * de falha, mata a execução e exibe o erro.
  */
+
+ error_reporting(E_ERROR | E_PARSE);
+ 
 function conectar()
 {
     require_once "config.php";
