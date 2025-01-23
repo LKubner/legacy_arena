@@ -37,11 +37,11 @@ $resultado_partidas = executarSQL($conexao,$sql5);
     <main class="container">
         
     <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-    <a href="form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-    <a href="form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-    <a href="form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
-    <a href="form-atletas.php" class="waves-effect waves-light btn">Atletas</a>
-        <a href="form-editais.php" class="waves-effect waves-light btn">Editais</a>
+    <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
+        <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
 
 
 
