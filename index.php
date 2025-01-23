@@ -62,8 +62,8 @@ if (isset($_GET['id_edicao'])) {
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?></span>
               <p>
                 <?php if ($jogo['id'] == 1) { ?>
-                   <a href="partidacs.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } elseif ($jogo['id'] == 2) { ?>
+                  <a href="partidacs.php?id=<?= $jogo['id'] ?>&edicao=<?= $edicao ?>">Acessar Tabela de partidas</a>
+                  <?php } elseif ($jogo['id'] == 2) { ?>
                    <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
                 <?php } elseif ($jogo['id'] == 3) { ?> 
                   <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>

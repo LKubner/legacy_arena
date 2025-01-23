@@ -127,11 +127,11 @@
     <br>
     <h1 class="center-align"> Cadastrar Equipe </h1>
     <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-    <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
-    <a href="crud/form-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
-    <a href="crud/form-partidas.php" class="waves-effect waves-light btn">Editais</a>
+    <a href="crud/cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="crud/cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
+    <a href="crud/cadastrar-partidas.php" class="waves-effect waves-light btn">Editais</a>
 
 
 
@@ -210,16 +210,13 @@
 
           echo '<td>' . $equipe['jogo'] . '</td>';
 
-          echo '<td> 
-          <a href="crud/form-alterarequipe.php?foto_time=' . $equipe['foto_time'] .
-            '&id_equipe=' . $equipe['id_equipe'] .
-            '&nome=' . urlencode($equipe['nome']) .
-            '&id_jogo=' . $equipe['jogo'] . '"> 
-              <i class="material-icons">edit</i> 
-          </a> 
+          echo '<td>
+        <a href="crud/form-alterarequipe.php?id_equipe=' . $equipe['id_equipe'] . '"> 
+            <i class="material-icons">edit</i> 
+        </a> 
       </td>';
 
-      echo '<td> <a href="crud/excluirequipe.php?foto_time=' . urlencode($equipe['foto_time']) . '"> <i class="material-icons">clear</i> </a> </td>';
+      echo '<td> <a href="crud/excluirequipe.php?id_equipe=' . urlencode($equipe['id_equipe']) . '"> <i class="material-icons">clear</i> </a> </td>';
 
           echo '</tr>';
         }

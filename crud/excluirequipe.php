@@ -1,26 +1,35 @@
 <?php
-$nome_arquivo = $_GET['foto_time'];
+$id_equipe = $_GET['id_equipe'];
+if (!$id_equipe){
+    echo "Parâmetro 'id_equipe' não foi enviado";
+    die();
 
-$pastaDestino = realpath(dirname(__DIR__) . "/imagens/");
+}
+include_once "../conexao.php";
+$conexao = conectar();
 
-if ($pastaDestino === false) {
-    echo "Erro ao localizar a pasta de destino.";
+$sql = "SELECT * FROM equipe WHERE id_equipe ='$id_equipe'";
+$resultado = executarSQL($conexao,$sql);
+
+if (mysqli_num_rows($resultado) > 0) {
+    $registro = mysqli_fetch_assoc($resultado);
+    $nome_arquivo = $registro['foto_time'];
+} else {
+    echo "Registro não encontrado no banco de dados.";
     die();
 }
 
-$caminhoArquivo = $pastaDestino . DIRECTORY_SEPARATOR . $nome_arquivo;
 
-if (!file_exists($caminhoArquivo)) {
-    echo "Arquivo não encontrado.";
-    die();
-}
-
+$pastaDestino = realpath(__DIR__ . '/../imagens/');
+$caminhoArquivo = __DIR__ . "/../imagens/" . $nome_arquivo;
 $apagou = unlink($caminhoArquivo);
-if ($apagou) {
-    $conexao = mysqli_connect("localhost", "root", "", "legacy_arena");
-    $sql = "DELETE FROM equipe WHERE foto_time='$nome_arquivo'";
+// echo "Caminho gerado: " . $caminhoArquivo . "<br>";
+// die();
+if ($apagou == true) {
+
+    $sql = "DELETE FROM equipe WHERE id_equipe='$id_equipe'";
     $resultado = mysqli_query($conexao, $sql);
-    if ($resultado === false) {
+    if ($resultado == false) {
         echo "Erro ao apagar o arquivo do banco de dados.";
         die();
     }
@@ -28,5 +37,4 @@ if ($apagou) {
     echo "Erro ao apagar o arquivo antigo.";
     die();
 }
-header("location: ../indexadm.php");
-?>
+header("location: index.php");

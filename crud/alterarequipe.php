@@ -8,7 +8,7 @@ $id_equipe = $_POST['id_equipe'] ?? 0;
 $id_jogo = $_POST['id_jogo'] ?? 0;
 
 
-// Verifica se o id_equipe e outros campos necessários estão presentes
+
 if (empty($id_equipe) || empty($nome) || empty($id_jogo)) {
     die("Faltando dados obrigatórios.");
 }

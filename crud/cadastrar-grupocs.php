@@ -141,14 +141,17 @@ $resultado8 = executarSQL($conexao, $sql8);
 <body id="main-content">
   <main class="container">
   <h1 class="center-align"> Cadastrar Grupo </h1>
+  <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+        <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+        <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+        <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+        <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
+        <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
 
     <div class="card-panel">
       <form action="grupocs.php" method="post" enctype="multipart/form-data">
        
-        <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-        <a href="form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-        <a href="form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-        <a href="form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+      
 
 
         <br> <br>

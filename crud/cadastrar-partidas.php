@@ -12,7 +12,7 @@ $resultado_torneios = executarSQL($conexao, $sql3);
 $sql4 = "SELECT id, nome FROM jogos";
 $resultado_jogos = executarSQL($conexao, $sql4);
 $sql5 = "SELECT * from partidas";
-$resultado_partidas = executarSQL($conexao,$sql5);
+$resultado_partidas = executarSQL($conexao, $sql5);
 
 ?>
 
@@ -27,19 +27,22 @@ $resultado_partidas = executarSQL($conexao,$sql5);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <br>
     <title>Cadastrar Partida</title>
-    
+
 </head>
 
 <body id="main-content">
-    
+
     <h1 class="center-align"> Cadastrar Partida </h1>
-  
+
     <main class="container">
-        
-    <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-    <a href="crud/form-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-    <a href="form-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-    <a href="form-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+
+        <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+        <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+        <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+        <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+        <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
+        <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
+
 
 
         <div class="card-panel" style="width:100%;">
@@ -47,8 +50,9 @@ $resultado_partidas = executarSQL($conexao,$sql5);
 
 
             <form action="partidas.php" method="post" enctype="multipart/form-data">
+
                 <label for="equipe1">Equipe 1:</label>
-                <select name="equipe1" id="equipe1" class="browser-default" >
+                <select name="equipe1" id="equipe1" class="browser-default">
                     <?php
                     // Preencher o select de Equipe 1
                     while ($equipe = mysqli_fetch_assoc($resultado_equipes)) {
@@ -57,7 +61,7 @@ $resultado_partidas = executarSQL($conexao,$sql5);
                     ?>
 
                 </select>
-                
+
                 <?php
                 // Resetar o resultado para pegar as equipes novamente
                 $resultado_equipes = executarSQL($conexao, $sql);
@@ -76,16 +80,19 @@ $resultado_partidas = executarSQL($conexao,$sql5);
                 <br><br>
                 Resultado time 1: <input type="text" name="resultado1"><br>
                 Resultado time 2: <input type="text" name="resultado2"><br>
-                Data da Partida: <input type="datetime" name="data"><br>
+                Data da Partida: <input type="datetime-local" name="data"><br>
+                Ordem PlayOffs: <input type="number" name="ordem"><br>
+
                 <label for="fase">Fase da Partida: </label>
                 <select name="fase" id="fase" class="browser-default">
-                    <option value="">Fase de Grupos </option>
+                   <option value="NULL" disabled selected>Selecione a Fase</option>
                     <?php
                     while ($fase = mysqli_fetch_assoc($resultado_fases)) {
                         echo '<option value="' . $fase["id"] . '">' . $fase["nome"] . '</option>';
                     }
                     ?>
                 </select>
+
 
                 <br> <label for="torneios"> Torneio: </label>
                 <select name="torneios" id="torneios" class="browser-default">
@@ -111,78 +118,60 @@ $resultado_partidas = executarSQL($conexao,$sql5);
 
                 <button class="btn waves-effect waves-light brown  lighten-3 " type="submit" name="action">Enviar </button>
             </form>
-            <style>
 
-    table th, table td {
-        padding: 0px; /* Aumenta o espaçamento interno das células */
-        text-align: center; /* Ajusta o alinhamento do texto */
-        font-size: 10.2px; /* Diminui o tamanho da fonte */
-       
-    }
-
-    
-</style>
             <p class="center-align">Partidas Cadastradas</p>
             <table class="striped centered responsive-table" style="width: 100%; table-layout: fixed; max-width: 150%;">
-        <thead>
-            <tr>
-                <th>id_partida</th>
-                <th>id_equipe1</th>
-                <th>id_equipe2</th>
-                <th>resultado1</th>
-                <th>resultado2</th>
-                <th>Data_Hora</th>
-                <th>ordem Partida</th>
-                <th>id_fase</th>
-                <th>id_torneio</th>
-                <th>id_jogo</th>
-                <th>Alterar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-          <?php
-        while ($equipe = mysqli_fetch_assoc($resultado_partidas)) {
-    echo '<tr>';
- 
-    // Exibe o nome da equipe
-    echo '<td>' . $equipe['id_partida'] . '</td>';
+                <thead>
+                    <tr>
+                        <th>id_partida</th>
+                        <th>id_equipe1</th>
+                        <th>id_equipe2</th>
+                        <th>resultado 1</th>
+                        <th>resultado 2</th>
+                        <th>id_jogo</th>
+                        <th>Alterar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($equipe = mysqli_fetch_assoc($resultado_partidas)) {
+                        echo '<tr>';
 
-    // Exibe o nome do jogo
-    echo '<td>' . $equipe['id_equipe'] . '</td>';
+                        // Exibe o nome da equipe
+                        echo '<td>' . $equipe['id_partida'] . '</td>';
 
-      echo '<td>' . $equipe['id_equipe2'] . '</td>';
+                        // Exibe o nome do jogo
+                        echo '<td>' . $equipe['id_equipe'] . '</td>';
 
-        echo '<td>' . $equipe['resultado'] . '</td>';
+                        echo '<td>' . $equipe['id_equipe2'] . '</td>';
 
-          echo '<td>' . $equipe['resultado2'] . '</td>';
+                        echo '<td>' . $equipe['resultado'] . '</td>';
 
-            echo '<td>' . $equipe['data_hora'] . '</td>';
+                        echo '<td>' . $equipe['resultado2'] . '</td>';
 
-              echo '<td>' . $equipe['ordem_partidas'] . '</td>';
+                        echo '<td>' . $equipe['id_jogo'] . '</td>';
 
-              echo '<td>' . $equipe['id_fase'] . '</td>';
+                        echo '<td>
+              <a href="form-alterarpartida.php?id_partida=' . $equipe['id_partida'] . '"> 
+                  <i class="material-icons">edit</i> 
+              </a> 
+            </td>';
 
-              echo '<td>' . $equipe['id_torneio'] . '</td>';
+                        echo '<td> <a href="excluirpartida.php"> <i class="material-icons">clear</i> </a> </td>';
 
-              echo '<td>' . $equipe['id_jogo'] . '</td>';
+                        echo '</tr>';
+                    }
 
-    echo '<td> <a href="crud/alterarequipe.php"> <i class="material-icons">edit</i> </a> </td>';
-    
-    echo '<td> <a href="crud/alterarequipe.php"> <i class="material-icons">clear</i> </a> </td>';
-
-    echo '</tr>';
-}
-
-if (mysqli_num_rows($resultado_partidas) == 0) {
-    // Caso não haja equipes cadastradas, exibe uma mensagem
-    echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
-}
-?>
-                </tr>
-            <?php ?>
-        </tbody>
-    </table>
+                    if (mysqli_num_rows($resultado_partidas) == 0) {
+                        // Caso não haja equipes cadastradas, exibe uma mensagem
+                        echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
+                    }
+                    ?>
+                    </tr>
+                    <?php ?>
+                </tbody>
+            </table>
 
         </div>
 
@@ -191,7 +180,7 @@ if (mysqli_num_rows($resultado_partidas) == 0) {
 
     </main>
 
-   
+
 </body>
 
 
