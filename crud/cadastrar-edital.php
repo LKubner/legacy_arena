@@ -6,7 +6,7 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/style.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -112,31 +112,33 @@
 <body id="main-content">
   <?php
   include_once "header.php";
-  require_once "conexao.php";
+  require_once "../conexao.php";
   $conexao = conectar();
-  $sql = "SELECT id, nome FROM jogos";
+  $sql = "SELECT id, nome FROM torneios";
   $resultado = executarSQL($conexao, $sql);
-  $sqlequipes = "SELECT e.id_equipe, e.nome AS nome, e.foto_time, j.nome AS jogo 
-               FROM equipe e
-               JOIN jogos j ON e.id_jogo = j.id"; // listar equipes
+  $sqlequipes = "SELECT * from edital"; // listar edital
   $resultado2 = executarSQL($conexao, $sqlequipes);
-
+// SELECT id, nome FROM torneios";
+ // $resultado = executarSQL($conexao, $sql);
+ // $sqlequipes = "SELECT t.id, t.nome AS nome 
+//FROM torneios t 
+//JOIN edital e ON t.id_edital = e.id
   ?>
   <main class="container">
 
     <br>
-    <h1 class="center-align"> Cadastrar Equipe </h1>
+    <h1 class="center-align"> Cadastrar Edital </h1>
     <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
     <a href="crud/cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
     <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
     <a href="crud/cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
     <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
-    <a href="crud/cadastrar-edital.php" class="waves-effect waves-light btn">Editais</a>
+    <a href="crud/cadastrar-edital.php" class="waves-effect waves-light btn">Edital</a>
 
 
 
 
-    <form action="crud/equipecs.php" method="POST" enctype="multipart/form-data">
+    <form action="edital.php" method="POST" enctype="multipart/form-data">
 
 
       <div class="card-panel">
@@ -145,22 +147,12 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix"> face</i>
-            <label> Foto da equipe, Selecione o arquivo: <input type="file" name="foto_time"> </label> <br>
+            <label> Selecione o arquivo: <input type="file" name="arquivo"> </label> <br>
           </div>
 
 
-
-
-          <div class="input-field col s12">
-            <i class="material-icons prefix"> perm_identity</i>
-
-            <input id="equipe" type="text" placeholder="Nome equipe" class="validate" name="equipe" required>
-
-
-          </div>
-
-          <label for="jogo">Jogo da Equipe:</label>
-          <select name="jogo" id="jogo" class="browser-default">
+          <label for="torneio">Torneio:</label>
+          <select name="id_torneios" id="id_torneios" class="browser-default">
             <?php
             while ($retorno = mysqli_fetch_assoc($resultado)) {
               echo '<option value="' . $retorno["id"] . '">' . $retorno["nome"] . '</option>';
@@ -181,13 +173,13 @@
           </div>
 
     </form>
-    <p class="center-align">Equipes Cadastradas</p>
+    <p class="center-align">Editais Cadastrados</p>
     <table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
       <thead>
         <tr>
-          <th>Foto</th>
-          <th>Equipe</th>
-          <th>Jogo</th>
+          <th>ID</th>
+          <th>Arquivo</th>
+          <th>Id_torneio</th>
           <th>Alterar</th>
           <th>Excluir</th>
         </tr>
@@ -197,26 +189,20 @@
         while ($equipe = mysqli_fetch_assoc($resultado2)) {
           echo '<tr>';
 
-          echo '<td>';
-          if (isset($equipe['foto_time']) && !empty($equipe['foto_time'])) {
-            echo '<img src="imagens/' . $equipe['foto_time'] . '" alt="Foto da equipe" style="width: 40px; height: 40px;">';
-          } else {
-            echo 'Sem foto';
-          }
-          echo '</td>';
-
          
-          echo '<td>' . $equipe['nome'] . '</td>';
+          echo '<td>' . $equipe['id'] . '</td>';
 
-          echo '<td>' . $equipe['jogo'] . '</td>';
+          echo '<td>' . $equipe['arquivo'] . '</td>';
+
+          echo '<td>' . $equipe['id_torneios'] . '</td>';
 
           echo '<td>
-        <a href="crud/form-alterarequipe.php?id_equipe=' . $equipe['id_equipe'] . '"> 
+        <a href="crud/form-alterarequipe.php?id=' . $equipe['id'] . '"> 
             <i class="material-icons">edit</i> 
         </a> 
       </td>';
 
-      echo '<td> <a href="crud/excluirequipe.php?id_equipe=' . urlencode($equipe['id_equipe']) . '"> <i class="material-icons">clear</i> </a> </td>';
+      echo '<td> <a href="crud/excluirequipe.php?id=' . urlencode($equipe['id']) . '"> <i class="material-icons">clear</i> </a> </td>';
 
           echo '</tr>';
         }
