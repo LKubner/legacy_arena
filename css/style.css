@@ -9752,3 +9752,47 @@ body {
         opacity: 1;
     }
 }
+
+.edital-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+.edital-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.edital-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.edital-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.edital-icone {
+    width: 30px; /* Tamanho fixo para o ícone */
+    margin-right: 10px;
+}
+
+.edital-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.edital-separator {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 10px 0;
+}

@@ -1,6 +1,7 @@
 <?php
 $pastaDestino = "C:/wamp64/www/legacy_arena/imagens/";
 $id_torneios = $_POST['id_torneios'];
+$nome = $_POST['nome'];
 // verificar se o tamanho do arquivo é maior que 20 MB
 if ($_FILES['arquivo']['size'] > 20000000) {  // 20 MB
     echo "O tamanho do arquivo é maior que o limite permitido. Limite máximo: 20 MB.";
@@ -31,7 +32,7 @@ $fezUpload = move_uploaded_file(
 );
 if ($fezUpload == true) {
     $conexao = mysqli_connect("localhost", "root", "", "legacy_arena");
-    $sql = "INSERT INTO edital (arquivo, id_torneios) VALUES ('$nomeArquivo.$extensao','$id_torneios')";
+    $sql = "INSERT INTO edital (arquivo, id_torneios, nome) VALUES ('$nomeArquivo.$extensao','$id_torneios','$nome')";
     $resultado = mysqli_query($conexao, $sql);
     if ($resultado != false) {
         // se for uma alteração de arquivo

@@ -7,7 +7,7 @@ $conexao = conectar();
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@ $conexao = conectar();
 
 <body>
 
-    <div class="main-content-2" style="margin-left: 50px;">
+<div id="main-content"> >
         <?php
 
 
@@ -33,29 +33,19 @@ $conexao = conectar();
 
         $resultado = executarSQL($conexao, $sql);
         ?>
-        <h1> Editais </h1>
-
-        <div class="row">
-            <?php while ($edital = mysqli_fetch_assoc($resultado)) {  ?>
-
-                
-                    <div class="col s6 m1">
-                        <div class="card">
-                            <div class="card-image">
-                            <a href="./imagens/<?= $edital['arquivo'] ?>" target="_blank" >
-                                <img class="activator" src="imagens/icon-pdf.png"  style="height: auto; width: 150px;">
-                            </a>
-                              
-                            </div>
-                           
-                        </div>
-                    </div>
-             
-
-
-            <?php } ?>
+     <h1 class="titulo">Editais</h1>
+<br> <br> <br> <br> <br> <br> <br>
+<div class="edital-lista">
+    <?php while ($edital = mysqli_fetch_assoc($resultado)) { ?>
+        <div class="edital-item">
+            <a href="./imagens/<?= $edital['arquivo'] ?>" target="_blank" class="edital-link">
+                <img class="edital-icone" src="imagens/icon-pdf.png" alt="Baixar PDF">
+                <span class="edital-titulo"><?= $edital['nome'] ?></span>
+            </a>
         </div>
-    </div>
+        <hr class="edital-separator"> 
+    <?php } ?>
+</div>
 </body>
 
 </html>

@@ -146,10 +146,12 @@
 
         <div class="row">
           <div class="input-field col s12">
+          </div>
             <i class="material-icons prefix"> face</i>
             <label> Selecione o arquivo: <input type="file" name="arquivo"> </label> <br>
           </div>
 
+<label> Nome do Edital: <input type="text" name="nome"> </label> 
 
           <label for="torneio">Torneio:</label>
           <select name="id_torneios" id="id_torneios" class="browser-default">
@@ -178,6 +180,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Nome</th>
           <th>Arquivo</th>
           <th>Id_torneio</th>
           <th>Alterar</th>
@@ -191,6 +194,8 @@
 
          
           echo '<td>' . $equipe['id'] . '</td>';
+
+          echo '<td>' . $equipe['nome'] . '</td>';
 
           echo '<td>' . $equipe['arquivo'] . '</td>';
 
