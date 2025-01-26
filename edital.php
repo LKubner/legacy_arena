@@ -23,8 +23,8 @@ $conexao = conectar();
         <?php
 
 
-        if (isset($_GET['id_torneios'])) {
-            $sql = "SELECT * FROM edital  where id_torneios = " . $_GET['id_torneios'];
+        if (isset($_GET['id_edicao']) && $_GET['id_edicao'] !== NULL && $_GET['id_edicao'] !== '' )  {
+            $sql = "SELECT * FROM edital  where id_torneios = " . $_GET['id_edicao'];
         } else {
 
             $sql = "SELECT * FROM edital";

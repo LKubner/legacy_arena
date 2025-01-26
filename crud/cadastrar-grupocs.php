@@ -140,18 +140,18 @@ $resultado8 = executarSQL($conexao, $sql8);
 
 <body id="main-content">
   <main class="container">
-  <h1 class="center-align"> Cadastrar Grupo </h1>
-  <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-        <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-        <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-        <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
-        <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
-        <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
+    <h1 class="center-align"> Cadastrar Grupo </h1>
+    <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+    <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
+    <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
 
     <div class="card-panel">
       <form action="grupocs.php" method="post" enctype="multipart/form-data">
-       
-      
+
+
 
 
         <br> <br>
@@ -183,8 +183,10 @@ $resultado8 = executarSQL($conexao, $sql8);
 
           <div class="campos jogo_4">
             Kills: <input type="text" name="kills"> <br>
-            Numero da Queda: <input type="text" name="numero_queda"> <br>
-            Colocação Queda: <input type="text" name="colocacao"> <br>
+            Numero de Quedas: <input type="text" name="numero_queda"> <br>
+            Colocação Quedas: <input type="text" name="colocacao" placeholder="Separar com ' | ' exemplo: 3 | 5 | 6'"></input> <br>
+            <label for="final">Grupo Final:</label>
+            <input type="number" id="final" name="final" placeholder="1 para final, 0 para normal" ><br><br>
           </div>
 
           <div class="campos jogo_5">
@@ -212,6 +214,7 @@ $resultado8 = executarSQL($conexao, $sql8);
             <option value="D">D</option>
             <option value="E">E</option>
             <option value="F">F</option>
+            <option value="Final">Final</option>
           </select>
 
           <br>
@@ -225,71 +228,75 @@ $resultado8 = executarSQL($conexao, $sql8);
             ?>
           </select>
 
-          <br> <br>
+          <br> 
+          <button class="btn waves-effect waves-light brown  lighten-3 " type="submit" name="action">Enviar </button>
+
         </div>
-
-
-        <p class="center-align">Grupos Cadastrados</p>
-        <table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
-          <thead>
-            <tr>
-              <th>Grupo</th>
-              <th>Id_equipe</th>
-              <th>Partidas</th>
-              <th>Pontos</th>
-              <th>Vitoria</th>
-              <th>Derrota</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-
         
-            if($idjogos){
-            while ($equipe = mysqli_fetch_assoc($resultado4)) {
-              echo '<tr>';
+        <?php 
+$selects = [
+  'Counter-Strike' => $resultado4,
+  'Free Fire' => $resultado5,
+  'League of Legends' => $resultado6,
+  'Valorant' => $resultado7,
+  'Xadrez' => $resultado8
+]; 
 
+foreach ($selects as $jogo => $resultado) {
+  //verifico se tem dados pro jogo
+  if(mysqli_num_rows($resultado) > 0){
+    echo "<h3> Grupos - $jogo </h3>";
+    echo "<table class='striped centered responsive-table' style='width: 100%; margin: 0 auto;'>
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Id_equipe</th>
+          <th>Partidas</th>
+          <th>Pontos</th>
+          <th>Id_Torneio</th>
+          <th>Alterar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>";
+    
+    while ($equipe = mysqli_fetch_assoc($resultado)) {
+      echo '<tr>';
+      echo '<td>' . $equipe['grupo'] . '</td>';
+      echo '<td>' . $equipe['id_equipe'] . '</td>';
+      echo '<td>' . $equipe['partidas'] . '</td>';
+      echo '<td>' . $equipe['pontos'] . '</td>';
+      echo '<td>' . $equipe['vitoria'] . '</td>';
+      echo '<td> <a href="form-alterargrupo.php?id=' . $equipe['id'] . '"> <i class="material-icons">edit</i> </a> </td>';
 
+      echo '<td> <a href="excluirgrupo.php?id=' . $equipe['id'] . '"> <i class="material-icons">clear</i></td>';
 
-
-              echo '<td>' . $equipe['grupo'] . '</td>';
-
-
-              echo '<td>' . $equipe['id_equipe'] . '</td>';
-
-
-
-              echo '<td>' . $equipe['partidas'] . '</td>';
-
-
-              echo '<td>' . $equipe['pontos'] . '</td>';
-
-              echo '<td>' . $equipe['vitoria'] . '</td>';
-
-           
-            }
-              
-              echo '<td> <a href="alterar.php"> <i class="material-icons">edit</i> </a> </td>';
-
-              echo '<td><i class="material-icons">clear</i></td>';
-
-              echo '</tr>';
-            }
-
-            if (mysqli_num_rows($resultado) == 0) {
-              // Caso não haja equipes cadastradas, exibe uma mensagem
-              echo '<tr><td colspan="3">Nenhuma equipe cadastrada</td></tr>';
-            }
-
-            ?>
-            </tr>
-            <?php ?>
-          </tbody>
-        </table>
-
-
-        <input type="submit" value="Enviar">
+      echo '</tr>';
+    }
+    
+    echo '</tbody></table>';
+  } else {
+    echo "<h3> Grupos - $jogo </h3>";
+    echo '<table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Id_equipe</th>
+          <th>Partidas</th>
+          <th>Pontos</th>
+          <th>Id_Torneio</th>
+          <th>Alterar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>';
+    echo '<tr><td colspan="7">Nenhum grupo cadastrado</td></tr>';
+    echo '</tbody></table>';
+  }
+}
+?>
+            
+   
 
       </form>
 

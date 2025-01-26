@@ -1,3 +1,7 @@
+<?php
+$edicao = isset($_GET['id_edicao']) ? $_GET['id_edicao'] : null;
+?>
+
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
@@ -6,7 +10,10 @@
         <span class="logo-text">Legacy Arena</span>
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li> <a class="linkedital" href="edital.php"> Editais </a> </li>
+     <li>
+     <a class="linkedital" href="edital.php?id_edicao=<?php echo $edicao; ?>">Editais</a>
+   
+
       <li>    <a href="edicao.php" class="waves-effect waves-light btn">Ver Edições</a> </li>
         
     

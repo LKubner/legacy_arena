@@ -158,7 +158,7 @@ $resultado_partidas = executarSQL($conexao, $sql5);
               </a> 
             </td>';
 
-                        echo '<td> <a href="excluirpartida.php"> <i class="material-icons">clear</i> </a> </td>';
+                        echo '<td> <a href="excluirpartida.php?id_partida=' . $equipe['id_partida'] . '"> <i class="material-icons">clear</i> </a> </td>';
 
                         echo '</tr>';
                     }

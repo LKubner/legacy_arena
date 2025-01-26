@@ -7,9 +7,10 @@ $partidas = $_POST['partidas'];
 $equipe = $_POST['equipe'];
 $vitorias = $_POST['vitorias'];
 $derrotas = $_POST['derrotas'];
-if ($idjogo === '1' || $idjogo === '3'){$roundven = $_POST['roundv'];
-$roundperd = $_POST['roundp'];
-$difround = $roundven - $roundperd;
+if ($idjogo === '1' || $idjogo === '3') {
+    $roundven = $_POST['roundv'];
+    $roundperd = $_POST['roundp'];
+    $difround = $roundven - $roundperd;
 };
 $pontos = $_POST['pontos'];
 $id_torneio = $_POST['torneios'];
@@ -19,19 +20,20 @@ if ($idjogo === '2') {
     $tempomedio = $tempototal / $partidas;
 }
 
-if($idjogo === '4'){
+if ($idjogo === '4') {
 
-$kills = $_POST['kills']; 
-$colocacao = $_POST['colocacao']; 
-$numero_queda = $_POST['numero_queda']; 
-$pontos = $pontos + $kills;
+    $kills = $_POST['kills'];
+    $colocacao = $_POST['colocacao'];
+    $numero_queda = $_POST['numero_queda'];
+    $final = $_POST['final'];
+    $pontos = $pontos + $kills;
 }
-if($idjogo === '5'){
+if ($idjogo === '5') {
 
-    $etapa1 = $_POST['kills']; 
-    $etapa2= $_POST['ultima_colocacao']; 
+    $etapa1 = $_POST['kills'];
+    $etapa2 = $_POST['ultima_colocacao'];
     $etapa = $pontos + $kills;
-    }
+}
 $nomeArquivo = uniqid();
 
 if ($idjogo === '1') {
@@ -42,7 +44,7 @@ if ($idjogo === '1') {
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php?id=1");
+        header("Location: cadastrar-grupocs.php?id=1");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
@@ -54,7 +56,7 @@ if ($idjogo === '1') {
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php?id=2");
+        header("Location: cadastrar-grupocs.php?id=2");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
@@ -66,21 +68,32 @@ if ($idjogo === '1') {
 
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php?id=3");
+        header("Location: cadastrar-grupocs.php?id=3");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
     }
 } else if ($idjogo === '4') {
-    $sql = "INSERT INTO rankingff (id_equipe, grupo, partidas, pontos, vitoria, derrota, kills, colocacao, numero_queda , id_torneio, id_jogos) 
-    VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$kills','$colocacao','$numero_queda','$id_torneio','$idjogo')";
+    $sql = "INSERT INTO rankingff (id_equipe, grupo, partidas, pontos, vitoria, derrota, kills, posicao_queda, numero_queda , id_torneio, id_jogos, grupo_final) 
+    VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$kills','$colocacao','$numero_queda','$id_torneio','$idjogo','$final')";
     $resultado = executarSQL($conexao, $sql);
     if ($resultado) {
 
-        header("Location: ../admchaveamentocs.php?id=3");
+        header("Location: cadastrar-grupocs.php?id=4");
         exit;
     } else {
         echo "Erro ao registrar os dados no banco de dados.";
     }
-} else  {
-echo "Jogo não identificado"; }
+} else if ($idjogo === '5') {
+    $sql = "INSERT INTO rankingxadrez (id_equipe, grupo, partidas, pontos, vitoria, derrota, kills, posicao_queda, numero_queda , id_torneio, id_jogos, grupo_final) 
+    VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$kills','$colocacao','$numero_queda','$id_torneio','$idjogo','$final')";
+    $resultado = executarSQL($conexao, $sql);
+    if ($resultado) {
+        header("Location: cadastrar-grupocs.php?id=5");
+        exit;
+    } else {
+        echo "Erro ao registrar os dados no banco de dados.";
+    }
+} else {
+    echo "Jogo não identificado";
+}
