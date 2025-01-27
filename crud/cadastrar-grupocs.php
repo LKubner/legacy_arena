@@ -4,6 +4,9 @@ require_once "header.php";
 $conexao = conectar();
 $sql = "SELECT id_equipe, nome FROM equipe";
 $resultado = executarSQL($conexao, $sql);
+$sqlatleta = "SELECT * FROM atleta";
+$resultado_atleta = executarSQL($conexao,$sqlatleta);
+
 $sql2 = "SELECT id, nome FROM jogos";
 $resultado2 = executarSQL($conexao, $sql2);
 $sql3 = "SELECT id, nome FROM torneios";
@@ -154,7 +157,7 @@ $resultado8 = executarSQL($conexao, $sql8);
 
 
 
-        <br> <br>
+      
         <label for="jogo">Jogo:</label>
         <select name="jogo" id="jogo" class="browser-default" onchange="alterarJogo()">
           <?php
@@ -190,9 +193,21 @@ $resultado8 = executarSQL($conexao, $sql8);
           </div>
 
           <div class="campos jogo_5">
+          <label for="atleta">Atleta:</label>
+          <select name="atleta" id="atleta" class="browser-default">
+            <?php
+            while ($retornar = mysqli_fetch_assoc($resultado_atleta)) {
+              echo '<option value="' . $retornar["id"] . '">' . $retornar["nome"] . '</option>';
+            };
+            ?>
+          </select>
+          <br>
+            Nickname: <input type="text" name="nick"> <br>
             Etapa 1: <input type="text" name="pontose1"> <br>
             Etapa 2: <input type="text" name="pontose2"> <br>
             Etapa 3: <input type="text" name="pontose3"> <br>
+            Etapa 4: <input type="text" name="pontose3" placeholder="Se tiver"> <br>
+            Etapa 5: <input type="text" name="pontose3" placeholder="Se tiver"> <br>
           </div>
 
           <label for="equipe">Equipe:</label>
@@ -319,10 +334,22 @@ foreach ($selects as $jogo => $resultado) {
           } else if (jogoId == 5) {
             document.querySelector('.jogo_5').style.display = 'block'; // Xadrez
           }
+
+          const equipeSelect = document.getElementById("equipe");
+  if (jogoId == 5) {
+    equipeSelect.style.display = 'none';  
+  } else {
+    equipeSelect.style.display = 'block'; 
+  }
+
         }
         document.addEventListener("DOMContentLoaded", function() {
           alterarJogo();
-        });
+        }
+      
+        
+      
+      );
       </script>
     </div>
   </main>
