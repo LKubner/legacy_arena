@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 23-Jan-2025 às 18:05
+-- Tempo de geração: 27-Jan-2025 às 03:10
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -60,14 +60,16 @@ CREATE TABLE IF NOT EXISTS `atleta` (
   `id_equipe` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `atleta`
 --
 
 INSERT INTO `atleta` (`id`, `nome`, `nickname`, `email`, `categoria`, `id_equipe`) VALUES
-(1, 'Luciano', 'luksreidelas', 'luciano@gmail.com', 'Masculino', 32);
+(1, 'Luciano', 'luksreidelas', 'luciano@gmail.com', 'Masculino', 32),
+(8, 'Arthur', 'art', 'arthur23@gmail.com', 'M', 0),
+(9, 'Thiago Krug', 'TKg', 'thiago@gmail.com', 'M', 0);
 
 -- --------------------------------------------------------
 
@@ -78,18 +80,21 @@ INSERT INTO `atleta` (`id`, `nome`, `nickname`, `email`, `categoria`, `id_equipe
 DROP TABLE IF EXISTS `edital`;
 CREATE TABLE IF NOT EXISTS `edital` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
   `arquivo` varchar(255) NOT NULL,
   `id_torneios` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_torneios_ed` (`id_torneios`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `edital`
 --
 
-INSERT INTO `edital` (`id`, `arquivo`, `id_torneios`) VALUES
-(2, '67928341ad8f4.pdf', 1);
+INSERT INTO `edital` (`id`, `nome`, `arquivo`, `id_torneios`) VALUES
+(2, 'Regulamento Específico Counter Strike 2', '67928341ad8f4.pdf', 1),
+(3, 'Regulamento Específico Free Fire', '6792e62eca04c.pdf', 1),
+(5, 'Regulamento Geral eJIF 2024', '6792e774643d1.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -292,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
 --
 
 INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `resultado2`, `data_hora`, `ordem_partidas`, `id_fase`, `id_torneio`, `id_jogo`) VALUES
-(1, 32, 34, 0, 0, '2024-10-01 17:38:52', 0, NULL, 2, 1),
+(1, 32, 34, 1, 2, '2024-10-01 17:30:52', 0, NULL, 2, 1),
 (21, 43, 44, 3, 1, '2024-10-01 16:00:00', 0, 3, 1, 1),
 (22, 45, 46, 0, 0, '2024-10-02 18:00:00', 0, 2, 1, 1),
 (23, 47, 48, 2, 1, '2024-10-03 20:00:00', 0, 5, 1, 1),
@@ -339,9 +344,7 @@ INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `r
 (89, 113, 115, 1, 2, '2025-01-26 20:00:00', 2, 2, 1, 3),
 (90, 101, 105, 2, 1, '2025-01-28 18:00:00', 3, 3, 1, 3),
 (91, 109, 113, 1, 2, '2025-01-28 20:00:00', 3, 3, 1, 3),
-(92, 101, 109, 3, 2, '2025-01-30 18:00:00', 5, 4, 1, 3),
-(102, 32, 39, 2, 0, '2025-12-22 17:30:00', 0, NULL, 2, 1),
-(112, 24, 25, 2, 1, '2025-12-22 16:30:00', 0, 7, 2, 1);
+(92, 101, 109, 3, 2, '2025-01-30 18:00:00', 5, 4, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -401,7 +404,8 @@ CREATE TABLE IF NOT EXISTS `rankingff` (
   `derrota` int NOT NULL,
   `kills` int NOT NULL,
   `numero_queda` int NOT NULL,
-  `posicao_queda` int NOT NULL,
+  `posicao_queda` varchar(255) NOT NULL,
+  `grupo_final` tinyint(1) NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   `id_torneio` int NOT NULL,
   `id_jogos` int NOT NULL,
@@ -409,25 +413,27 @@ CREATE TABLE IF NOT EXISTS `rankingff` (
   KEY `fk_id_torneioff` (`id_torneio`),
   KEY `fk_id_jogosff` (`id_jogos`),
   KEY `fk_id_equipe_ff` (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingff`
 --
 
-INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `kills`, `numero_queda`, `posicao_queda`, `id`, `id_torneio`, `id_jogos`) VALUES
-('A', 89, 5, 10, 2, 3, 20, 1, 2, 3, 1, 4),
-('A', 90, 5, 12, 3, 2, 25, 0, 0, 4, 1, 4),
-('A', 91, 5, 9, 2, 3, 18, 0, 0, 5, 1, 4),
-('A', 92, 5, 8, 1, 4, 15, 0, 0, 6, 1, 4),
-('A', 93, 5, 11, 3, 2, 22, 0, 0, 7, 1, 4),
-('A', 94, 5, 7, 1, 4, 14, 0, 0, 8, 1, 4),
-('B', 95, 5, 10, 2, 3, 21, 0, 0, 9, 1, 4),
-('B', 96, 5, 14, 4, 1, 30, 0, 0, 10, 1, 4),
-('B', 97, 5, 9, 2, 3, 18, 0, 0, 11, 1, 4),
-('B', 98, 5, 8, 1, 4, 16, 0, 0, 12, 1, 4),
-('B', 99, 5, 13, 4, 1, 28, 0, 0, 13, 1, 4),
-('B', 100, 5, 10, 2, 3, 20, 0, 0, 14, 1, 4);
+INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, `derrota`, `kills`, `numero_queda`, `posicao_queda`, `grupo_final`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 89, 5, 10, 2, 3, 20, 1, '2|15', 0, 3, 1, 4),
+('A', 90, 5, 12, 3, 2, 25, 0, '0', 0, 4, 1, 4),
+('A', 91, 5, 9, 2, 3, 18, 0, '0', 0, 5, 1, 4),
+('A', 92, 5, 8, 1, 4, 15, 0, '0', 0, 6, 1, 4),
+('A', 93, 5, 11, 3, 2, 22, 0, '0', 0, 7, 1, 4),
+('A', 94, 5, 7, 1, 4, 14, 0, '0', 0, 8, 1, 4),
+('B', 95, 5, 10, 2, 3, 21, 0, '0', 0, 9, 1, 4),
+('B', 96, 5, 14, 4, 1, 30, 0, '0', 0, 10, 1, 4),
+('B', 97, 5, 9, 2, 3, 18, 0, '0', 0, 11, 1, 4),
+('B', 98, 5, 8, 1, 4, 16, 0, '0', 0, 12, 1, 4),
+('B', 99, 5, 13, 4, 1, 28, 0, '0', 0, 13, 1, 4),
+('B', 100, 5, 10, 2, 3, 20, 0, '0', 0, 14, 1, 4),
+('Final', 91, 1, 1, 1, 0, 15, 3, '5 | 1 | 3', 1, 15, 1, 4),
+('Final', 22, 1, 2, 0, 1, 1, 3, '12 | 10 | 5', 1, 20, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -570,14 +576,14 @@ CREATE TABLE IF NOT EXISTS `torneios` (
   `id_edital` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_edital` (`id_edital`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `torneios`
 --
 
 INSERT INTO `torneios` (`id`, `nome`, `descricao`, `data_inicio`, `data_fim`, `atual`, `id_edital`) VALUES
-(1, 'eJif 2024', 'A edição de 2024 do eJIF traz competições emocionantes entre estudantes de todo o Brasil, com jogos de alto nível e grandes premiações.', '2024-11-01', NULL, 1, NULL),
+(1, 'eJif 2024', 'Em 2024, o eJIF promete expandir as fronteiras dos eSports, com novas modalidades, mais equipes e desafios para os competidores.', '2024-12-19', '2024-12-23', 1, NULL),
 (2, 'eJif 2025', 'Em 2025, o eJIF promete expandir as fronteiras dos eSports, com novas modalidades, mais equipes e desafios para os competidores.', '2025-04-15', '2025-05-14', 0, NULL);
 
 --
