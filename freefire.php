@@ -4,9 +4,9 @@
 <head>
 
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/js.js"> </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js">
   </script>
   <script type="text/javascript">
@@ -33,14 +33,26 @@
         $('#inv2').show(); // Exibe a descricao
       }
     }
+
+  
   </script>
 
 
   <style>
+.ranking, .historico {
+      margin-top: 10px;
+      padding: 3px;
+      background-color: #121212;
+      color: #E0E0E0;
+      border-radius: 5px;
+    }
+
+
+
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #f1f1f1;
+      background-color: #121212;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -49,19 +61,8 @@
       transition: all 0.3s ease;
       /* Suaviza a transição */
       display: inline-block;
-
-      #tipo {
-        display: flex;
-        /* Flexbox para organizar os itens */
-        justify-content: center;
-        /* Centraliza os botões horizontalmente */
-        gap: 20px;
-        /* Espaço entre os botões */
-        margin-top: 10px;
-        /* Distância do conteúdo acima */
-        
-      }
-
+      color: #E0E0E0;
+     
       #inv,
       #inv2 {
         padding: 20px;
@@ -76,9 +77,9 @@
   </style>
 
 </head>
-<div class="bannerff">
-</div>
 
+<div class="bannerff"></div>
+<div class="clip-background"></div>
 
 <body class="testebodycs">
   <div id="main-content">
@@ -96,7 +97,7 @@
 
 
 
-    <h1 class="titulo"> Free-Fire </h1>
+    
 
     <style>
       .col {
@@ -107,7 +108,17 @@
 
     <body>
     
-      <div id="tipo">
+    <div class="row" style="margin-left: 20%;">
+  <div class="col s6 m4">
+    <div class="card" style="width: 150px; height: 200px; border-radius: 15px; overflow: hidden;">
+      <div class="card-image" style="height: 100%; overflow: hidden;">
+        <img src="imagens/ff.png" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</div>
+<h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> Free Fire </h1>
+      <div id="tipo" class="center" style="margin-top: 3%">
         <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
 
@@ -121,12 +132,35 @@
 
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
+        <div class="ranking">
         <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
+        <div class="historico">
+      <h3>Histórico do Torneio</h3>
+      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
+    </div>
+  </div>
+
+    </div>
+
+  
+
+
       </div>
 
       <!-- Conteúdo de Descrição -->
       <div id="inv2">
         <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+
+        <div class="ranking">
+      <h3>Dicas Estratégicas</h3>
+      <ul>
+        <li>Priorize comunicação eficiente com sua equipe.</li>
+        <li>Controle o mapa para evitar surpresas do inimigo.</li>
+        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
+      </ul>
+    </div>
+  </div>
+</body>
       </div>
 
 
