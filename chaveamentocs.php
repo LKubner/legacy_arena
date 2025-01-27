@@ -85,8 +85,7 @@ if ($idjogo === '1') {
     INNER JOIN atleta as at ON chess.id_atleta = at.id
     WHERE chess.id_jogos = 5 And id_torneio = $edicao
     ORDER BY chess.grupo, chess.pontosT DESC";
-    //echo $sql2;die;
-    // Consultas ao banco de dados
+
     $sql = "SELECT * FROM rankingxadrez";
     $resultado = executarSQL($conexao, $sql);
     $resultado1 = executarSQL($conexao, $sql2);
@@ -131,7 +130,7 @@ if ($idjogo === '1') {
                         <table class="tabela-partidas">
                             <thead>
                                 <tr>
-                                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
+                                    <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4' ): ?>
                                         <th>Grupo <?= $dados['grupo']; ?></th>
                                     <?php endif; ?>
                                     <th>Nome</th>
@@ -217,7 +216,12 @@ if ($idjogo === '1') {
                                     <td><?= $dados['pontose1']; ?> </td>
                                     <td><?= $dados['pontose2']; ?> </td>
                                     <td><?= $dados['pontose3']; ?> </td>
-                                    if($)
+                                    <?php if (!is_null($dados['pontose4'])) { ?>
+                                            <td><?= $dados ['pontose4'] ?> </td>
+                                        <?php }
+                                        if (!is_null($dados['pontose5'])) { ?>
+                                             <td><?= $dados ['pontose5'] ?> </td>
+                                        <?php } ?>
                                     <td><?= $dados['pontosT']; ?> </td>
 
                                 <?php endif; ?>

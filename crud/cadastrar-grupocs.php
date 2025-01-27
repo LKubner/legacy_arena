@@ -203,11 +203,11 @@ $resultado8 = executarSQL($conexao, $sql8);
           </select>
           <br>
             Nickname: <input type="text" name="nick"> <br>
-            Etapa 1: <input type="text" name="pontose1"> <br>
-            Etapa 2: <input type="text" name="pontose2"> <br>
-            Etapa 3: <input type="text" name="pontose3"> <br>
-            Etapa 4: <input type="text" name="pontose3" placeholder="Se tiver"> <br>
-            Etapa 5: <input type="text" name="pontose3" placeholder="Se tiver"> <br>
+            Etapa 1: <input type="number" name="pontose1"> <br>
+            Etapa 2: <input type="number" name="pontose2"> <br>
+            Etapa 3: <input type="number" name="pontose3"> <br>
+            Etapa 4: <input type="text" name="pontose4" placeholder="Se tiver"> <br>
+            Etapa 5: <input type="text" name="pontose5" placeholder="Se tiver"> <br>
           </div>
 
           <label for="equipe">Equipe:</label>

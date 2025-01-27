@@ -29,10 +29,21 @@ if ($idjogo === '4') {
     $pontos = $pontos + $kills;
 }
 if ($idjogo === '5') {
+    $atleta = $_POST['atleta'];
+    $etapa1 = $_POST['pontose1'];
+    $etapa2 = $_POST['pontose2'];
+    $etapa3 = $_POST['pontose3'];
+    $etapa4 = $_POST['pontose4'];
+    $etapa5 = $_POST['pontose5'];
 
-    $etapa1 = $_POST['kills'];
-    $etapa2 = $_POST['ultima_colocacao'];
-    $etapa = $pontos + $kills;
+    if (empty($_POST['pontose4'])) {
+        $etapa4 = 0;
+    }
+    if (empty($_POST['pontose5'])) {
+        $etapa5 = 0;
+    }
+    $pontosT = intval($etapa1) + intval($etapa2) + intval($etapa3) + intval($etapa4) + intval($etapa5);
+   
 }
 $nomeArquivo = uniqid();
 
@@ -85,8 +96,13 @@ if ($idjogo === '1') {
         echo "Erro ao registrar os dados no banco de dados.";
     }
 } else if ($idjogo === '5') {
-    $sql = "INSERT INTO rankingxadrez (id_equipe, grupo, partidas, pontos, vitoria, derrota, kills, posicao_queda, numero_queda , id_torneio, id_jogos, grupo_final) 
-    VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$kills','$colocacao','$numero_queda','$id_torneio','$idjogo','$final')";
+    if($etapa4 == 0){
+        $etapa4 = 'null';
+    }
+    $sql = "INSERT INTO rankingxadrez (id_atleta, grupo, partidas, pontose1, pontose2, pontose3, pontose4, pontose5, pontosT , categoria, id_torneio, id_jogos) 
+    VALUES ('$atleta','$grupo',$partidas,$etapa1,$etapa2,$etapa3,$etapa4,$etapa5,$pontosT,'$categoria','$id_torneio','$idjogo')";
+// echo "$sql";
+// die;
     $resultado = executarSQL($conexao, $sql);
     if ($resultado) {
         header("Location: cadastrar-grupocs.php?id=5");
