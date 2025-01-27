@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 27-Jan-2025 às 03:10
+-- Tempo de geração: 27-Jan-2025 às 20:22
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -372,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   KEY `fk_id_equipe` (`id_equipe`),
   KEY `fk_id_torneio2` (`id_torneio`),
   KEY `fk_id_jogos` (`id_jogos`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
@@ -386,7 +386,8 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 39, 1, 1, 1, 1, 0, 0, 1, 0, '', 5, 1, 1),
 ('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6, 1, 1),
 ('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7, 1, 1),
-('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1, 1);
+('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1, 1),
+('C', 99, 1, 1, 1, 1, 1, 1, 0, 0, '', 12, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -539,8 +540,8 @@ CREATE TABLE IF NOT EXISTS `rankingxadrez` (
   `pontose1` int NOT NULL,
   `pontose2` int NOT NULL,
   `pontose3` int NOT NULL,
-  `pontose4` int NOT NULL,
-  `pontose5` int NOT NULL,
+  `pontose4` int DEFAULT NULL,
+  `pontose5` int DEFAULT NULL,
   `pontosT` int NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
@@ -550,14 +551,17 @@ CREATE TABLE IF NOT EXISTS `rankingxadrez` (
   KEY `fk_id_torneiochess` (`id_torneio`) USING BTREE,
   KEY `fk_id_jogoschess` (`id_jogos`),
   KEY `fk_id_atletachess` (`id_atleta`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingxadrez`
 --
 
 INSERT INTO `rankingxadrez` (`grupo`, `id_atleta`, `partidas`, `pontose1`, `pontose2`, `pontose3`, `pontose4`, `pontose5`, `pontosT`, `categoria`, `id`, `id_torneio`, `id_jogos`) VALUES
-('A', 1, 5, 2, 1, 3, 0, 0, 6, 'Masculino', 1, 1, 5);
+('A', 1, 5, 2, 1, 3, NULL, NULL, 6, 'Masculino', 1, 1, 5),
+('A', 9, 1, 1, 2, 3, NULL, NULL, 6, 'M', 4, 1, 5),
+('A', 8, 1, 1, 1, 1, 0, 0, 3, '', 10, 1, 5),
+('A', 9, 1, 1, 1, 1, NULL, 0, 3, '', 11, 1, 5);
 
 -- --------------------------------------------------------
 
