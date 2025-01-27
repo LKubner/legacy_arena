@@ -319,6 +319,7 @@ if ($idjogo === '1') {
                         ?>
                         
                          <td> <?php echo $dados['posicao_queda']; ?> </td>
+                         
                                     <?php elseif ($idjogo  === '5'): ?>
                                         <td><?= $dados['pontose1']; ?> </td>
                                         <td><?= $dados['pontose2']; ?> </td>

@@ -1,5 +1,5 @@
 <?php
-$oi = 0;
+
 $id_equipe = $_GET['id_equipe'];
 if (!$id_equipe) {
     echo "Parâmetro 'id_equipe' não foi enviado";

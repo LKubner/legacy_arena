@@ -39,10 +39,20 @@
 
 
   <style>
+.ranking, .historico {
+      margin-top: 10px;
+      padding: 3px;
+      background-color: #121212;
+      color: #E0E0E0;
+      border-radius: 5px;
+    }
+
+
+
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #f1f1f1;
+      background-color: #121212;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -51,19 +61,8 @@
       transition: all 0.3s ease;
       /* Suaviza a transição */
       display: inline-block;
-
-      #tipo {
-        display: flex;
-        /* Flexbox para organizar os itens */
-        justify-content: center;
-        /* Centraliza os botões horizontalmente */
-        gap: 20px;
-        /* Espaço entre os botões */
-        margin-top: 10px;
-        /* Distância do conteúdo acima */
-        
-      }
-
+      color: #E0E0E0;
+     
       #inv,
       #inv2 {
         padding: 20px;
@@ -118,8 +117,8 @@
     </div>
   </div>
 </div>
-<h1 class="titulo" style="margin-top: 400px; margin-right: 300px; font-size: 3em;"> Counter-Strike 2 </h1>
-      <div id="tipo" class="center" style="margin-top: 22%">
+<h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> Counter-Strike 2 </h1>
+      <div id="tipo" class="center" style="margin-top: 3%">
         <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
 
@@ -133,12 +132,35 @@
 
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
+        <div class="ranking">
         <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
+        <div class="historico">
+      <h3>Histórico do Torneio</h3>
+      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
+    </div>
+  </div>
+
+    </div>
+
+  
+
+
       </div>
 
       <!-- Conteúdo de Descrição -->
       <div id="inv2">
         <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+
+        <div class="ranking">
+      <h3>Dicas Estratégicas</h3>
+      <ul>
+        <li>Priorize comunicação eficiente com sua equipe.</li>
+        <li>Controle o mapa para evitar surpresas do inimigo.</li>
+        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
+      </ul>
+    </div>
+  </div>
+</body>
       </div>
 
 
