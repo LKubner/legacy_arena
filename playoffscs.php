@@ -15,7 +15,7 @@ if ($idjogo === '1') {
 FROM 
     partidas p 
 WHERE 
-    p.id_torneio = 1 
+    p.id_torneio = $edicao
     AND p.ordem_partidas = 1  
     AND p.id_jogo = 1
     And id_torneio = $edicao";

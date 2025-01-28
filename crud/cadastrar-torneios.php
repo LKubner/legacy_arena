@@ -57,7 +57,7 @@ $resultado_torneios = executarSQL($conexao, $sql);
 
                 Nome do Torneio: <input type="text" name="nome"><br>
                 Descrição: <input type="text" name="descricao"><br>
-                data_inicio: <input type="date" name="dataini"><br>
+                data_inicio: <input type="date" name="data_inicio"><br>
                 data_fim: <input type="date" name="data_fim"><br>
                 Atual Torneio : <input type="number" name="atual"><br>
               
