@@ -22,5 +22,5 @@ if ($resultado == true) {
     die();
 // }
 
-header("location: index.php");
+header("location: indexadm.php");
 //se o select retornar mais linhas do que 0, avisar que tem que deletar as partidas e ranking da equipe, caso nao, pode deletar a equipe

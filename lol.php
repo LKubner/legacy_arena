@@ -52,7 +52,7 @@
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #121212;
+      background-color: #4f4f4f;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -119,8 +119,8 @@
 </div>
 <h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> League of Legends </h1>
       <div id="tipo" class="center" style="margin-top: 3%">
-        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
-        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
+        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn red">
+        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn red">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
       //  echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
@@ -132,13 +132,12 @@
 
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
-        <div class="ranking">
-        <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
-        <div class="historico">
-      <h3>Histórico do Torneio</h3>
-      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
-    </div>
-  </div>
+       
+        <p class="textobonito">League of Legends (LoL) é um dos jogos de estratégia mais populares do mundo, que combina habilidades de trabalho em equipe, tomada de decisões rápidas e grande conhecimento do jogo. No eJIF (Jogos Eletrônicos dos Institutos Federais), o LoL se destaca como um dos jogos mais disputados, reunindo equipes de diversos Institutos Federais para competições intensas.
+
+No contexto do eJIF, as equipes competem em partidas emocionantes, onde a comunicação, o entrosamento e o conhecimento dos campeões são fundamentais para alcançar a vitória. O torneio do eJIF oferece uma plataforma para que os jogadores mostrem suas habilidades e ampliem sua experiência no cenário competitivo, enquanto também promove o espírito de camaradagem e respeito entre os participantes.</p>
+     
+
 
     </div>
 
@@ -149,16 +148,9 @@
 
       <!-- Conteúdo de Descrição -->
       <div id="inv2">
-        <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+        <p class="textobonito">League of Legends (LoL) é um jogo de estratégia em tempo real que se tornou um dos maiores fenômenos globais de eSports. No eJIF, o jogo tem um papel central nas competições, reunindo equipes de Institutos Federais para disputas emocionantes e cheias de estratégia. Cada partida é uma batalha onde a comunicação eficaz, o controle de mapa, o trabalho em equipe e a habilidade individual dos jogadores são cruciais para alcançar a vitória. No torneio, equipes de diferentes estados se enfrentam em confrontos intensos, com o objetivo de conquistar o título e mostrar sua habilidade no cenário competitivo. O LoL no eJIF não só proporciona uma experiência de competição de alto nível, mas também promove o desenvolvimento de novas estratégias, fortalece os laços entre as equipes e incentiva o crescimento do ambiente de eSports nas instituições de ensino.</p>
 
-        <div class="ranking">
-      <h3>Dicas Estratégicas</h3>
-      <ul>
-        <li>Priorize comunicação eficiente com sua equipe.</li>
-        <li>Controle o mapa para evitar surpresas do inimigo.</li>
-        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
-      </ul>
-    </div>
+       
   </div>
 </body>
       </div>

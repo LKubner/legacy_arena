@@ -111,6 +111,15 @@
 
 <body id="main-content">
   <?php
+  session_start(); // Inicia a sessão
+
+
+  if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+      header('Location: form-login.php'); 
+      exit();
+  }
+
+  
   include_once "header.php";
   require_once "../conexao.php";
   $conexao = conectar();
@@ -128,12 +137,12 @@
 
     <br>
     <h1 class="center-align"> Cadastrar Edital </h1>
-    <a href="indexadm.php" class="waves-effect waves-light btn">Equipes</a>
-    <a href="crud/cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
-    <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
-    <a href="crud/cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
-    <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
-    <a href="crud/cadastrar-edital.php" class="waves-effect waves-light btn">Edital</a>
+    <a href="../indexadm.php" class="waves-effect waves-light btn">Equipes</a>
+    <a href="cadastrar-torneios.php" class="waves-effect waves-light btn">Torneios</a>
+    <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
+    <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
+    <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
+    <a href="cadastrar-edital.php" class="waves-effect waves-light btn">Edital</a>
 
 
 

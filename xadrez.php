@@ -52,7 +52,7 @@
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #121212;
+      background-color: #4f4f4f;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -117,10 +117,10 @@
     </div>
   </div>
 </div>
-<h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> League of Legends </h1>
+<h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> Xadrez Arena </h1>
       <div id="tipo" class="center" style="margin-top: 3%">
-        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
-        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
+        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn red ">
+        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn red ">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
       //  echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
@@ -132,13 +132,10 @@
 
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
-        <div class="ranking">
-        <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
-        <div class="historico">
-      <h3>Histórico do Torneio</h3>
-      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
-    </div>
-  </div>
+  
+        <p class="textobonito">O xadrez, um dos jogos de estratégia mais antigos e respeitados, tem se destacado no eJIF como uma das competições mais desafiadoras e envolventes. Com regras simples, mas um potencial quase infinito de jogadas e estratégias, o jogo coloca à prova a inteligência e a paciência dos competidores. No eJIF, as partidas de xadrez são momentos de concentração máxima, onde cada movimento pode ser decisivo. O torneio reúne jogadores de diferentes instituições, promovendo um ambiente de aprendizado e troca de conhecimento, além de proporcionar uma competição saudável e enriquecedora. Mais do que uma disputa de tabuleiro, o xadrez no eJIF estimula o desenvolvimento de habilidades como pensamento lógico, tomada de decisão e análise crítica.</p>
+      
+
 
     </div>
 
@@ -149,16 +146,9 @@
 
       <!-- Conteúdo de Descrição -->
       <div id="inv2">
-        <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+        <p class="textobonito">O xadrez no eJIF não é apenas uma competição, mas uma verdadeira demonstração de raciocínio estratégico. Cada jogo envolve a antecipação dos movimentos do adversário, a criação de táticas e a constante adaptação às mudanças de cenário. Ao longo do torneio, os competidores são desafiados a manter a calma sob pressão e a pensar em vários passos à frente, habilidades essenciais tanto no xadrez quanto em diversas áreas da vida acadêmica e profissional. Além disso, a competição de xadrez promove um ambiente inclusivo e colaborativo, onde todos os participantes podem crescer, aprender uns com os outros e alcançar seus objetivos. O eJIF serve como um excelente palco para o desenvolvimento do xadrez, criando oportunidades para os jogadores de se destacar e se aprofundar ainda mais na arte do jogo.</p>
 
-        <div class="ranking">
-      <h3>Dicas Estratégicas</h3>
-      <ul>
-        <li>Priorize comunicação eficiente com sua equipe.</li>
-        <li>Controle o mapa para evitar surpresas do inimigo.</li>
-        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
-      </ul>
-    </div>
+     
   </div>
 </body>
       </div>

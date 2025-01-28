@@ -111,6 +111,14 @@
 
 <body id="main-content">
   <?php
+ session_start(); // Inicia a sessão
+
+
+ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+     header('Location: form-login.php'); 
+     exit();
+ }
+
   include_once "header.php";
   require_once "conexao.php";
   $conexao = conectar();

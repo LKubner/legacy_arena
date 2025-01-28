@@ -63,7 +63,7 @@ if ($fezUpload == true) {
                     die();
                 }
             }
-            header("Location: ../admchaveamentocs.php");
+            header("Location: ../indexadm.php");
         } else {
             echo "Erro ao registrar o grupo na tabela rankingcs.";
         }

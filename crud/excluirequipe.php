@@ -29,7 +29,7 @@ $caminhoArquivo = __DIR__ . "/../imagens/" . $nome_arquivo;
 if ($caminhoArquivo == true) {
     $sqlpesquisas =  "SELECT * FROM rankingvalo as v, rankinglol as l, rankingcs as c, rankingxadrez as x, rankingff as f, partidas WHERE v.id_equipe = $id_equipe or l.id_equipe = $id_equipe or c.id_equipe = $id_equipe or f.id_equipe = $id_equipe or partidas.id_equipe = $id_equipe or partidas.id_equipe2 = $id_equipe";
     $resultadopesquisas = executarSQL($conexao, $sqlpesquisas);
-    if (mysqli_num_rows($resultadopesquisas) < 0) {
+    if (mysqli_num_rows($resultadopesquisas) == 0) {
         $apagou = unlink($caminhoArquivo);
         $sql = "DELETE FROM equipe WHERE id_equipe='$id_equipe'";
         $resultado = mysqli_query($conexao, $sql);
@@ -39,5 +39,5 @@ if ($caminhoArquivo == true) {
     die();
 }
 
-header("location: index.php");
+header("location: indexadm.php");
 //se o select retornar mais linhas do que 0, avisar que tem que deletar as partidas e ranking da equipe, caso nao, pode deletar a equipe

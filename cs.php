@@ -39,20 +39,14 @@
 
 
   <style>
-.ranking, .historico {
-      margin-top: 10px;
-      padding: 3px;
-      background-color: #121212;
-      color: #E0E0E0;
-      border-radius: 5px;
-    }
+
 
 
 
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #121212;
+      background-color: #4f4f4f;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -133,11 +127,13 @@
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
         <div class="ranking">
-        <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
-        <div class="historico">
-      <h3>Histórico do Torneio</h3>
-      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
-    </div>
+        <p class="textobonito">Counter-Strike 2 é a evolução do clássico jogo de tiro em primeira pessoa que marcou gerações. Esta nova versão traz gráficos aprimorados graças ao uso do motor Source 2, oferecendo maior realismo e imersão. Além disso, o jogo apresenta novas mecânicas, como melhorias no comportamento das granadas, fumaça interativa e uma física mais realista, tornando as partidas ainda mais dinâmicas.
+
+No eJIF, Counter-Strike 2 se destaca como um dos jogos mais aguardados do cenário competitivo. Com a introdução dessas inovações, o título oferece desafios estratégicos ainda maiores para os jogadores, testando não apenas sua habilidade individual, mas também sua capacidade de trabalho em equipe e adaptação às mudanças durante as partidas.
+
+A inclusão de CS2 no eJIF representa uma oportunidade de renovar o entusiasmo pela franquia, ao mesmo tempo que promove o crescimento do cenário dos esportes eletrônicos entre os participantes do evento.
+        </p>
+       
   </div>
 
     </div>
@@ -151,14 +147,8 @@
       <div id="inv2">
         <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
 
-        <div class="ranking">
-      <h3>Dicas Estratégicas</h3>
-      <ul>
-        <li>Priorize comunicação eficiente com sua equipe.</li>
-        <li>Controle o mapa para evitar surpresas do inimigo.</li>
-        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
-      </ul>
-    </div>
+       
+      
   </div>
 </body>
       </div>

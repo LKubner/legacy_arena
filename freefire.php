@@ -52,7 +52,7 @@
     .textobonito {
       font-size: 18px;
       color: #333;
-      background-color: #121212;
+      background-color:  #4f4f4f;
       /* Cor de fundo clara */
       padding: 10px;
       /* Adiciona um pouco de espaço ao redor do texto */
@@ -119,8 +119,8 @@
 </div>
 <h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> Free Fire </h1>
       <div id="tipo" class="center" style="margin-top: 3%">
-        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn">
-        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn">
+        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn red">
+        <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn red">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual
       //  echo "<a href='chaveamentocs.php?id="  . $torneioatual['id'] . "' class='waves-effect waves-light btn '>Chaveamento</a>";
@@ -132,13 +132,10 @@
 
 <!-- Conteúdo de Visão Geral -->
 <div id="inv">
-        <div class="ranking">
-        <p class="textobonito">Counter-Strike 2 é a nova versão do clássico jogo de tiro em primeira pessoa, trazendo gráficos melhorados e novas mecânicas para o cenário competitivo.</p>
-        <div class="historico">
-      <h3>Histórico do Torneio</h3>
-      <p>Na última edição, a Equipe A foi campeã após uma partida emocionante contra a Equipe B.</p>
-    </div>
-  </div>
+        
+        <p class="textobonito">Free Fire é um dos jogos de battle royale mais populares do mundo, e no contexto do eJIF, se destaca como uma competição que exige não só habilidades de combate, mas também de estratégia e trabalho em equipe. Com partidas rápidas e intensas, onde 50 jogadores lutam pela sobrevivência, Free Fire coloca os competidores em um cenário dinâmico, repleto de desafios e decisões rápidas. A cada partida, a habilidade de tomar decisões sob pressão, a precisão no combate e a capacidade de se adaptar ao ambiente são testadas. No eJIF, a competição traz à tona o espírito de equipe, já que os jogadores precisam coordenar suas ações, combinar habilidades e garantir a vitória com inteligência e agilidade.</p>
+       
+
 
     </div>
 
@@ -149,16 +146,9 @@
 
       <!-- Conteúdo de Descrição -->
       <div id="inv2">
-        <p class="textobonito">Counter-Strike é um jogo de estratégia e habilidade onde equipes de terroristas e contra-terroristas se enfrentam em batalhas intensas. O objetivo varia entre plantar/desarmar bombas ou salvar reféns.</p>
+        <p class="textobonito">No eJIF, o Free Fire se tornou uma competição vibrante e emocionante, onde equipes de diferentes instituições se enfrentam para alcançar a glória. O formato de jogo é focado em partidas rápidas, onde o objetivo principal é ser o último sobrevivente, combinando ação intensa com estratégia. Os participantes precisam dominar o uso de armas, itens e veículos, enquanto se mantêm atentos à movimentação dos adversários e à mudança constante da zona de segurança. Além disso, o aspecto cooperativo é fundamental, já que as equipes devem planejar seus ataques, administrar recursos e trabalhar em conjunto para superar desafios. O torneio de Free Fire no eJIF oferece uma experiência de jogo competitiva e divertida, com uma comunidade unida em torno do jogo, promovendo tanto o desenvolvimento das habilidades dos jogadores quanto o fortalecimento do espírito de equipe.</p>
 
-        <div class="ranking">
-      <h3>Dicas Estratégicas</h3>
-      <ul>
-        <li>Priorize comunicação eficiente com sua equipe.</li>
-        <li>Controle o mapa para evitar surpresas do inimigo.</li>
-        <li>Gerencie seus recursos econômicos durante as rodadas.</li>
-      </ul>
-    </div>
+        
   </div>
 </body>
       </div>

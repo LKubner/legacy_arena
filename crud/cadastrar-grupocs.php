@@ -1,4 +1,14 @@
 <?php
+
+session_start(); // Inicia a sessão
+
+
+ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+     header('Location: form-login.php'); 
+     exit();
+ }
+
+
 require_once "../conexao.php";
 require_once "header.php";
 $conexao = conectar();
@@ -149,7 +159,7 @@ $resultado8 = executarSQL($conexao, $sql8);
     <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
     <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
     <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
-    <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
+    <a href="cadastrar-edital.php" class="waves-effect waves-light btn">Editais</a>
 
     <div class="card-panel">
       <form action="grupocs.php" method="post" enctype="multipart/form-data">
@@ -208,6 +218,19 @@ $resultado8 = executarSQL($conexao, $sql8);
             Etapa 3: <input type="number" name="pontose3"> <br>
             Etapa 4: <input type="text" name="pontose4" placeholder="Se tiver"> <br>
             Etapa 5: <input type="text" name="pontose5" placeholder="Se tiver"> <br>
+            <p> Categoria do Atleta </p>
+                <p>
+                    <label>
+                        <input name="categoria" value="M" type="radio"  />
+                        <span>Masculino</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="categoria" value="F" type="radio" />
+                        <span>Feminino</span>
+                    </label>
+                </p>
           </div>
 
           <label for="equipe">Equipe:</label>

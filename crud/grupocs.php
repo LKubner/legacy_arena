@@ -35,7 +35,7 @@ if ($idjogo === '5') {
     $etapa3 = $_POST['pontose3'];
     $etapa4 = $_POST['pontose4'];
     $etapa5 = $_POST['pontose5'];
-
+    $categoria = $_POST['categoria'];
     if (empty($_POST['pontose4'])) {
         $etapa4 = 0;
     }

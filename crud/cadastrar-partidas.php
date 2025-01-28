@@ -1,4 +1,14 @@
 <?php
+
+session_start(); // Inicia a sessão
+
+
+ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+     header('Location: form-login.php'); 
+     exit();
+ }
+
+ 
 require_once "../conexao.php";
 $conexao = conectar();
 require_once "header.php";
@@ -41,7 +51,7 @@ $resultado_partidas = executarSQL($conexao, $sql5);
         <a href="cadastrar-grupocs.php" class="waves-effect waves-light btn">Grupos</a>
         <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
         <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
-        <a href="cadastrar-editais.php" class="waves-effect waves-light btn">Editais</a>
+        <a href="cadastrar-edital.php" class="waves-effect waves-light btn">Editais</a>
 
 
 
