@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 28-Jan-2025 às 05:00
+-- Tempo de geração: 28-Jan-2025 às 15:56
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -43,8 +43,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 INSERT INTO `administrador` (`id`, `nome`, `email`, `senha`) VALUES
 (2, 'Luciano', 'luciano.2022310952@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Umd4TGFEaHIzaHNCZkxYVQ$YeQ6XP4QleNb71bH72se5WYIxZmiUfDZDuC6vCGjw3Q'),
 (3, 'teste', '123@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$MWRuZTByaTBtMVFuQ3dJcQ$f0ttg+qlfEPA7uZpPjQlvYRDyTR/fFIFMLinWTTdovE'),
-(4, '', '', '$argon2i$v=19$m=65536,t=4,p=1$VnFiSDZxc2tTNUpmWlBZcA$Wmt66sKB78So9/RW/KeejGfYpoKIu/hTPT8gsyAc8ZU'),
-(5, 'Luciano', 'lucianokubner22@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$NDZOdGcyNEQ2T0xacDVXMg$i3kZhGhstfekQrmvMEkuq+F+6HesXZkqrfnvwuv6N9c');
+(5, 'Luciano Maia Kubner', 'lucianokubner22@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$ZmtwZnJUWm94NmRZZ2U5VA$HwQhtv7pJqTRwrBloWdcbzkTcb8+QGkmT/rUA7zVnok');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `atleta` (
   `id_equipe` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `atleta`
@@ -71,8 +70,7 @@ CREATE TABLE IF NOT EXISTS `atleta` (
 INSERT INTO `atleta` (`id`, `nome`, `nickname`, `email`, `categoria`, `id_equipe`) VALUES
 (1, 'Luciano', 'luksreidelas', 'luciano@gmail.com', 'Masculino', 32),
 (8, 'Arthur', 'art', 'arthur23@gmail.com', 'M', 0),
-(9, 'Thiago Krug', 'TKg', 'thiago@gmail.com', 'M', 0),
-(10, 'teste', 'testador', '123@gmail.com', 'F', 0);
+(9, 'Thiago Krug', 'TKg', 'thiago@gmail.com', 'M', 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -293,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   KEY `fk_id_fase` (`id_fase`),
   KEY `fk_id_torneio` (`id_torneio`),
   KEY `fk_id_jogo_plol` (`id_jogo`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
@@ -375,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   KEY `fk_id_equipe` (`id_equipe`),
   KEY `fk_id_torneio2` (`id_torneio`),
   KEY `fk_id_jogos` (`id_jogos`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
@@ -436,7 +434,8 @@ INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 98, 5, 8, 1, 4, 16, 0, '0', 0, 12, 1, 4),
 ('B', 99, 5, 13, 4, 1, 28, 0, '0', 0, 13, 1, 4),
 ('B', 100, 5, 10, 2, 3, 20, 0, '0', 0, 14, 1, 4),
-('Final', 91, 1, 1, 1, 0, 15, 3, '5 | 1 | 3', 1, 15, 1, 4);
+('Final', 91, 1, 1, 1, 0, 15, 3, '5 | 1 | 3', 1, 15, 1, 4),
+('Final', 22, 1, 2, 0, 1, 1, 3, '12 | 10 | 5', 1, 20, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -553,15 +552,16 @@ CREATE TABLE IF NOT EXISTS `rankingxadrez` (
   KEY `fk_id_torneiochess` (`id_torneio`) USING BTREE,
   KEY `fk_id_jogoschess` (`id_jogos`),
   KEY `fk_id_atletachess` (`id_atleta`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingxadrez`
 --
 
 INSERT INTO `rankingxadrez` (`grupo`, `id_atleta`, `partidas`, `pontose1`, `pontose2`, `pontose3`, `pontose4`, `pontose5`, `pontosT`, `categoria`, `id`, `id_torneio`, `id_jogos`) VALUES
+('A', 1, 5, 2, 1, 3, NULL, NULL, 6, 'M', 1, 1, 5),
 ('A', 9, 1, 1, 2, 3, NULL, NULL, 6, 'M', 4, 1, 5),
-('A', 8, 1, 1, 1, 1, NULL, NULL, 3, 'M', 12, 1, 5);
+('A', 9, 1, 1, 1, 1, NULL, NULL, 3, 'F', 12, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -580,7 +580,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
   `id_edital` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_edital` (`id_edital`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `torneios`
