@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 28-Jan-2025 às 15:56
+-- Tempo de geração: 28-Jan-2025 às 18:09
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,17 +33,17 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `administrador`
 --
 
 INSERT INTO `administrador` (`id`, `nome`, `email`, `senha`) VALUES
-(2, 'Luciano', 'luciano.2022310952@aluno.iffar.edu.br', '$argon2i$v=19$m=65536,t=4,p=1$Umd4TGFEaHIzaHNCZkxYVQ$YeQ6XP4QleNb71bH72se5WYIxZmiUfDZDuC6vCGjw3Q'),
-(3, 'teste', '123@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$MWRuZTByaTBtMVFuQ3dJcQ$f0ttg+qlfEPA7uZpPjQlvYRDyTR/fFIFMLinWTTdovE'),
-(5, 'Luciano Maia Kubner', 'lucianokubner22@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$ZmtwZnJUWm94NmRZZ2U5VA$HwQhtv7pJqTRwrBloWdcbzkTcb8+QGkmT/rUA7zVnok');
+(5, 'Luciano Maia Kubner', 'lucianokubner22@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$ZmtwZnJUWm94NmRZZ2U5VA$HwQhtv7pJqTRwrBloWdcbzkTcb8+QGkmT/rUA7zVnok'),
+(7, 'Luciano', 'luciano.2022310952@aluno.iffar.edu.br', '123');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `atleta` (
   `id_equipe` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `atleta`
@@ -70,7 +70,8 @@ CREATE TABLE IF NOT EXISTS `atleta` (
 INSERT INTO `atleta` (`id`, `nome`, `nickname`, `email`, `categoria`, `id_equipe`) VALUES
 (1, 'Luciano', 'luksreidelas', 'luciano@gmail.com', 'Masculino', 32),
 (8, 'Arthur', 'art', 'arthur23@gmail.com', 'M', 0),
-(9, 'Thiago Krug', 'TKg', 'thiago@gmail.com', 'M', 0);
+(9, 'Thiago Krug', 'TKg', 'thiago@gmail.com', 'M', 0),
+(10, 'Joao Gabriel', 'JG', 'joao@gmail.com', 'M', 0);
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `edital` (
   `id_torneios` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_torneios_ed` (`id_torneios`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `edital`
@@ -95,7 +96,8 @@ CREATE TABLE IF NOT EXISTS `edital` (
 INSERT INTO `edital` (`id`, `nome`, `arquivo`, `id_torneios`) VALUES
 (2, 'Regulamento Específico Counter Strike 2', '67928341ad8f4.pdf', 1),
 (3, 'Regulamento Específico Free Fire', '6792e62eca04c.pdf', 1),
-(5, 'Regulamento Geral eJIF 2024', '6792e774643d1.pdf', 1);
+(5, 'Regulamento Geral eJIF 2024', '6792e774643d1.pdf', 1),
+(6, 'Regulamento Geral eJIF 2025', '6799133a24380.pdf', 2);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -291,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   KEY `fk_id_fase` (`id_fase`),
   KEY `fk_id_torneio` (`id_torneio`),
   KEY `fk_id_jogo_plol` (`id_jogo`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
@@ -388,7 +390,7 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6, 1, 1),
 ('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7, 1, 1),
 ('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1, 1),
-('C', 99, 1, 1, 1, 1, 1, 1, 0, 0, '', 12, 1, 1);
+('C', 99, 1, 1, 1, 1, 0, 0, 0, 0, '', 12, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -434,8 +436,7 @@ INSERT INTO `rankingff` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 98, 5, 8, 1, 4, 16, 0, '0', 0, 12, 1, 4),
 ('B', 99, 5, 13, 4, 1, 28, 0, '0', 0, 13, 1, 4),
 ('B', 100, 5, 10, 2, 3, 20, 0, '0', 0, 14, 1, 4),
-('Final', 91, 1, 1, 1, 0, 15, 3, '5 | 1 | 3', 1, 15, 1, 4),
-('Final', 22, 1, 2, 0, 1, 1, 3, '12 | 10 | 5', 1, 20, 1, 4);
+('Final', 91, 1, 1, 1, 0, 15, 3, '5 | 1 | 3', 1, 15, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -462,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `rankinglol` (
   KEY `fk_id_torneiolol` (`id_torneio`),
   KEY `fk_id_jogo_lol` (`id_jogos`),
   KEY `fk_id_equipe_lol` (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankinglol`
@@ -566,6 +567,31 @@ INSERT INTO `rankingxadrez` (`grupo`, `id_atleta`, `partidas`, `pontose1`, `pont
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `recuperar-senha`
+--
+
+DROP TABLE IF EXISTS `recuperar-senha`;
+CREATE TABLE IF NOT EXISTS `recuperar-senha` (
+  `email` varchar(255) NOT NULL,
+  `data_criacao` datetime NOT NULL,
+  `token` char(102) NOT NULL,
+  `usado` tinyint(1) NOT NULL,
+  UNIQUE KEY `token` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `recuperar-senha`
+--
+
+INSERT INTO `recuperar-senha` (`email`, `data_criacao`, `token`, `usado`) VALUES
+('luciano.2022310952@aluno.iffar.edu.br', '2025-01-28 15:06:07', '25613ffda968d1d914dbb29a6411daf5348b7fb6482a6c503c9aa5155027ec2df4777e1d5e5cbeec3856fded6f08577ed5bb', 1),
+('luciano.2022310952@aluno.iffar.edu.br', '2025-01-28 15:08:10', '7c11baa294b7ee1418377461f70b0c001f6f8887e58c81681592cbd3179476c7dfa08416ecc626584b81ce33335b8db9e73e', 1),
+('luciano.2022310952@aluno.iffar.edu.br', '2025-01-28 15:07:29', 'a4d166f7d21f654a2791e3e358984d7842ca54da4d9779e8e53fd47316728c35f76d38e7f3aab3d8e8eed4177d59dad68d8d', 1),
+('luciano.2022310952@aluno.iffar.edu.br', '2025-01-28 15:05:09', 'c573dc2433842ffe781e9972f3fda1e7d03c817d8e67dc8a6f79c0d4c4574299809681dd65d8ed280c0839e08e53be583ff3', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `torneios`
 --
 
@@ -580,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
   `id_edital` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_edital` (`id_edital`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `torneios`

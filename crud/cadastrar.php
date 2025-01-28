@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "conexao.php";
+require_once "../conexao.php";
 $conexao = conectar();
 
 $nome = $_POST['nome'];
@@ -19,4 +19,4 @@ if ($resultado === false) {
         mysqli_errno($conexao) . ": " . mysqli_error($conexao);
 }
 }
-header("Location: index.php");
+header("Location: ../indexadm.php");

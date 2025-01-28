@@ -14,8 +14,8 @@ require_once "../conexao.php";
 $conexao = conectar();
 require_once "header.php";
 // Consulta para pegar todas as equipes
-$sql = "SELECT * FROM atleta";
-$resultado_atleta = executarSQL($conexao, $sql);
+$sql = "SELECT * FROM administrador";
+$resultado_administrador = executarSQL($conexao, $sql);
 
 ?>
 
@@ -29,13 +29,13 @@ $resultado_atleta = executarSQL($conexao, $sql);
     <link type="text/css" rel="stylesheet" href="../css/style.css" media="screen,projection" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <br>
-    <title>Cadastrar Atletas</title>
+    <title>Cadastrar Administrador</title>
 
 </head>
 
 <body id="main-content">
 
-    <h1 class="center-align"> Cadastrar Atletas </h1>
+    <h1 class="center-align"> Cadastrar Administrador </h1>
 
     <main class="container">
 
@@ -45,7 +45,7 @@ $resultado_atleta = executarSQL($conexao, $sql);
         <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
         <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
         <a href="cadastrar-edital.php" class="waves-effect waves-light btn">Edital</a>
-        <a href="cadastrar-administrador.php" class="waves-effect waves-light btn">Administradores</a>
+        <a href="cadastrar-administrador.php" class="waves-effect waves-light btn">Administrador</a>
 
 
 
@@ -53,49 +53,31 @@ $resultado_atleta = executarSQL($conexao, $sql);
 
 
 
-            <form action="atletas.php" method="post" enctype="multipart/form-data">
+            <form action="cadastrar.php" method="post" enctype="multipart/form-data">
 
 
-
-
-                Nome do Atleta: <input type="text" name="nome"><br>
-                Nickname: <input type="text" name="nick"><br>
-                Email do Atleta: <input type="email" name="email"><br>
-            <p> Categoria do Atleta </p>
-                <p>
-                    <label>
-                        <input name="categoria" value="M" type="radio"  />
-                        <span>Masculino</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input name="categoria" value="F" type="radio" />
-                        <span>Feminino</span>
-                    </label>
-                </p>
-           
+        <label> Nome: <input type="text" name="nome"> </label> <br>
+        <label> Email: <input type="email" name="email"> </label> <br>
+        <label> Senha: <input type="password" name="senha"> </label> <br>
 
                 <br>
 
                 <button class="btn waves-effect waves-light brown  lighten-3 " type="submit" name="action">Enviar </button>
             </form>
 
-            <p class="center-align">Atletas Cadastrados</p>
+            <p class="center-align">Administradores Cadastrados</p>
             <table class="striped centered responsive-table" style="width: 100%; table-layout: fixed; max-width: 150%;">
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>Categoria</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    while ($atletas = mysqli_fetch_assoc($resultado_atleta)) {
+                    while ($atletas = mysqli_fetch_assoc($resultado_administrador)) {
                         echo '<tr>';
 
                         // Exibe o nome da equipe
@@ -104,20 +86,17 @@ $resultado_atleta = executarSQL($conexao, $sql);
                         // Exibe o nome do jogo
                         echo '<td>' . $atletas['nome'] . '</td>';
 
-                        echo '<td>' . $atletas['email'] . '</td>';
 
-                        echo '<td>' . $atletas['categoria'] . '</td>';
+                        echo '<td> <a href="form-alteraradministrador.php?id=' . $atletas['id'] . '"> <i class="material-icons">edit</i> </a> </td>';
 
-                        echo '<td> <a href="form-alteraratletas.php?id=' . $atletas['id'] . '"> <i class="material-icons">edit</i> </a> </td>';
-
-                        echo '<td> <a href="excluiratletas.php?id=' . $atletas['id'] . '"> <i class="material-icons">clear</i> </a> </td>';
+                        echo '<td> <a href="excluiradministrador.php?id=' . $atletas['id'] . '"> <i class="material-icons">clear</i> </a> </td>';
 
                         echo '</tr>';
                     }
 
-                    if (mysqli_num_rows($resultado_atleta) == 0) {
+                    if (mysqli_num_rows($resultado_administrador) == 0) {
                         // Caso não haja equipes cadastradas, exibe uma mensagem
-                        echo '<tr><td colspan="3">Nenhum Torneio cadastrado</td></tr>';
+                        echo '<tr><td colspan="3">Nenhum Administrador cadastrado</td></tr>';
                     }
                     ?>
                     </tr>

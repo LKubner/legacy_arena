@@ -8,13 +8,13 @@ if (!$id) {
 include_once "../conexao.php";
 $conexao = conectar();
 
-$sql = "SELECT * FROM atleta WHERE id='$id'";
+$sql = "SELECT * FROM administrador WHERE id='$id'";
 $resultado = executarSQL($conexao, $sql);
 
 
 if ($resultado == true) {
   
-        $sql2 = "DELETE FROM atleta WHERE id='$id'";
+        $sql2 = "DELETE FROM administrador WHERE id='$id'";
         $resultado2 = mysqli_query($conexao, $sql2);
       
     } else
@@ -22,5 +22,5 @@ if ($resultado == true) {
     die();
 // }
 
-header("location: cadastrar-atletas.php");
+header("location: cadastrar-administrador.php");
 //se o select retornar mais linhas do que 0, avisar que tem que deletar as partidas e ranking da equipe, caso nao, pode deletar a equipe

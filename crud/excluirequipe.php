@@ -1,4 +1,6 @@
 <?php
+ini_set('memory_limit', '512M');
+
 $oi = 0;
 $id_equipe = $_GET['id_equipe'];
 if (!$id_equipe) {

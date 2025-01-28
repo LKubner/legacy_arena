@@ -12,6 +12,8 @@
 <form action="login.php" method="post">
         <label> Email: <input type="email" name="email"> <br></lable>
             <label> Senha: <input type="password" name="senha"> </label> <br>
+
+            <p> Esqueceu a sua senha? clique aqui: <a href="form-recuperar-senha.php"> Recuperar Senha </a> </p>
             <input type="submit" class="waves-effect waves-light btn" value="Logar"> <br>
     </form> <br> <br>
     </div>

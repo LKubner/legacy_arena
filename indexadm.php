@@ -140,6 +140,7 @@
     <a href="crud/cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
     <a href="crud/cadastrar-grupocs.php" class="waves-effect waves-light btn">Atletas</a>
     <a href="crud/cadastrar-edital.php" class="waves-effect waves-light btn">Editais</a>
+    <a href="crud/cadastrar-administrador.php" class="waves-effect waves-light btn">Administradores</a>
 
 
 

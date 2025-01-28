@@ -52,7 +52,7 @@ $resultado_partidas = executarSQL($conexao, $sql5);
         <a href="cadastrar-partidas.php" class="waves-effect waves-light btn">Partidas</a>
         <a href="cadastrar-atletas.php" class="waves-effect waves-light btn">Atletas</a>
         <a href="cadastrar-edital.php" class="waves-effect waves-light btn">Editais</a>
-
+        <a href="cadastrar-administrador.php" class="waves-effect waves-light btn">Administradores</a>
 
 
         <div class="card-panel" style="width:100%;">
