@@ -117,9 +117,9 @@
     </div>
   </div>
 </div>
-<h1 class="titulo" style="margin-top:25%; margin-right: 30%; font-size: 3em;"> Counter-Strike 2 </h1>
+<h1 class="titulo" style="margin-top:27%; margin-right: 30%; font-size: 3em;"> Counter-Strike 2 </h1>
       <div id="tipo" class="center" style="margin-top: 3%">
-        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn red">
+        <input type="button" value="Visão Geral" id="fisica" class="waves-effect waves-light btn red ">
         <input type="button" value="Descrição" id="juridica" class="waves-effect waves-light btn red">
 
         <?php   if ($torneioatual) { // verifica se existe um torneio atual

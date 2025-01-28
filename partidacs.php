@@ -2,12 +2,12 @@
 include_once "header.php";
 include_once "conexao.php";
 $conexao = conectar();
-if (isset($_GET['edicao'])) {
-    $edicao = $_GET['edicao'];
+if (isset($_GET['id_edicao'])) {
+    $edicao = $_GET['id_edicao'];
 } else {
     $resultado = mysqli_query($conexao, "SELECT * FROM torneios WHERE atual=1");
     $ed = mysqli_fetch_assoc($resultado);
-    $edicao = $ed['id'];
+    $edicao = $ed['id_edicao'];
 }
 
 //$torneioID =   $_GET['id'];
@@ -17,8 +17,9 @@ $dados = "SELECT p.id_partida,
 (SELECT e.nome FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS nome_equipe2, 
 (SELECT e.foto_time FROM equipe e WHERE e.id_equipe = p.id_equipe2) AS foto_time2, p.resultado2, 
 p.data_hora, IFNULL ((SELECT f.nome FROM fases f WHERE f.id = p.id_fase), 'Fase de Grupos') AS fase
-FROM partidas p  
-WHERE p.id_torneio = " . $edicao;
+FROM partidas p 
+WHERE p.id_torneio = $edicao
+AND p.id_jogo = 1" ;
 
 
 $resultado = mysqli_query($conexao, $dados);
@@ -66,19 +67,6 @@ $exibegp = mysqli_fetch_assoc($resultado);
         </table>
     </div>
    
-    <div class="center">
-        <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">arrow_back</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">arrow_forward</i></a></li>
-        </ul>
-    </div>
-</div>
-  </ul>
             
 </div>
 <script src="script.js"></script>

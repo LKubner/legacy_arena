@@ -49,8 +49,8 @@ $nomeArquivo = uniqid();
 
 if ($idjogo === '1') {
 
-    $sql = "INSERT INTO rankingcs (id_equipe, grupo, partidas, pontos, vitoria, derrota, dif_round, id_torneio, id_jogos) 
-            VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$difround','$id_torneio','$idjogo')";
+    $sql = "INSERT INTO rankingcs (id_equipe, grupo, partidas, pontos, vitoria, derrota,rounds_vencidos,rounds_perdidos, dif_round, id_torneio, id_jogos) 
+            VALUES ('$equipe','$grupo','$partidas','$pontos','$vitorias','$derrotas','$roundven','$roundperd','$difround','$id_torneio','$idjogo')";
     $resultado = executarSQL($conexao, $sql);
 
     if ($resultado) {
@@ -98,6 +98,9 @@ if ($idjogo === '1') {
 } else if ($idjogo === '5') {
     if($etapa4 == 0){
         $etapa4 = 'null';
+    }
+    if ( $etapa5 == 0 ) {
+        $etapa5 =  'null';
     }
     $sql = "INSERT INTO rankingxadrez (id_atleta, grupo, partidas, pontose1, pontose2, pontose3, pontose4, pontose5, pontosT , categoria, id_torneio, id_jogos) 
     VALUES ('$atleta','$grupo',$partidas,$etapa1,$etapa2,$etapa3,$etapa4,$etapa5,$pontosT,'$categoria','$id_torneio','$idjogo')";

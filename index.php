@@ -62,16 +62,16 @@ if (isset($_GET['id_edicao'])) {
               <span class="card-title activator grey-text text-darken-4"> <?= $jogo['nome'] ?></span>
               <p>
                 <?php if ($jogo['id'] == 1) { ?>
-                  <a href="partidacs.php?id=<?= $jogo['id'] ?>&edicao=<?= $edicao ?>">Acessar Tabela de partidas</a>
+                  <a href="partidacs.php?id=<?= $jogo['id'] ?>&id_edicao=<?= $edicao ?>">Acessar  Partidas</a>
                   <?php } elseif ($jogo['id'] == 2) { ?>
-                   <a href="partidalol.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } elseif ($jogo['id'] == 3) { ?> 
-                  <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de partidas </a>
-                <?php } elseif ($jogo['id'] == 4) { ?> 
-                  <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de quedas </a>  
-                  <?php } elseif ($jogo['id'] == 5) { ?> 
-                    <br> <a href="partidavalo.php?id=<?= $jogo['id'] ?>">Acessar Tabela de etapas </a>  
-                    <?php } ?>
+                    <a href="partidalol.php?id=<?= $jogo['id'] ?>&id_edicao=<?= $edicao ?>">Acessar Partidas</a>
+                    <?php } elseif ($jogo['id'] == 3) { ?> 
+                  <a href="partidavalo.php?id=<?= $jogo['id'] ?>&id_edicao=<?= $edicao ?>">Acessar Partidas</a>
+                  <?php } elseif ($jogo['id'] == 4) { ?> 
+                    <a href="freefire.php?id=<?= $jogo['id'] ?>">Ver Detalhes do Jogo</a>
+                    <?php } elseif ($jogo['id'] == 5) { ?> 
+                      <a href="xadrez.php?id=<?= $jogo['id'] ?>">Ver Detalhes do Jogo</a>
+                      <?php } ?>
 
               </p>
             </div>

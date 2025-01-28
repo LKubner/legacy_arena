@@ -254,7 +254,6 @@ $selects = [
   'Free Fire' => $resultado5,
   'League of Legends' => $resultado6,
   'Valorant' => $resultado7,
-  'Xadrez' => $resultado8
 ]; 
 
 foreach ($selects as $jogo => $resultado) {
@@ -282,9 +281,9 @@ foreach ($selects as $jogo => $resultado) {
       echo '<td>' . $equipe['partidas'] . '</td>';
       echo '<td>' . $equipe['pontos'] . '</td>';
       echo '<td>' . $equipe['vitoria'] . '</td>';
-      echo '<td> <a href="form-alterargrupo.php?id=' . $equipe['id'] . '"> <i class="material-icons">edit</i> </a> </td>';
+      echo '<td> <a href="form-alterargrupo.php?id_equipe=' . $equipe['id_equipe'] . '"> <i class="material-icons">edit</i> </a> </td>';
 
-      echo '<td> <a href="excluirgrupo.php?id=' . $equipe['id'] . '"> <i class="material-icons">clear</i></td>';
+      echo '<td> <a href="excluirgrupo.php?id_equipe=' . $equipe['id_equipe'] . '"> <i class="material-icons">clear</i></td>';
 
       echo '</tr>';
     }
@@ -309,7 +308,77 @@ foreach ($selects as $jogo => $resultado) {
     echo '</tbody></table>';
   }
 }
+
+
+
+
+$select = [  'Xadrez' => $resultado8 ]; 
+
+foreach ($select as $jogo => $resultado) {
+ 
+  if(mysqli_num_rows($resultado) > 0){
+    echo "<h3> Grupos - $jogo </h3>";
+    echo "<table class='striped centered responsive-table' style='width: 100%; margin: 0 auto;'>
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Id_atleta</th>
+          <th>Partidas</th>
+          <th>Pontos Total</th>
+           <th>Categoria</th>
+          <th>Id_Torneio</th>
+          <th>Alterar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>";
+    
+    while ($equipe = mysqli_fetch_assoc($resultado)) {
+      echo '<tr>';
+      echo '<td>' . $equipe['grupo'] . '</td>';
+      echo '<td>' . $equipe['id_atleta'] . '</td>';
+      echo '<td>' . $equipe['partidas'] . '</td>';
+      echo '<td>' . $equipe['pontosT'] . '</td>';
+      echo '<td>' . $equipe['categoria'] . '</td>';
+      echo '<td>' . $equipe['id_torneio'] . '</td>';
+      echo '<td> <a href="form-alterargrupo.php?id_atleta=' . $equipe['id_atleta'] . '"> <i class="material-icons">edit</i> </a> </td>';
+
+      echo '<td> <a href="excluirgrupo.php?id_atleta=' . $equipe['id_atleta'] . '"> <i class="material-icons">clear</i></td>';
+
+      echo '</tr>';
+    }
+    
+    echo '</tbody></table>';
+  } else {
+    echo "<h3> Grupos - $jogo </h3>";
+    echo '<table class="striped centered responsive-table" style="width: 100%; margin: 0 auto;">
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Id_equipe</th>
+          <th>Partidas</th>
+          <th>Pontos</th>
+          <th>Id_Torneio</th>
+          <th>Alterar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>';
+    echo '<tr><td colspan="7">Nenhum grupo cadastrado</td></tr>';
+    echo '</tbody></table>';
+  }
+}
+
+
+
+
+
+
+
+
+
 ?>
+            
             
    
 
