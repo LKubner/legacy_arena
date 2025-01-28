@@ -386,9 +386,9 @@ if ($idjogo === '1') {
             <div class="tabela-container">
                 <h1>Grupo Feminino </h1>
                 <?php
-                $sqlfem = "SELECT chess.*, at.nome
-    FROM rankingxadrez chess
-    INNER JOIN atleta  as at ON at.id = at.id
+                $sqlfem = "SELECT chess.*, at.nome, at.nickname
+    FROM rankingxadrez AS chess
+    INNER JOIN atleta as at ON at.id = chess.id_atleta 
     WHERE chess.id_jogos = 5 And id_torneio = $edicao And chess.categoria = 'F'
     ORDER BY chess.grupo, chess.pontosT DESC";
                 $retornofem = executarSQL($conexao, $sqlfem);
@@ -413,6 +413,9 @@ if ($idjogo === '1') {
                                             <th>Grupo <?= $dados['grupo']; ?></th>
                                         <?php endif; ?>
                                         <th>Nome</th>
+                                    <?php if ($idjogo === '5'){  ?>
+                                        <th> Nick </th>
+                                <?php } ?>
                                         <th>Partidas</th>
                                         <?php if ($idjogo === '4'): ?>
                                             <th>Vitórias</th>
@@ -426,10 +429,16 @@ if ($idjogo === '1') {
                                             <th> Kills </th>
                                             <th> Queda </th>
                                             <th> Posição </th>
-                                        <?php elseif ($idjogo  === '5'): ?>
-                                            <th> Etapa 1 </th>
-                                            <th> Etapa 2 </th>
-                                            <th> Etapa 3 </th>
+                                            <?php elseif ($idjogo  === '5'): ?>
+                                        <th> Etapa 1 </th>
+                                        <th> Etapa 2 </th>
+                                        <th> Etapa 3 </th>
+                                        <?php if (!is_null($dados['pontose4'])) { ?>
+                                            <th> Etapa 4 </th>
+                                        <?php }
+                                        if (!is_null($dados['pontose5'])) { ?>
+                                            <th> Etapa 5 </th>
+                                        <?php } ?>
 
                                         <?php endif; ?>
                                         <th>Pontos</th>
@@ -450,7 +459,7 @@ if ($idjogo === '1') {
                                     <?php endif ?>
                                     <td><?= $dados['nome']; ?></td>
                                     <?php if ($idjogo  === '5'): ?>
-                                        <td><?= $dados['nickname'] ?></th>
+                                        <td><?= $dados['nickname'] ?></td>
                                         <?php endif; ?>
                                         <td><?= $dados['partidas']; ?></td>
                                         <?php if ($idjogo === '1' || $idjogo === '3' || $idjogo === '2' || $idjogo === '4'): ?>
@@ -480,12 +489,19 @@ if ($idjogo === '1') {
 
                                             <td> <?php echo $dados['posicao_queda']; ?> </td>
 
-                                        <?php elseif ($idjogo  === '5'): ?>
-                                            <td><?= $dados['pontose1']; ?> </td>
-                                            <td><?= $dados['pontose2']; ?> </td>
-                                            <td><?= $dados['pontose3']; ?> </td>
-                                            <td><?= $dados['pontosT']; ?> </td>
-                                        <?php endif; ?>
+                                            <?php elseif ($idjogo  === '5'): ?>
+                                    <td><?= $dados['pontose1']; ?> </td>
+                                    <td><?= $dados['pontose2']; ?> </td>
+                                    <td><?= $dados['pontose3']; ?> </td>
+                                    <?php if (!is_null($dados['pontose4'])) { ?>
+                                            <td><?= $dados ['pontose4'] ?> </td>
+                                        <?php }
+                                        if (!is_null($dados['pontose5'])) { ?>
+                                             <td><?= $dados ['pontose5'] ?> </td>
+                                        <?php } ?>
+                                    <td><?= $dados['pontosT']; ?> </td>
+
+                                <?php endif; ?>
                                         <?php if ($idjogo === '4'): ?>
                                             <td><?= $dados['pontos']; ?></td>
                                         <?php endif ?>
