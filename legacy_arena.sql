@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 28-Jan-2025 às 18:09
+-- Tempo de geração: 07-Fev-2025 às 23:44
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   `senha` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `administrador`
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 
 INSERT INTO `administrador` (`id`, `nome`, `email`, `senha`) VALUES
 (5, 'Luciano Maia Kubner', 'lucianokubner22@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$ZmtwZnJUWm94NmRZZ2U5VA$HwQhtv7pJqTRwrBloWdcbzkTcb8+QGkmT/rUA7zVnok'),
-(7, 'Luciano', 'luciano.2022310952@aluno.iffar.edu.br', '123');
+(10, 'administrador', 'administrador@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YS5RMWloMWR1UWh5U2tjWQ$r+GTo+cg2FR20VEAgud+9SK8ydJiGmgUYi/FQz9/FgE');
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `foto_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `id_jogo` int NOT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `equipe`
@@ -201,7 +201,8 @@ INSERT INTO `equipe` (`id_equipe`, `nome`, `foto_time`, `id_jogo`) VALUES
 (113, 'Imperial Esports', 'imperial_logo.png', 3),
 (114, 'INTZ', 'intz_logo.png', 3),
 (115, 'Havan Liberty', 'havanliberty_logo.png', 3),
-(116, 'Detona Gaming', 'detonagaming_logo.png', 3);
+(116, 'Detona Gaming', 'detonagaming_logo.png', 3),
+(118, 'teste123', '6799221e52247.jfif', 1);
 
 -- --------------------------------------------------------
 
@@ -293,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   KEY `fk_id_fase` (`id_fase`),
   KEY `fk_id_torneio` (`id_torneio`),
   KEY `fk_id_jogo_plol` (`id_jogo`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `partidas`
@@ -324,8 +325,7 @@ INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `r
 (49, 26, 27, 1, 2, '0000-00-00 00:00:00', 1, 1, 1, 1),
 (50, 39, 40, 1, 2, '0000-00-00 00:00:00', 1, 1, 1, 1),
 (51, 34, 32, 2, 0, '2024-10-06 17:30:00', 2, NULL, 1, 1),
-(52, 58, 59, 2, 1, '2024-10-01 14:00:00', 2, NULL, 1, 2),
-(56, 66, 67, 2, 1, '2024-10-05 18:10:00', 1, NULL, 1, 2),
+(56, 66, 67, 2, 1, '2024-10-05 18:10:00', 1, 2, 1, 2),
 (57, 68, 69, 3, 1, '2024-10-06 19:00:00', 1, NULL, 1, 2),
 (58, 70, 58, 2, 2, '2024-10-07 20:30:00', 1, NULL, 1, 2),
 (59, 59, 60, 1, 2, '2024-10-08 21:00:00', 1, NULL, 1, 2),
@@ -347,7 +347,9 @@ INSERT INTO `partidas` (`id_partida`, `id_equipe`, `id_equipe2`, `resultado`, `r
 (89, 113, 115, 1, 2, '2025-01-26 20:00:00', 2, 2, 1, 3),
 (90, 101, 105, 2, 1, '2025-01-28 18:00:00', 3, 3, 1, 3),
 (91, 109, 113, 1, 2, '2025-01-28 20:00:00', 3, 3, 1, 3),
-(92, 101, 109, 3, 2, '2025-01-30 18:00:00', 5, 4, 1, 3);
+(92, 101, 109, 3, 2, '2025-01-30 18:00:00', 5, 4, 1, 3),
+(115, 22, 24, 1, 1, '2025-12-22 17:30:00', 1, 1, 14, 1),
+(116, 22, 22, 1, 2, '2025-12-22 17:30:00', 0, 1, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -375,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `rankingcs` (
   KEY `fk_id_equipe` (`id_equipe`),
   KEY `fk_id_torneio2` (`id_torneio`),
   KEY `fk_id_jogos` (`id_jogos`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `rankingcs`
@@ -390,7 +392,8 @@ INSERT INTO `rankingcs` (`grupo`, `id_equipe`, `partidas`, `pontos`, `vitoria`, 
 ('B', 40, 1, 1, 1, 1, 0, 0, 1, 0, '', 6, 1, 1),
 ('B', 41, 1, 1, 1, 1, 0, 0, 1, 0, '', 7, 1, 1),
 ('B', 42, 1, 1, 1, 1, 0, 0, 1, 0, '', 8, 1, 1),
-('C', 99, 1, 1, 1, 1, 0, 0, 0, 0, '', 12, 1, 1);
+('C', 99, 1, 1, 1, 1, 0, 0, 0, 0, '', 12, 1, 1),
+('A', 22, 1, 1, 1, 1, 1, 1, 0, 0, '', 15, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -606,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `torneios` (
   `id_edital` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_edital` (`id_edital`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `torneios`
@@ -614,7 +617,8 @@ CREATE TABLE IF NOT EXISTS `torneios` (
 
 INSERT INTO `torneios` (`id`, `nome`, `descricao`, `data_inicio`, `data_fim`, `atual`, `id_edital`) VALUES
 (1, 'eJif 2024', 'Em 2024, o eJIF promete expandir as fronteiras dos eSports, com novas modalidades, mais equipes e desafios para os competidores.', '2024-12-19', '2024-12-23', 1, NULL),
-(2, 'eJif 2025', 'Em 2025, o eJIF promete expandir as fronteiras dos eSports, com novas modalidades, mais equipes e desafios para os competidores.', '2025-04-15', '2025-05-14', 0, NULL);
+(2, 'eJif 2025', 'Em 2025, o eJIF promete expandir as fronteiras dos eSports, com novas modalidades, mais equipes e desafios para os competidores.', '2025-04-15', '2025-05-14', 0, NULL),
+(14, 'teste123', 'testando123', '2025-12-22', '2025-12-22', 0, NULL);
 
 --
 -- Restrições para despejos de tabelas
